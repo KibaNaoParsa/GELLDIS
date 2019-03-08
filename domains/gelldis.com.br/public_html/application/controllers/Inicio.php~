@@ -26,15 +26,13 @@ class Inicio extends CI_Controller {
     }
 
     public function index($number = null) {
+    	  $this->db->select("EVENTO.idEVENTO, EVENTO.NOME");
+		  $this->db->from("EVENTO");
+		  $dados['EVENTO'] = $this->db->get()->result();
 		
         $dados = $this->menu;
         $dados['url'] = base_url();
         $dados['display'] = 'none';
-
-    	  $this->db->select("EVENTO.idEVENTO, EVENTO.NOME");
-		  $this->db->from("EVENTO");
-		  $dados['EVENTO'] = $this->db->get()->result();
-
         if (isset($number) && $number == 1) {
             $dados['color'] = 'success';
             $dados['msg'] = 'Logado com sucesso!, agora pode acessar a área administrativa';
