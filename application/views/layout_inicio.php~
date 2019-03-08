@@ -322,7 +322,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     		Phasellus et pretium lacus. 
                     		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								</p>
-                    		<form method="post" action="{url}inscricao/efetuar_inscricao" class="modal-content">
+                    		<form method="post" action="{url}controllers/inscricao/efetuar_inscricao" class="modal-content">
                   
                         	<div class="form-group">
                             	<label for="txt_nome">Nome:</label> 
@@ -357,7 +357,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         	
                     			<div class="modal-footer">
                         		<button type="button" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
-                        		<button type="submit" class="btn btn-secondary">Acessar</button>
+                        		<button type="submit" class="btn btn-secondary">Cadastrar</button>
                     			</div>
                 			</form>                  
                     </div>
