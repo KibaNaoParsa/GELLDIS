@@ -128,9 +128,9 @@ CREATE TABLE `EVENTO` (
 --
 
 INSERT INTO `EVENTO` (`idEVENTO`, `nome`, `numouvintes`, `numtrabalhos`, `numtotal`) VALUES
-(1, 'blablabla1', 1, 1, 2),
+(1, 'blablabla1', 0, 0, 0),
 (2, 'blablabla2', 0, 0, 0),
-(3, 'blablabla3', 1, 0, 1);
+(3, 'blablabla3', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -207,12 +207,6 @@ CREATE TABLE `INSCRITO` (
 --
 -- Fazendo dump de dados para tabela `INSCRITO`
 --
-
-INSERT INTO `INSCRITO` (`idINSCRITO`, `nome`, `cpf`, `instituicao`, `email`, `tipo`, `titulo`, `artigo`, `idEVENTO`, `situacao`) VALUES
-(1, 'Elyas Correa Nogueira', '11729034683', 'CEFET-MG', 'elyasnog@gmail.com', 0, NULL, NULL, 1, 0),
-(2, 'Elyas Correa Nogueira', '11111111111', 'CEFET-MG', 'elyasnog@gmail.com', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ', 'Adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus. \r\n								Quam nulla porttitor massa id. \r\n								Praesent elementum facilisis leo vel fringilla. \r\n								Semper viverra nam libero justo. \r\n								Bibendum arcu vitae elementum curabitur vitae nunc sed velit dignissim. \r\n								Et odio pellentesque diam volutpat commodo sed egestas egestas. \r\n								Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. \r\n								Ultricies tristique nulla aliquet enim tortor. \r\n								Velit scelerisque in dictum non consectetur a erat nam at. \r\n								Condimentum mattis pellentesque id nibh tortor. \r\n								Ac turpis egestas maecenas pharetra convallis posuere morbi leo urna. \r\n								Faucibus ornare suspendisse sed nisi lacus sed viverra tellus. \r\n								Non pulvinar neque laoreet suspendisse. \r\n								Ipsum suspendisse ultrices gravida dictum fusce ut. \r\n								Vitae congue eu consequat ac felis. \r\n								Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. \r\n								Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida hendrerit. \r\n								Pulvinar etiam non quam lacus suspendisse faucibus interdum.', 1, 0),
-(3, 'Caio', '09875035610', 'CEFET', 'gdgvnasna', 0, NULL, NULL, 3, 0);
-
 -- --------------------------------------------------------
 
 --
