@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Sistema para visibilidado do grupo de pesquisa GELLDIS do CEFET-MG campus Varginha">
-        <meta name="author" content="calouro nem é gente" >
+        <meta name="author" content="elyas" >
         <title>GELLDIS</title>
         <link href="{url}assets/layout_principal/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{url}assets/layout_principal/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet" type="text/css">
@@ -49,8 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </nav>
         <header class="masthead d-flex">            
             <div class="container text-center my-auto">
-                <div class="alert alert-{color}" role="alert" style="display: {display;">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div class="alert alert-{color}" role="alert" style="display: {display};">
+                    <!--">"--><button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <b>{msg}</b>
@@ -356,8 +356,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         	
                         	
                     			<div class="modal-footer">
-                        		<button type="button" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
-                        		<button type="submit" class="btn btn-secondary">Cadastrar</button>
+                        		<button type="button" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
+                        		<button type="submit" class="btn btn-success">Cadastrar</button>
                     			</div>
                 			</form>                  
                     </div>

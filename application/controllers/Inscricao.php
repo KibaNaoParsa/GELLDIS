@@ -107,8 +107,8 @@ class Inscricao extends CI_Controller {
 					foreach ($total as $t) {
 						if ($t->numouvintes < 34) {
 						
-							$data['SITUACAO'] = 0; // Situação 0 = DEFERIDO
-							
+							$data['SITUACAO'] = 2; // Situação 2 = DEFERIDO SEM PAGAMENTO
+														
 							$this->db->insert('INSCRITO', $data);
 							
 							$dat['numouvintes'] = $t->numouvintes;
@@ -120,7 +120,7 @@ class Inscricao extends CI_Controller {
 							$this->db->update('EVENTO', $dat); // Atualizando mudanças no BD.
 							
 							echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
-							$this->index(); // Consertar essa linha.
+							redirect('inicio'); // Consertar essa linha.
 							
 							// PARA FAZER: Enviar e-mail de confirmação
 							
@@ -132,7 +132,7 @@ class Inscricao extends CI_Controller {
 							$this->db->insert('INSCRITO', $data);
 													
 							echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido!");</script>';	
-							$this->index(); // Consertar essa linha.
+							redirect('inicio'); // Consertar essa linha.
 							
 							// PARA FAZER: Enviar e-mail de indeferimento
 						}					
@@ -140,7 +140,7 @@ class Inscricao extends CI_Controller {
 				
 				} else if ($data['TIPO'] == 1) {
 					
-					// PARA FAZER: Caso o inscrito seja um palestrante, o código irá direcioná-lo para digitar seu título e artigo.
+					// PARA FAZER: Caso o inscrito seja um palestrante, o código irá direcioná-lo para digitar seu título e artigo.					
 											
 					$this->db->select("EVENTO.NOME");
 					$this->db->from("EVENTO");
@@ -185,7 +185,7 @@ class Inscricao extends CI_Controller {
     		foreach ($total as $t) {
 				if ($t->numtrabalhos < 6) {
 				
-					$data['SITUACAO'] = 0;
+					$data['SITUACAO'] = 1;
 					
 					$this->db->insert('INSCRITO', $data);
 					
@@ -198,7 +198,8 @@ class Inscricao extends CI_Controller {
 					$this->db->update('EVENTO', $dat);				
 
 					echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
-					$this->index(); // Arrumar essa linha
+					redirect('inicio'); // Consertar essa linha.
+					
 					// PARA FAZER: Enviar e-mail de confirmação					
 
 				} else {
@@ -207,8 +208,8 @@ class Inscricao extends CI_Controller {
 					$this->db->insert('INSCRITO', $data);					
 						
 					echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido.");</script>';	
-					$this->index(); // ...
-
+					redirect('inicio'); // Consertar essa linha.
+							
 					// PARA FAZER: Mandar e-mail de limite						
 				
 				}    		

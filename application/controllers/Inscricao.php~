@@ -107,8 +107,8 @@ class Inscricao extends CI_Controller {
 					foreach ($total as $t) {
 						if ($t->numouvintes < 34) {
 						
-							$data['SITUACAO'] = 0; // Situação 0 = DEFERIDO
-							
+							$data['SITUACAO'] = 2; // Situação 2 = DEFERIDO SEM PAGAMENTO
+														
 							$this->db->insert('INSCRITO', $data);
 							
 							$dat['numouvintes'] = $t->numouvintes;
@@ -120,7 +120,7 @@ class Inscricao extends CI_Controller {
 							$this->db->update('EVENTO', $dat); // Atualizando mudanças no BD.
 							
 							echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
-							$this->index(); // Consertar essa linha.
+							redirect('inicio'); // Consertar essa linha.
 							
 							// PARA FAZER: Enviar e-mail de confirmação
 							
@@ -132,7 +132,7 @@ class Inscricao extends CI_Controller {
 							$this->db->insert('INSCRITO', $data);
 													
 							echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido!");</script>';	
-							$this->index(); // Consertar essa linha.
+							redirect('inicio'); // ...
 							
 							// PARA FAZER: Enviar e-mail de indeferimento
 						}					
@@ -170,7 +170,7 @@ class Inscricao extends CI_Controller {
 			$data['CPF'] = $form['cpf'];
 			$data['EMAIL'] = $form['email'];
 			$data['INSTITUICAO'] = $form['instituicao'];
-			$data['idEVENTO'] = $form['evento'];
+			$data['idEVENTO'] = $form['idEVENTO'];
 			$data['TITULO'] = $form['titulo'];
 			$data['ARTIGO'] = $form['artigo'];    
 			$data['TIPO'] = 1;
@@ -180,7 +180,7 @@ class Inscricao extends CI_Controller {
     		$this->db->where("EVENTO.idEVENTO", $data['idEVENTO']);
     		$total = $this->db->get()->result();
     		
-			echo $data['NOME']."-".$data['INSTITUICAO']."-".$data['CPF'].'-'.$data['EMAIL'].'-'.$data['idEVENTO'].'-'.$data['TIPO'];    		
+			//echo $data['NOME']."-".$data['INSTITUICAO']."-".$data['CPF'].'-'.$data['EMAIL'].'-'.$data['idEVENTO'].'-'.$data['TIPO'];    		
     		
     		foreach ($total as $t) {
 				if ($t->numtrabalhos < 6) {

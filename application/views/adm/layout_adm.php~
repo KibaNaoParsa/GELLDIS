@@ -112,12 +112,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </a>
                         <ul class="sidenav-second-level collapse" id="collapseSILL">
                             <li>
-                                <a class="nav-link" href="{url}adm/inscricao/inscrito_ouvinte">                                    
+                                <a class="nav-link" href="{url}adm/inscricoes/inscrito_ouvinte">                                    
                                     <span class="nav-link-text">Ouvintes</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{url}adm/inscricao/inscrito_apresentador">                                    
+                                <a class="nav-link" href="{url}gerenciar/inscrito_apresentador">                                    
                                     <span class="nav-link-text">Apresentadores</span>
                                 </a>
                             </li>                                                     
