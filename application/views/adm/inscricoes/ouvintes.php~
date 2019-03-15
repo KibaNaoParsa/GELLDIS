@@ -1,30 +1,28 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 	foreach($INSCRITO as $i) {
-		echo '<div id="ouvintes">';
 		echo '<b>Nome: </b>';
 		echo $i->NOME;
 		echo '<br><b>E-mail: </b>';
 		echo $i->EMAIL;
 		echo '<br><b>GT: </b>';
 		echo $i->NOME_EVENTO;
+		echo '<br><b>Situação: </b>';
 		
-		
-		
-		
-		/*
-		echo "<b>Nome: </b>".$i->NOME.br().
-			  "<b>E-mail: </b>".$i->EMAIL.br().
-			  "<b>GT: </b>".$i->NOME_EVENTO.br();
-		 
 		if ($i->SITUACAO == 0) {
-			echo "<b>Situação: </b><div id='pag' style='color: green;'>PAGO</div>";		
-		} else if ($SITUACAO == 2) {
-			echo "<b>Situação: </b><div id='pag' style='color: yellow;'>Pagamento pendente</div>";		
+			echo "<div id='insc' style='color: green;'><b>";
+			echo "PAGO";
+			echo "</b></div>";
+			echo anchor("adm/inscricao/indeferir_ouvinte/".$i->idINSCRITO, "Indeferir", array('class'=>"btn btn-danger", 'id'=>"botao"));		
+		} else if ($i->SITUACAO == 2) {
+			echo "<div id='insc' style='color: yellow;'><b>";
+			echo "PAGAMENTO PENDENTE";
+			echo "</b></div>";
+			echo anchor("adm/inscricao/pag_ouvinte/".$i->idINSCRITO, "Confirmar pagamento", array('class'=>"btn btn-success", 'id'=>"botao"));		
+			echo "<br>";		
 		}
-		*/
-		echo '</div>';		
 		
+		echo "<br>";
 	}
 
 

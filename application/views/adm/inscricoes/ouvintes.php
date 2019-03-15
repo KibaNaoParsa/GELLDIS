@@ -7,22 +7,31 @@
 		echo $i->EMAIL;
 		echo '<br><b>GT: </b>';
 		echo $i->NOME_EVENTO;
+		echo '<br><b>Situação: </b>';
 		
-		
-		
-		
-		/*
-		echo "<b>Nome: </b>".$i->NOME.br().
-			  "<b>E-mail: </b>".$i->EMAIL.br().
-			  "<b>GT: </b>".$i->NOME_EVENTO.br();
-		 
 		if ($i->SITUACAO == 0) {
-			echo "<b>Situação: </b><div id='pag' style='color: green;'>PAGO</div>";		
-		} else if ($SITUACAO == 2) {
-			echo "<b>Situação: </b><div id='pag' style='color: yellow;'>Pagamento pendente</div>";		
+			echo "<div id='insc' style='color: green;'><b>";
+			echo "PAGO";
+			echo "</b></div>";
+			echo anchor("adm/inscricao/indeferir_ouvinte/".$i->idINSCRITO, "Indeferir", array('class'=>"btn btn-danger", 'id'=>"botao"));		
+			echo "<br>";
+		} else if ($i->SITUACAO == 1) {
+			echo "<div id='insc' style='color: green;'><b>";
+			echo "INDEFERIDO/LIMITE ATINGIDO";
+			echo "</b></div>";
+			echo anchor("adm/inscricao/pag_ouvinte/".$i->idINSCRITO, "Deferir c/ pagamento", array('class'=>"btn btn-danger", 'id'=>"botao"));		
+			echo anchor("adm/inscricao/deferir_ouvinte/".$i->idINSCRITO, "Deferir s/ pagamento", array('class'=>"btn btn-warning", 'id'=>"botao"));		
+			echo "<br>";
+
+		} else if ($i->SITUACAO == 2) {
+			echo "<div id='insc' style='color: yellow;'><b>";
+			echo "PAGAMENTO PENDENTE";
+			echo "</b></div>";
+			echo anchor("adm/inscricao/pag_ouvinte/".$i->idINSCRITO, "Confirmar pagamento", array('class'=>"btn btn-success", 'id'=>"botao"));		
+			echo "<br>";		
 		}
-		*/	
 		
+		echo "<br>";
 	}
 
 

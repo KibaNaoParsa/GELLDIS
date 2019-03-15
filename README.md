@@ -9,3 +9,6 @@
 
 - Formulário completo (ouvinte e apresentador)
 
+**v1.3**
+
+- Portal de ouvintes para administrador

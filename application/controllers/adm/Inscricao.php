@@ -20,17 +20,26 @@ class Inscricao extends CI_Controller {
 		  $dados['url'] = base_url();
 		  $dados['display'] = 'none';
 		  $dados['acao'] = 'Ouvintes inscritos';
-		  $dados['conteudo'] = $this->parser->parse("adm/inscricoes/ouvintes", $dados);
+		  $dados['conteudo'] = $this->parser->parse("adm/inscricoes/ouvintes", $dados, TRUE);
 		  
 		  $this->parser->parse("adm/layout_adm", $dados);
-	
-		
-	
 	
 	}
 
 	public function inscrito_apresentador() {
 	
 	}
+	
+	// Fim de chamada de view
+	
+	public function pag_ouvinte($idI) {
+		
+		$dados['SITUACAO'] = 0;
+		$this->db->where("INSCRITO.idINSCRITO", $idI);
+		$this->db->update("INSCRITO", $dados);
+		
+		redirect('adm/inscricao/inscrito_ouvinte');	
+	}
+	
 }
 
