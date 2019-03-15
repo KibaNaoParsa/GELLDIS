@@ -16,8 +16,15 @@ class Inscricao extends CI_Controller {
 		  $this->db->join("EVENTO", "EVENTO.idEVENTO = INSCRITO.idEVENTO", 'inner');
 		  $this->db->where("INSCRITO.TIPO", 0);
 		  $dados['INSCRITO'] = $this->db->get()->result();
+		  
+		  $dados['url'] = base_url();
+		  $dados['display'] = 'none';
+		  $dados['acao'] = 'Ouvintes inscritos';
+		  //$dados['conteudo'] = $this->parser->parse("adm/inscricoes/ouvintes", $dados);
+		  
+		  $this->parser->parse("adm/layout_adm", $dados);
 	
-			
+		
 	
 	
 	}

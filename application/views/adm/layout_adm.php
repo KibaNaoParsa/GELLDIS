@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Sistema para o grupo de pesquisa GELLDIS">
-        <meta name="author" content="elyas" >
+        <meta name="author" content="Alunos" >
         <title>Administração</title>
         <link href="{url}assets/layout_adm/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{url}assets/layout_adm/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -151,6 +151,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="content-wrapper">
             <div class="container-fluid">
                 <div class="alert alert-{cor_alert} alert-dismissible fade show" style="display: {display}" role="alert">
+                	<!--">"-->
                     <strong>
                         {msg_erro}
                     </strong> 

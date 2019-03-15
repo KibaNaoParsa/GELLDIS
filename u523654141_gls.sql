@@ -366,7 +366,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `nome`, `senha`, `privilegio`, `ativo`) VALUES
-(1, 'diloca@gmail.com', 'diloca', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1, 1),
+(1, 'diloca@gmail.com', 'diloca', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 1),
 (2, 'professorlucianopalm@gmail.com', 'Luciano André Palm', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0),
 (3, 'carinaduartemelo@gmail.com', 'Carina Adriele Duarte De Melo Figueiredo', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0),
 (4, 'edigonfer@gmail.com', 'Edilaine Gonçalves Ferreira De Toledo', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0);
