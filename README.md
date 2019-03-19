@@ -12,3 +12,7 @@
 **v1.3**
 
 - Portal de ouvintes para administrador
+
+**v1.4**
+
+- Portais de controle quase completos (Limpar tela/código)

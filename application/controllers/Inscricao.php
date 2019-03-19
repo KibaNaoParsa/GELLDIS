@@ -118,7 +118,7 @@ class Inscricao extends CI_Controller {
 							
 							$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
 							$this->db->update('EVENTO', $dat); // Atualizando mudanças no BD.
-							
+
 							echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
 							redirect('inicio'); // Consertar essa linha.
 							
@@ -185,7 +185,7 @@ class Inscricao extends CI_Controller {
     		foreach ($total as $t) {
 				if ($t->numtrabalhos < 6) {
 				
-					$data['SITUACAO'] = 1;
+					$data['SITUACAO'] = 3;
 					
 					$this->db->insert('INSCRITO', $data);
 					
