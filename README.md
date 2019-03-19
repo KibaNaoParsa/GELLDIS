@@ -16,3 +16,4 @@
 **v1.4**
 
 - Portais de controle quase completos (Limpar tela/código)
+- PARA FAZER: Enviar e-mails para usuários
