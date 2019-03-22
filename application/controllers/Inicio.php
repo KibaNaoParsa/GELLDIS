@@ -39,6 +39,18 @@ class Inicio extends CI_Controller {
             $dados['color'] = 'success';
             $dados['msg'] = 'Logado com sucesso!, agora pode acessar a área administrativa';
             $dados['display'] = 'block';
+        } else if (isset($number) && $number == 2) {
+            $dados['color'] = 'danger';
+            $dados['msg'] = 'O CPF informado já foi cadastrado.';
+	     		$dados['display'] = 'block';
+        } else if (isset($number) && $number == 3) {
+            $dados['color'] = 'danger';
+            $dados['msg'] = 'As vagas para esse GT já foram preenchidas. Fique atento(a) ao seu e-mail para qualquer novidade.';
+            $dados['display'] = 'block';
+        } else if (isset($number) && $number == 4) {
+            $dados['color'] = 'danger';
+            $dados['msg'] = 'Não foi possível confirmar o cadastro. Confira as informações digitadas.';
+            $dados['display'] = 'block';
         }
         $this->parser->parse('layout_inicio', $dados);
     }

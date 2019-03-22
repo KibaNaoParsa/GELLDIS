@@ -16,4 +16,9 @@
 **v1.4**
 
 - Portais de controle quase completos (Limpar tela/código)
-- PARA FAZER: Enviar e-mails para usuários
+
+**v1.5**
+
+- Lógica de e-mail feita (Ajustar o codigo para enviar os e-mails em situações específicas)
+- Mensagem de erro consertada
+- PARA FAZER: Filtros para conferir informações inseridas

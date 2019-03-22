@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 07/03/2019 às 15:48
+-- Tempo de geração: 22/03/2019 às 15:35
 -- Versão do servidor: 5.7.24-0ubuntu0.18.04.1
--- Versão do PHP: 7.2.10-0ubuntu0.18.04.1
+-- Versão do PHP: 7.2.15-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -128,9 +128,9 @@ CREATE TABLE `EVENTO` (
 --
 
 INSERT INTO `EVENTO` (`idEVENTO`, `nome`, `numouvintes`, `numtrabalhos`, `numtotal`) VALUES
-(1, 'blablabla1', 0, 0, 0),
-(2, 'blablabla2', 0, 0, 0),
-(3, 'blablabla3', 0, 0, 0);
+(1, 'blablabla1', 1, 1, 2),
+(2, 'blablabla2', 1, 1, 2),
+(3, 'blablabla3', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -207,6 +207,14 @@ CREATE TABLE `INSCRITO` (
 --
 -- Fazendo dump de dados para tabela `INSCRITO`
 --
+
+INSERT INTO `INSCRITO` (`idINSCRITO`, `nome`, `cpf`, `instituicao`, `email`, `tipo`, `titulo`, `artigo`, `idEVENTO`, `situacao`) VALUES
+(4, 'Elyas Correa Nogueira', '00000000000', 'CEFETMG', 'elyasnog@gmail.com', 0, NULL, NULL, 1, 0),
+(5, 'Elyas Correa Nogueira', '11111111111', 'CEFET-MG', 'elyasnog@gmail.com', 0, NULL, NULL, 2, 1),
+(6, 'Elyas Nogueira', '22222222222', 'CEFET-MG', 'elyasnog@gmail.com', 0, NULL, NULL, 3, 0),
+(7, 'Elyas Correa Nogueira', '33333333333', 'CEFET-MG', 'elyasnog@gmail.com', 1, 'Lorem ipsum dolor sit amet 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis, tortor eu egestas feugiat, dui sem tristique ante, at congue metus dolor et massa. Vestibulum leo nibh, molestie non eros et, tincidunt aliquam mauris. Cras in aliquam ligula, quis mattis risus. Aenean blandit dictum sodales. Mauris vestibulum gravida cursus. Morbi tempus scelerisque enim sit amet scelerisque. Sed sit amet tempor neque. Phasellus tincidunt euismod ligula ac luctus. Aliquam erat volutpat. Suspendisse vel libero eu libero accumsan fringilla at at dui. In a imperdiet nisi.\r\n\r\nAliquam ullamcorper eu turpis vulputate scelerisque. Sed sed eleifend augue. Phasellus tempus orci eu erat suscipit rhoncus. Nullam mattis nibh in odio pretium cursus. Suspendisse fermentum magna id tortor sollicitudin, ut semper enim ullamcorper. Sed et elit eu nisl commodo tempor eleifend quis leo. Ut suscipit porttitor urna at efficitur. Aenean egestas euismod libero, ut pretium nisl mollis vel. Sed malesuada non quam sit amet vehicula. Aliquam ac erat vitae sem dignissim elementum non eget justo.\r\n\r\nSuspendisse nunc nunc, elementum in velit eget, viverra dapibus enim. Maecenas ex lorem, pellentesque vel tincidunt sed, mattis id felis. Quisque vitae turpis vitae lectus euismod laoreet nec luctus lacus. Morbi cursus blandit est, ornare dictum arcu pulvinar sit amet. Etiam non sem non est pulvinar imperdiet et in lorem. Cras accumsan, diam sed faucibus tristique, mauris dolor fermentum metus, ut pharetra risus magna ac mauris. Donec sed elit posuere, pulvinar tellus eu, sodales libero. Nulla venenatis ex eu mollis porttitor. Mauris feugiat, lorem sit amet auctor efficitur, enim ligula egestas elit, a maximus purus leo nec lacus. Cras faucibus tortor nec enim sollicitudin facilisis. Praesent non fringilla purus. Morbi a est eu tellus volutpat facilisis quis ut ex. Integer maximus malesuada nunc. Aliquam bibendum purus eu massa posuere maximus. Integer porta massa nec convallis bibendum. ', 1, 0),
+(8, 'Elyas Correa Nogueira', '44444444444', 'CEFET-MG', 'elyasnog@gmail.com', 1, 'Lorem ipsum dolor sit amet 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin mattis, tortor eu egestas feugiat, dui sem tristique ante, at congue metus dolor et massa. Vestibulum leo nibh, molestie non eros et, tincidunt aliquam mauris. Cras in aliquam ligula, quis mattis risus. Aenean blandit dictum sodales. Mauris vestibulum gravida cursus. Morbi tempus scelerisque enim sit amet scelerisque. Sed sit amet tempor neque. Phasellus tincidunt euismod ligula ac luctus. Aliquam erat volutpat. Suspendisse vel libero eu libero accumsan fringilla at at dui. In a imperdiet nisi.\r\n\r\nAliquam ullamcorper eu turpis vulputate scelerisque. Sed sed eleifend augue. Phasellus tempus orci eu erat suscipit rhoncus. Nullam mattis nibh in odio pretium cursus. Suspendisse fermentum magna id tortor sollicitudin, ut semper enim ullamcorper. Sed et elit eu nisl commodo tempor eleifend quis leo. Ut suscipit porttitor urna at efficitur. Aenean egestas euismod libero, ut pretium nisl mollis vel. Sed malesuada non quam sit amet vehicula. Aliquam ac erat vitae sem dignissim elementum non eget justo.\r\n\r\nSuspendisse nunc nunc, elementum in velit eget, viverra dapibus enim. Maecenas ex lorem, pellentesque vel tincidunt sed, mattis id felis. Quisque vitae turpis vitae lectus euismod laoreet nec luctus lacus. Morbi cursus blandit est, ornare dictum arcu pulvinar sit amet. Etiam non sem non est pulvinar imperdiet et in lorem. Cras accumsan, diam sed faucibus tristique, mauris dolor fermentum metus, ut pharetra risus magna ac mauris. Donec sed elit posuere, pulvinar tellus eu, sodales libero. Nulla venenatis ex eu mollis porttitor. Mauris feugiat, lorem sit amet auctor efficitur, enim ligula egestas elit, a maximus purus leo nec lacus. Cras faucibus tortor nec enim sollicitudin facilisis. Praesent non fringilla purus. Morbi a est eu tellus volutpat facilisis quis ut ex. Integer maximus malesuada nunc. Aliquam bibendum purus eu massa posuere maximus. Integer porta massa nec convallis bibendum. ', 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -490,7 +498,7 @@ ALTER TABLE `imagem`
 -- AUTO_INCREMENT de tabela `INSCRITO`
 --
 ALTER TABLE `INSCRITO`
-  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de tabela `membro`
 --

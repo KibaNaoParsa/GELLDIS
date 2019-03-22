@@ -36,8 +36,6 @@ class Inscricao extends CI_Controller {
         }
         $this->parser->parse('layout_inicio', $dados);
     }
-    
-
 
     public function efetuar_inscricao() {
     	
@@ -61,7 +59,9 @@ class Inscricao extends CI_Controller {
 			$dados = $this->menu;						
 	      $dados['url'] = base_url();
    	   $dados['display'] = 'none';
-		
+			
+			$this->load->library('email');
+			
 			$form = $this->input->post();
 			$data['NOME'] = $form['txt_nome'];	 
 			$data['CPF'] = $form['txt_cpf'];
@@ -88,8 +88,9 @@ class Inscricao extends CI_Controller {
 
 				// Caso o CPF esteja duplicado, a mensagem de erro será exibida.
 				
-				echo '<script type="text/javascript">confirm("O CPF informado já foi cadastrado.");</script>';	
-				$this->index();		
+				redirect('Inicio/index/2');
+				/*echo '<script type="text/javascript">confirm("O CPF informado já foi cadastrado.");</script>';	
+				$this->index();*/		
 
 			} 	else {		
 			
@@ -118,10 +119,19 @@ class Inscricao extends CI_Controller {
 							
 							$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
 							$this->db->update('EVENTO', $dat); // Atualizando mudanças no BD.
-
-							echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
-							redirect('inicio'); // Consertar essa linha.
 							
+							$this->email->from("elyasnog@gmail.com", "Confirmação de Cadastro");
+							$this->email->to($dados['EMAIL']);
+							$this->email->subject("Confirmação de Cadastro - x° SILL");
+							$this->email->message("Cadastro confirmado.");
+							
+							if ($this->email->send()){
+								echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
+								redirect('inicio'); // Consertar essa linha.
+							} else {
+								redirect('Inicio/index/4');								
+								//print_r($this->email->print_debugger());
+							}
 							// PARA FAZER: Enviar e-mail de confirmação
 							
 						
@@ -131,8 +141,9 @@ class Inscricao extends CI_Controller {
 							
 							$this->db->insert('INSCRITO', $data);
 													
-							echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido!");</script>';	
-							redirect('inicio'); // Consertar essa linha.
+							redirect('Inicio/index/3');
+							/*echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido!");</script>';	
+							redirect('inicio'); // Consertar essa linha.*/
 							
 							// PARA FAZER: Enviar e-mail de indeferimento
 						}					
