@@ -51,6 +51,14 @@ class Inicio extends CI_Controller {
             $dados['color'] = 'danger';
             $dados['msg'] = 'Não foi possível confirmar o cadastro. Confira as informações digitadas.';
             $dados['display'] = 'block';
+        } else if (isset($number) && $number == 5) {
+            $dados['color'] = 'danger';
+            $dados['msg'] = 'Os e-mails informados não são iguais.';
+            $dados['display'] = 'block';
+        } else if (isset($number) && $number == 6) {
+            $dados['color'] = 'success';
+            $dados['msg'] = 'Cadastro confirmado com sucesso!';
+            $dados['display'] = 'block';
         }
         $this->parser->parse('layout_inicio', $dados);
     }

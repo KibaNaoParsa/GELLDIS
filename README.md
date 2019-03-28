@@ -22,3 +22,10 @@
 - Lógica de e-mail feita (Ajustar o codigo para enviar os e-mails em situações específicas)
 - Mensagem de erro consertada
 - PARA FAZER: Filtros para conferir informações inseridas
+
+**v1.6**
+
+- Correção em algumas terminologias
+- Palavras-chave adicionadas
+- Confirmação de e-mail adicionada
+- PARA FAZER: Retornar à tela de comunicação após erro em palavra-chave

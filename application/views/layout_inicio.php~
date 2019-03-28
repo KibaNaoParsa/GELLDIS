@@ -356,8 +356,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         	
                         	
                     			<div class="modal-footer">
-                        		<button type="button" data-dismiss="modal" class="btn btn-primary">Cancelar</button>
-                        		<button type="submit" class="btn btn-secondary">Cadastrar</button>
+                        		<button type="button" data-dismiss="modal" class="btn btn-danger">Cancelar</button>
+                        		<button type="submit" class="btn btn-success">Cadastrar</button>
                     			</div>
                 			</form>                  
                     </div>

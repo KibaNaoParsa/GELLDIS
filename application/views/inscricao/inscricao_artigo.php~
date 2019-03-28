@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </h6>
                 <h6><b>E-mail:</b> <?php echo $EMAIL ?>                
                 </h6>
-                <h6><b>GT:</b> <?php echo $idEVENTO ?>                
+                <h6><b>GT:</b> <?php echo $NOME_EVENTO ?>                
                 </h6>
                 <br>
                 
@@ -76,7 +76,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   	<label for="titulo">Título do artigo: </label> 
                      <input type="text" class="form-control" name="titulo" id="titulo" required/> 
                  	</div>
-                 	
+                	<div class="form-group">
+                  	<label for="palavras">Palavras-chave: </label> 
+                     <input type="text" class="form-control" name="palavras_chave" id="palavras_chave" required/> 
+                 	</div>
+            
                   <div class="form-group">
                   	<label for="artigo">Artigo:</label> <br>
                     	<textarea name="artigo" style="width: 100%; height: 250px;"> </textarea> 

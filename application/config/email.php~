@@ -5,7 +5,7 @@
     $config['smtp_port'] = '465';
     $config['smtp_timeout'] = '30';
     $config['smtp_user'] = 'elyasnog@gmail.com';
-    $config['smtp_pass'] = 'elyaselyas123';
+    $config['smtp_pass'] = 'VAI PROCURAR A SENHA DA TUA MÃE';
     $config['charset'] = 'utf-8';
     $config['newline'] = "\r\n";
     $config['mailtype'] = 'html';

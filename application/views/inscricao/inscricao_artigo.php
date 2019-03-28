@@ -76,7 +76,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   	<label for="titulo">Título do artigo: </label> 
                      <input type="text" class="form-control" name="titulo" id="titulo" required/> 
                  	</div>
-                 	
+                	<div class="form-group">
+                  	<label for="palavras">Palavras-chave (3-5, separadas por ; ): </label><br> 
+                     <input type="text" class="form-control" name="palavras_chave" id="palavras_chave" required/> 
+                 	</div>
+            
                   <div class="form-group">
                   	<label for="artigo">Artigo:</label> <br>
                     	<textarea name="artigo" style="width: 100%; height: 250px;"> </textarea> 

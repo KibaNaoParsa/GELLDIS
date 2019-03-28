@@ -56,6 +56,16 @@ class Inscricao extends CI_Controller {
 				
 			*/			
 			
+			/* Códigos para retorno ao index:
+			
+				2 - Erro no CPF
+				3 - Limite atingido
+				4 - Qualquer erro
+				5 - E-mails divergentes
+				6 - Sucesso
+			
+			*/
+			
 			$dados = $this->menu;						
 	      $dados['url'] = base_url();
    	   $dados['display'] = 'none';
@@ -66,6 +76,7 @@ class Inscricao extends CI_Controller {
 			$data['NOME'] = $form['txt_nome'];	 
 			$data['CPF'] = $form['txt_cpf'];
 			$data['EMAIL'] = $form['txt_email'];
+			$confemail = $form['txt_confemail'];
 			$data['INSTITUICAO'] = $form['txt_instituicao'];
 			$data['TIPO'] = $form['tipo'];
 			$data['idEVENTO'] = $form['evento'];
@@ -77,6 +88,10 @@ class Inscricao extends CI_Controller {
 			$dados['TIPO'] = $data['TIPO'];
 			$dados['idEVENTO'] = $data['idEVENTO'];			
 					
+			if ($confemail != $data['EMAIL']) {
+				redirect('Inicio/index/5');			
+			}		
+			
 			// O código verá se já existe algum CPF idêntico cadastrado
 			
 			$this->db->select("INSCRITO.idINSCRITO");
@@ -120,17 +135,15 @@ class Inscricao extends CI_Controller {
 							$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
 							$this->db->update('EVENTO', $dat); // Atualizando mudanças no BD.
 							
-							$this->email->from("elyasnog@gmail.com", "Confirmação de Cadastro");
+							$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
 							$this->email->to($dados['EMAIL']);
 							$this->email->subject("Confirmação de Cadastro - x° SILL");
 							$this->email->message("Cadastro confirmado.");
 							
 							if ($this->email->send()){
-								echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
-								redirect('inicio'); // Consertar essa linha.
+								redirect('Inicio/index/6');
 							} else {
 								redirect('Inicio/index/4');								
-								//print_r($this->email->print_debugger());
 							}
 							// PARA FAZER: Enviar e-mail de confirmação
 							
@@ -142,10 +155,13 @@ class Inscricao extends CI_Controller {
 							$this->db->insert('INSCRITO', $data);
 													
 							redirect('Inicio/index/3');
-							/*echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido!");</script>';	
-							redirect('inicio'); // Consertar essa linha.*/
 							
 							// PARA FAZER: Enviar e-mail de indeferimento
+							
+							$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
+							$this->email->to($dados['EMAIL']);
+							$this->email->subject("Cadastro Indeferido - x° SILL");
+							$this->email->message("Cadastro indeferido.");
 						}					
 					}
 				
@@ -183,6 +199,7 @@ class Inscricao extends CI_Controller {
 			$data['INSTITUICAO'] = $form['instituicao'];
 			$data['idEVENTO'] = $form['idEVENTO'];
 			$data['TITULO'] = $form['titulo'];
+			$data['PALAVRAS_CHAVE'] = $form['palavras_chave'];
 			$data['ARTIGO'] = $form['artigo'];    
 			$data['TIPO'] = 1;
     
@@ -191,39 +208,59 @@ class Inscricao extends CI_Controller {
     		$this->db->where("EVENTO.idEVENTO", $data['idEVENTO']);
     		$total = $this->db->get()->result();
     		
-			//echo $data['NOME']."-".$data['INSTITUICAO']."-".$data['CPF'].'-'.$data['EMAIL'].'-'.$data['idEVENTO'].'-'.$data['TIPO'];    		
+			$palavras_teste = explode(';', $data['PALAVRAS_CHAVE']);
+			$i = 0;
+			
+			foreach ($palavras_teste as $p) {
+				$i++;			
+			}    		
     		
-    		foreach ($total as $t) {
-				if ($t->numtrabalhos < 6) {
+			//echo $data['NOME']."-".$data['INSTITUICAO']."-".$data['CPF'].'-'.$data['EMAIL'].'-'.$data['idEVENTO'].'-'.$data['TIPO'];    		
+    		if (($i >= 3) && ($i <=5)) {
+    			foreach ($total as $t) {
+					if ($t->numtrabalhos < 6) {
 				
-					$data['SITUACAO'] = 3;
+						$data['SITUACAO'] = 3;
 					
-					$this->db->insert('INSCRITO', $data);
+						$this->db->insert('INSCRITO', $data);
 					
-					$dat['numtrabalhos'] = $t->numtrabalhos;
-					$dat['numtrabalhos'] += 1;
-					$dat['numtotal'] = $t->numtotal;
-					$dat['numtotal'] += 1;
+						$dat['numtrabalhos'] = $t->numtrabalhos;
+						$dat['numtrabalhos'] += 1;
+						$dat['numtotal'] = $t->numtotal;
+						$dat['numtotal'] += 1;
 					
-					$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
-					$this->db->update('EVENTO', $dat);				
+						$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
+						$this->db->update('EVENTO', $dat);				
 
-					echo '<script type="text/javascript">confirm("O cadastro foi efetuado com sucesso!");</script>';	
-					redirect('inicio'); // Consertar essa linha.
-					
-					// PARA FAZER: Enviar e-mail de confirmação					
+						redirect('Inicio/index/6');					
+						// PARA FAZER: Enviar e-mail de confirmação					
 
-				} else {
-					$data['SITUACAO'] = 1;
+						$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
+						$this->email->to($dados['EMAIL']);
+						$this->email->subject("Confirmação de Cadastro - x° SILL");
+						$this->email->message("Cadastro confirmado.");
+
+					} else {
+
+						$data['SITUACAO'] = 1;
 							
-					$this->db->insert('INSCRITO', $data);					
+						$this->db->insert('INSCRITO', $data);					
 						
-					echo '<script type="text/javascript">confirm("O limite de cadastros já foi atingido.");</script>';	
-					redirect('inicio'); // Consertar essa linha.
+						redirect('Inicio/index/3'); // Consertar essa linha.
 							
-					// PARA FAZER: Mandar e-mail de limite						
+						// PARA FAZER: Mandar e-mail de limite		
+					
+						$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
+						$this->email->to($dados['EMAIL']);
+						$this->email->subject("Cadastro Indeferido - x° SILL");
+						$this->email->message("Cadastro indeferido.");				
 				
-				}    		
+					}    		
+    			}
+    		} else {
+
+				// ???????????????????????????????
+				
     		}
     }
 

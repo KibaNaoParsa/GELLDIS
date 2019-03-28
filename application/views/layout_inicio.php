@@ -333,8 +333,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             	<input type="text" class="form-control" name="txt_cpf" id="txt_cpf" required/> 
                         	</div>
                         	<div class="form-group">
-                            	<label for="txt_email">Email:</label> 
+                            	<label for="txt_email">E-mail:</label> 
                             	<input type="email" class="form-control" name="txt_email" id="txt_email" required/> 
+                        	</div>
+                        	<div class="form-group">
+                            	<label for="txt_email">Confirmação de e-mail:</label> 
+                            	<input type="email" class="form-control" name="txt_confemail" id="txt_confemail" required/> 
                         	</div>
                         	<div class="form-group">
                             	<label for="txt_instituicao">Instituição:</label> 
@@ -343,9 +347,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         	<h3>Você deseja participar como:</h3>
                         	<div class="form-group">
                             	<input type="radio" name="tipo" value="0" > Ouvinte<br>
-                            	<input type="radio" name="tipo" value="1" > Apresentador<br>
+                            	<input type="radio" name="tipo" value="1" > Comunicação em GT<br>
                         	</div>
-                        	<h3>De qual evento você deseja participar?</h3>
+                        	<h3>De qual GT você deseja participar?</h3>
                         	<div class="form-group">
                         		<?php
                         			foreach ($EVENTO as $e) {
