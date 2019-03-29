@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Sistema para o grupo de pesquisa GELLDIS">
-        <meta name="author" content="elyas" >
+        <meta name="author" content="Alunos" >
         <title>Cadastro de Projeto</title>
         <link href="{url}assets/layout_adm/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{url}assets/layout_adm/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -48,6 +48,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </h6>
                 <h6><b>GT:</b> <?php echo $NOME_EVENTO ?>                
                 </h6>
+                <h6><b>GT:</b> <?php echo $NECESSIDADES ?>                
+                </h6>
                 <br>
                 
                 <form method="post" action="{url}inscricao/inscricao_artigo" class="modal-content">
@@ -60,6 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								  '<input type="hidden" id="instituicao" name="instituicao" value="'.$INSTITUICAO.'">'.
 								  '<input type="hidden" id="email" name="email" value="'.$EMAIL.'">'.
 								  '<input type="hidden" id="cpf" name="cpf" value="'.$CPF.'">'.
+								  '<input type="hidden" id="necessidade" name="necessidade" value="'.$NECESSIDADES.'">'.
 								  '<input type="hidden" id="idEVENTO" name="idEVENTO" value="'.$idEVENTO.'">';
 						
 						?>              	

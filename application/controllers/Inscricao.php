@@ -78,6 +78,7 @@ class Inscricao extends CI_Controller {
 			$data['EMAIL'] = $form['txt_email'];
 			$confemail = $form['txt_confemail'];
 			$data['INSTITUICAO'] = $form['txt_instituicao'];
+			$data['NECESSIDADES'] = $form['necessidade'];
 			$data['TIPO'] = $form['tipo'];
 			$data['idEVENTO'] = $form['evento'];
 			
@@ -86,7 +87,8 @@ class Inscricao extends CI_Controller {
 			$dados['EMAIL'] = $data['EMAIL'];
 			$dados['INSTITUICAO'] = $data['INSTITUICAO'];
 			$dados['TIPO'] = $data['TIPO'];
-			$dados['idEVENTO'] = $data['idEVENTO'];			
+			$dados['idEVENTO'] = $data['idEVENTO'];
+			$dados['NECESSIDADES'] = $data['NECESSIDADES'];			
 					
 			if ($confemail != $data['EMAIL']) {
 				redirect('Inicio/index/5');			
@@ -138,7 +140,7 @@ class Inscricao extends CI_Controller {
 							$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
 							$this->email->to($dados['EMAIL']);
 							$this->email->subject("Confirmação de Cadastro - x° SILL");
-							$this->email->message("Cadastro confirmado.");
+							$this->email->message("Cadastro confirmado.");					
 							
 							if ($this->email->send()){
 								redirect('Inicio/index/6');
@@ -198,9 +200,11 @@ class Inscricao extends CI_Controller {
 			$data['EMAIL'] = $form['email'];
 			$data['INSTITUICAO'] = $form['instituicao'];
 			$data['idEVENTO'] = $form['idEVENTO'];
+			$data['NECESSIDADES'] = $form['necessidade'];
 			$data['TITULO'] = $form['titulo'];
 			$data['PALAVRAS_CHAVE'] = $form['palavras_chave'];
-			$data['ARTIGO'] = $form['artigo'];    
+			$data['ARTIGO'] = $form['artigo']; 
+  
 			$data['TIPO'] = 1;
     
     		$this->db->select("EVENTO.numtrabalhos, EVENTO.numtotal");
@@ -236,7 +240,7 @@ class Inscricao extends CI_Controller {
 						// PARA FAZER: Enviar e-mail de confirmação					
 
 						$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
-						$this->email->to($dados['EMAIL']);
+						$this->email->to($data['EMAIL']);
 						$this->email->subject("Confirmação de Cadastro - x° SILL");
 						$this->email->message("Cadastro confirmado.");
 
@@ -251,7 +255,7 @@ class Inscricao extends CI_Controller {
 						// PARA FAZER: Mandar e-mail de limite		
 					
 						$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
-						$this->email->to($dados['EMAIL']);
+						$this->email->to($data['EMAIL']);
 						$this->email->subject("Cadastro Indeferido - x° SILL");
 						$this->email->message("Cadastro indeferido.");				
 				

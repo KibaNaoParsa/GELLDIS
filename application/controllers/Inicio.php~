@@ -53,7 +53,7 @@ class Inicio extends CI_Controller {
             $dados['display'] = 'block';
         } else if (isset($number) && $number == 5) {
             $dados['color'] = 'danger';
-            $dados['msg'] = 'Os e-mails confirmados não são iguais.';
+            $dados['msg'] = 'Os e-mails informados não são iguais.';
             $dados['display'] = 'block';
         } else if (isset($number) && $number == 6) {
             $dados['color'] = 'success';

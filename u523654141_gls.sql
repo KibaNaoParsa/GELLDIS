@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 28, 2019 at 12:45 PM
--- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: localhost:3306
+-- Tempo de geração: 28/03/2019 às 21:18
+-- Versão do servidor: 5.7.24-0ubuntu0.18.04.1
+-- Versão do PHP: 7.2.15-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `u523654141_gls`
+-- Banco de dados: `u523654141_gls`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agenda`
+-- Estrutura para tabela `agenda`
 --
 
 CREATE TABLE `agenda` (
@@ -35,7 +35,7 @@ CREATE TABLE `agenda` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `agenda`
+-- Fazendo dump de dados para tabela `agenda`
 --
 
 INSERT INTO `agenda` (`id_agenda`, `texto`, `titulo`, `data`, `tipo_evento`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `agenda` (`id_agenda`, `texto`, `titulo`, `data`, `tipo_evento`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estudante`
+-- Estrutura para tabela `estudante`
 --
 
 CREATE TABLE `estudante` (
@@ -60,7 +60,7 @@ CREATE TABLE `estudante` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `estudante`
+-- Fazendo dump de dados para tabela `estudante`
 --
 
 INSERT INTO `estudante` (`id_estudante`, `nome`, `nivel_de_treinamento`, `data_inclusao`, `lattes_link`, `espelho_estudante_link`) VALUES
@@ -81,7 +81,7 @@ INSERT INTO `estudante` (`id_estudante`, `nome`, `nivel_de_treinamento`, `data_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `estudante_has_pesquisa`
+-- Estrutura para tabela `estudante_has_pesquisa`
 --
 
 CREATE TABLE `estudante_has_pesquisa` (
@@ -90,7 +90,7 @@ CREATE TABLE `estudante_has_pesquisa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `estudante_has_pesquisa`
+-- Fazendo dump de dados para tabela `estudante_has_pesquisa`
 --
 
 INSERT INTO `estudante_has_pesquisa` (`id_estudante`, `id_pesquisa`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `estudante_has_pesquisa` (`id_estudante`, `id_pesquisa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `EVENTO`
+-- Estrutura para tabela `EVENTO`
 --
 
 CREATE TABLE `EVENTO` (
@@ -124,7 +124,7 @@ CREATE TABLE `EVENTO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `EVENTO`
+-- Fazendo dump de dados para tabela `EVENTO`
 --
 
 INSERT INTO `EVENTO` (`idEVENTO`, `nome`, `numouvintes`, `numtrabalhos`, `numtotal`) VALUES
@@ -137,7 +137,7 @@ INSERT INTO `EVENTO` (`idEVENTO`, `nome`, `numouvintes`, `numtrabalhos`, `numtot
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eventos_participados`
+-- Estrutura para tabela `eventos_participados`
 --
 
 CREATE TABLE `eventos_participados` (
@@ -148,11 +148,11 @@ CREATE TABLE `eventos_participados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `eventos_participados`
+-- Fazendo dump de dados para tabela `eventos_participados`
 --
 
 INSERT INTO `eventos_participados` (`id_eventos_participados`, `titulo`, `texto`, `data_eventos_participados`) VALUES
-(9, 'Troca de cartas, CEFET-MG varginha e IF campus machado', '<p style="margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum feugiat enim in dignissim. Suspendisse vitae risus libero. Nulla vestibulum erat enim, nec pulvinar sem tempor id. Sed in urna enim. Sed pharetra venenatis luctus. Duis eu sem suscipit, malesuada nulla a, rhoncus magna. Sed nunc ex, tempor nec nulla non, vehicula facilisis elit. Nunc id justo sed sapien tempor euismod eu ut enim. Mauris aliquam enim id sem interdum facilisis.</p>\r\n<p style="margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;">Maecenas vulputate vel nisl eu aliquet. Pellentesque nec libero luctus, condimentum libero eget, hendrerit mi. Maecenas metus mi, mollis ut tortor vitae, blandit commodo massa. Suspendisse suscipit, est quis feugiat suscipit, mauris ligula consequat dolor, non malesuada libero nibh id metus. Integer ac congue urna, vel vestibulum dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus enim, pulvinar viverra mattis fermentum, ornare vel augue. Mauris dolor tortor, dignissim at posuere quis, malesuada sed nibh. In feugiat tellus eget sem gravida commodo. Nulla facilisi. Fusce commodo condimentum mauris ac consequat. Nulla rutrum, enim eget dapibus elementum, mi odio tempus turpis, sit amet molestie neque mauris at elit. Pellentesque sit amet turpis gravida, dignissim tortor a, facilisis ligula. Nullam eu augue ex.</p>\r\n<p style="margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;">Morbi in est a massa lacinia vehicula. Morbi ut augue id lectus feugiat scelerisque. Aliquam ac laoreet metus. Aliquam semper mi sit amet libero lacinia, id suscipit neque volutpat. Pellentesque vel tortor molestie, ullamcorper odio eget, ornare lectus. Maecenas faucibus quis magna eu laoreet. Fusce vulputate vestibulum felis eu bibendum. Mauris aliquet condimentum efficitur. Sed eget nunc sem. Nulla fermentum pretium auctor. Nullam vel tincidunt purus.</p>', '2018-09-18'),
+(9, 'Troca de cartas, CEFET-MG varginha e IF campus machado', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum feugiat enim in dignissim. Suspendisse vitae risus libero. Nulla vestibulum erat enim, nec pulvinar sem tempor id. Sed in urna enim. Sed pharetra venenatis luctus. Duis eu sem suscipit, malesuada nulla a, rhoncus magna. Sed nunc ex, tempor nec nulla non, vehicula facilisis elit. Nunc id justo sed sapien tempor euismod eu ut enim. Mauris aliquam enim id sem interdum facilisis.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Maecenas vulputate vel nisl eu aliquet. Pellentesque nec libero luctus, condimentum libero eget, hendrerit mi. Maecenas metus mi, mollis ut tortor vitae, blandit commodo massa. Suspendisse suscipit, est quis feugiat suscipit, mauris ligula consequat dolor, non malesuada libero nibh id metus. Integer ac congue urna, vel vestibulum dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus enim, pulvinar viverra mattis fermentum, ornare vel augue. Mauris dolor tortor, dignissim at posuere quis, malesuada sed nibh. In feugiat tellus eget sem gravida commodo. Nulla facilisi. Fusce commodo condimentum mauris ac consequat. Nulla rutrum, enim eget dapibus elementum, mi odio tempus turpis, sit amet molestie neque mauris at elit. Pellentesque sit amet turpis gravida, dignissim tortor a, facilisis ligula. Nullam eu augue ex.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Morbi in est a massa lacinia vehicula. Morbi ut augue id lectus feugiat scelerisque. Aliquam ac laoreet metus. Aliquam semper mi sit amet libero lacinia, id suscipit neque volutpat. Pellentesque vel tortor molestie, ullamcorper odio eget, ornare lectus. Maecenas faucibus quis magna eu laoreet. Fusce vulputate vestibulum felis eu bibendum. Mauris aliquet condimentum efficitur. Sed eget nunc sem. Nulla fermentum pretium auctor. Nullam vel tincidunt purus.</p>', '2018-09-18'),
 (11, 'Evento de teste Igor', '<p>Evento de teste</p>', '2018-12-11'),
 (12, 'as palavras e as coisas', '<p>leitura</p>', '2018-12-11'),
 (13, 'Reunião no UNIS para definição do 3º SILL', '', '2018-11-30');
@@ -160,7 +160,7 @@ INSERT INTO `eventos_participados` (`id_eventos_participados`, `titulo`, `texto`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagem`
+-- Estrutura para tabela `imagem`
 --
 
 CREATE TABLE `imagem` (
@@ -170,7 +170,7 @@ CREATE TABLE `imagem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `imagem`
+-- Fazendo dump de dados para tabela `imagem`
 --
 
 INSERT INTO `imagem` (`id_imagem`, `id_evento_fk`, `extensao`) VALUES
@@ -190,7 +190,7 @@ INSERT INTO `imagem` (`id_imagem`, `id_evento_fk`, `extensao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `INSCRITO`
+-- Estrutura para tabela `INSCRITO`
 --
 
 CREATE TABLE `INSCRITO` (
@@ -204,13 +204,14 @@ CREATE TABLE `INSCRITO` (
   `artigo` text,
   `idEVENTO` int(11) NOT NULL,
   `situacao` int(11) NOT NULL,
-  `palavras_chave` varchar(150) DEFAULT NULL
+  `palavras_chave` varchar(150) DEFAULT NULL,
+  `necessidades` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `membro`
+-- Estrutura para tabela `membro`
 --
 
 CREATE TABLE `membro` (
@@ -223,7 +224,7 @@ CREATE TABLE `membro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `membro`
+-- Fazendo dump de dados para tabela `membro`
 --
 
 INSERT INTO `membro` (`id_membro`, `nome`, `titulacao`, `data_inclusao`, `lattes_link`, `espelho_membro_link`) VALUES
@@ -245,7 +246,7 @@ INSERT INTO `membro` (`id_membro`, `nome`, `titulacao`, `data_inclusao`, `lattes
 -- --------------------------------------------------------
 
 --
--- Table structure for table `membro_has_pesquisa`
+-- Estrutura para tabela `membro_has_pesquisa`
 --
 
 CREATE TABLE `membro_has_pesquisa` (
@@ -254,7 +255,7 @@ CREATE TABLE `membro_has_pesquisa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `membro_has_pesquisa`
+-- Fazendo dump de dados para tabela `membro_has_pesquisa`
 --
 
 INSERT INTO `membro_has_pesquisa` (`id_membro`, `id_pesquisa`) VALUES
@@ -285,7 +286,7 @@ INSERT INTO `membro_has_pesquisa` (`id_membro`, `id_pesquisa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesquisa`
+-- Estrutura para tabela `pesquisa`
 --
 
 CREATE TABLE `pesquisa` (
@@ -295,7 +296,7 @@ CREATE TABLE `pesquisa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pesquisa`
+-- Fazendo dump de dados para tabela `pesquisa`
 --
 
 INSERT INTO `pesquisa` (`id_pesquisa`, `nome`, `espelho_link`) VALUES
@@ -307,7 +308,7 @@ INSERT INTO `pesquisa` (`id_pesquisa`, `nome`, `espelho_link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reuniao`
+-- Estrutura para tabela `reuniao`
 --
 
 CREATE TABLE `reuniao` (
@@ -318,18 +319,18 @@ CREATE TABLE `reuniao` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `reuniao`
+-- Fazendo dump de dados para tabela `reuniao`
 --
 
 INSERT INTO `reuniao` (`id_reuniao`, `texto`, `titulo`, `data`) VALUES
-(6, '<p>"Post de teste, dados ficcionais"</p>\r\n<p><span xss=removed>Morbi vel libero efficitur, fringilla est sed, pretium leo. Etiam mollis tortor in augue mollis viverra. Curabitur vitae arcu et felis euismod suscipit. Nunc lobortis faucibus venenatis. Pellentesque aliquet, risus non aliquet auctor, quam ipsum porta felis, at finibus odio eros vel lacus. Etiam vulputate iaculis urna eu finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean id scelerisque neque. Fusce ac est ut felis sagittis mattis. Nunc dapibus semper arcu, eget pharetra metus tincidunt molestie. Cras nec sagittis arcu.</span></p>\r\n<p><span xss=removed>Junte-se a nós, nos encontraremos no lugar tal dia tal</span></p>', 'Junte-se a nós, GELLDIS', '2018-12-19'),
+(6, '<p>\"Post de teste, dados ficcionais\"</p>\r\n<p><span xss=removed>Morbi vel libero efficitur, fringilla est sed, pretium leo. Etiam mollis tortor in augue mollis viverra. Curabitur vitae arcu et felis euismod suscipit. Nunc lobortis faucibus venenatis. Pellentesque aliquet, risus non aliquet auctor, quam ipsum porta felis, at finibus odio eros vel lacus. Etiam vulputate iaculis urna eu finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean id scelerisque neque. Fusce ac est ut felis sagittis mattis. Nunc dapibus semper arcu, eget pharetra metus tincidunt molestie. Cras nec sagittis arcu.</span></p>\r\n<p><span xss=removed>Junte-se a nós, nos encontraremos no lugar tal dia tal</span></p>', 'Junte-se a nós, GELLDIS', '2018-12-19'),
 (7, '<p>Teste: Reunião GELLDIS - Pesquisa em Varginha </p>', 'Reunião GELLDIS - Pesquisa em Varginha ', '2018-12-12'),
 (8, '<p>Pauta: definição de ementas</p>', '3º SILL Multiletramento em foco - reunião para preparação do evento', '2018-02-04');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reuniaoprivada`
+-- Estrutura para tabela `reuniaoprivada`
 --
 
 CREATE TABLE `reuniaoprivada` (
@@ -340,16 +341,16 @@ CREATE TABLE `reuniaoprivada` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `reuniaoprivada`
+-- Fazendo dump de dados para tabela `reuniaoprivada`
 --
 
 INSERT INTO `reuniaoprivada` (`id_reuniao`, `texto`, `titulo`, `data`) VALUES
-(5, '<p><span xss=removed>"Post de teste, dados ficcionais"</span></p>\r\n<p>A todos os participantes do evento troca de cartas, peço por gentileza que compareçam ao local x dia x</p>', 'Troca de cartas', '2018-12-18');
+(5, '<p><span xss=removed>\"Post de teste, dados ficcionais\"</span></p>\r\n<p>A todos os participantes do evento troca de cartas, peço por gentileza que compareçam ao local x dia x</p>', 'Troca de cartas', '2018-12-18');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -362,7 +363,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuario`
+-- Fazendo dump de dados para tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `nome`, `senha`, `privilegio`, `ativo`) VALUES
@@ -372,175 +373,175 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `nome`, `senha`, `privilegio`, `at
 (4, 'edigonfer@gmail.com', 'Edilaine Gonçalves Ferreira De Toledo', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0);
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `agenda`
+-- Índices de tabela `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id_agenda`);
 
 --
--- Indexes for table `estudante`
+-- Índices de tabela `estudante`
 --
 ALTER TABLE `estudante`
   ADD PRIMARY KEY (`id_estudante`);
 
 --
--- Indexes for table `estudante_has_pesquisa`
+-- Índices de tabela `estudante_has_pesquisa`
 --
 ALTER TABLE `estudante_has_pesquisa`
   ADD KEY `id_estudante` (`id_estudante`),
   ADD KEY `id_pesquisa` (`id_pesquisa`);
 
 --
--- Indexes for table `EVENTO`
+-- Índices de tabela `EVENTO`
 --
 ALTER TABLE `EVENTO`
   ADD PRIMARY KEY (`idEVENTO`);
 
 --
--- Indexes for table `eventos_participados`
+-- Índices de tabela `eventos_participados`
 --
 ALTER TABLE `eventos_participados`
   ADD PRIMARY KEY (`id_eventos_participados`);
 
 --
--- Indexes for table `imagem`
+-- Índices de tabela `imagem`
 --
 ALTER TABLE `imagem`
   ADD PRIMARY KEY (`id_imagem`),
   ADD KEY `id_evento_fk` (`id_evento_fk`);
 
 --
--- Indexes for table `INSCRITO`
+-- Índices de tabela `INSCRITO`
 --
 ALTER TABLE `INSCRITO`
   ADD PRIMARY KEY (`idINSCRITO`),
   ADD KEY `idEVENTO` (`idEVENTO`);
 
 --
--- Indexes for table `membro`
+-- Índices de tabela `membro`
 --
 ALTER TABLE `membro`
   ADD PRIMARY KEY (`id_membro`);
 
 --
--- Indexes for table `membro_has_pesquisa`
+-- Índices de tabela `membro_has_pesquisa`
 --
 ALTER TABLE `membro_has_pesquisa`
   ADD KEY `id_membro` (`id_membro`),
   ADD KEY `id_pesquisa` (`id_pesquisa`);
 
 --
--- Indexes for table `pesquisa`
+-- Índices de tabela `pesquisa`
 --
 ALTER TABLE `pesquisa`
   ADD PRIMARY KEY (`id_pesquisa`);
 
 --
--- Indexes for table `reuniao`
+-- Índices de tabela `reuniao`
 --
 ALTER TABLE `reuniao`
   ADD PRIMARY KEY (`id_reuniao`);
 
 --
--- Indexes for table `reuniaoprivada`
+-- Índices de tabela `reuniaoprivada`
 --
 ALTER TABLE `reuniaoprivada`
   ADD PRIMARY KEY (`id_reuniao`);
 
 --
--- Indexes for table `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `agenda`
+-- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
   MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `estudante`
+-- AUTO_INCREMENT de tabela `estudante`
 --
 ALTER TABLE `estudante`
   MODIFY `id_estudante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
--- AUTO_INCREMENT for table `EVENTO`
+-- AUTO_INCREMENT de tabela `EVENTO`
 --
 ALTER TABLE `EVENTO`
   MODIFY `idEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `eventos_participados`
+-- AUTO_INCREMENT de tabela `eventos_participados`
 --
 ALTER TABLE `eventos_participados`
   MODIFY `id_eventos_participados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT for table `imagem`
+-- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
   MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT for table `INSCRITO`
+-- AUTO_INCREMENT de tabela `INSCRITO`
 --
 ALTER TABLE `INSCRITO`
-  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
--- AUTO_INCREMENT for table `membro`
+-- AUTO_INCREMENT de tabela `membro`
 --
 ALTER TABLE `membro`
   MODIFY `id_membro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
--- AUTO_INCREMENT for table `pesquisa`
+-- AUTO_INCREMENT de tabela `pesquisa`
 --
 ALTER TABLE `pesquisa`
   MODIFY `id_pesquisa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `reuniao`
+-- AUTO_INCREMENT de tabela `reuniao`
 --
 ALTER TABLE `reuniao`
   MODIFY `id_reuniao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `reuniaoprivada`
+-- AUTO_INCREMENT de tabela `reuniaoprivada`
 --
 ALTER TABLE `reuniaoprivada`
   MODIFY `id_reuniao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- Constraints for dumped tables
+-- Restrições para dumps de tabelas
 --
 
 --
--- Constraints for table `estudante_has_pesquisa`
+-- Restrições para tabelas `estudante_has_pesquisa`
 --
 ALTER TABLE `estudante_has_pesquisa`
   ADD CONSTRAINT `estudante_has_pesquisa_ibfk_1` FOREIGN KEY (`id_estudante`) REFERENCES `estudante` (`id_estudante`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `estudante_has_pesquisa_ibfk_2` FOREIGN KEY (`id_pesquisa`) REFERENCES `pesquisa` (`id_pesquisa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `imagem`
+-- Restrições para tabelas `imagem`
 --
 ALTER TABLE `imagem`
   ADD CONSTRAINT `imagem_ibfk_1` FOREIGN KEY (`id_evento_fk`) REFERENCES `eventos_participados` (`id_eventos_participados`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `INSCRITO`
+-- Restrições para tabelas `INSCRITO`
 --
 ALTER TABLE `INSCRITO`
   ADD CONSTRAINT `INSCRITO_ibfk_1` FOREIGN KEY (`idEVENTO`) REFERENCES `EVENTO` (`idEVENTO`);
 
 --
--- Constraints for table `membro_has_pesquisa`
+-- Restrições para tabelas `membro_has_pesquisa`
 --
 ALTER TABLE `membro_has_pesquisa`
   ADD CONSTRAINT `membro_has_pesquisa_ibfk_1` FOREIGN KEY (`id_pesquisa`) REFERENCES `pesquisa` (`id_pesquisa`) ON DELETE CASCADE ON UPDATE CASCADE,

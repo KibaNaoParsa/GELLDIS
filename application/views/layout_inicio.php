@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Sistema para visibilidado do grupo de pesquisa GELLDIS do CEFET-MG campus Varginha">
-        <meta name="author" content="elyas" >
+        <meta name="author" content="Alunos" >
         <title>GELLDIS</title>
         <link href="{url}assets/layout_principal/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{url}assets/layout_principal/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet" type="text/css">
@@ -344,16 +344,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             	<label for="txt_instituicao">Instituição:</label> 
                             	<input type="text" class="form-control" name="txt_instituicao" id="txt_instituicao" required/> 
                         	</div>
+                        	<h3>Você é portador de necessidades especiais:</h3>                       	
+                        	<div class="form-group">
+                            	<input type="radio" name="necessidade" value="0" required> Não<br>
+                            	<input type="radio" name="necessidade" value="1" > Sim<br>
+                        	</div>
                         	<h3>Você deseja participar como:</h3>
                         	<div class="form-group">
-                            	<input type="radio" name="tipo" value="0" > Ouvinte<br>
+                            	<input type="radio" name="tipo" value="0" required> Ouvinte<br>
                             	<input type="radio" name="tipo" value="1" > Comunicação em GT<br>
                         	</div>
                         	<h3>De qual GT você deseja participar?</h3>
                         	<div class="form-group">
                         		<?php
                         			foreach ($EVENTO as $e) {
-                        				echo '<input type="radio" name="evento" value="'.$e->idEVENTO.'" > '.$e->NOME.'<br>';
+                        				echo '<input type="radio" name="evento" value="'.$e->idEVENTO.'" required> '.$e->NOME.'<br>';
                         			}
 										?>                        	
                         	</div>
