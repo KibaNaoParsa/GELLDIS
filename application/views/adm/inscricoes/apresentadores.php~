@@ -33,7 +33,7 @@
 			echo anchor("adm/inscricao/pag_apresentador/".$i->idINSCRITO, "Confirmar pagamento", array('class'=>"btn btn-success", 'id'=>"botao"));		
 			echo "<br>";		
 		} else if ($i->SITUACAO == 3) {
-			echo "<div id='insc' style='color: orange;'><b>";
+			echo "<div id='insc' style='color: blue;'><b>";
 			echo "AGUARDANDO AVALIAÇÃO";
 			echo "</b></div>";
 			echo anchor("adm/inscricao/exibir_artigo/".$i->idINSCRITO, "Ver artigo", array('class'=>"btn btn-primary", 'id'=>"botao"));		

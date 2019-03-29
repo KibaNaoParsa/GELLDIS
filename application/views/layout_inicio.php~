@@ -8,6 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta name="description" content="Sistema para visibilidado do grupo de pesquisa GELLDIS do CEFET-MG campus Varginha">
         <meta name="author" content="Alunos" >
         <title>GELLDIS</title>
+        <style>
+				table, th, td {
+  					border: 1px solid black;
+  					text-align: center;
+				}
+		  </style>
         <link href="{url}assets/layout_principal/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="{url}assets/layout_principal/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -33,11 +39,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a class="js-scroll-trigger" href="{url}blog/noticias/3">Eventos realizados</a>
                 </li>
                 <li class="sidebar-nav-item">
+                	  <a class="js-scroll-trigger" data-toggle="modal"  data-target="#modal_inscricaosill" href="#">Inscrição 3° SILL</a>
+                </li>
+                <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="{url}blog/pesquisas">Linhas de pesquisa</a>
                 </li>
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="{url}blog/revista">Revista eletrônica</a>
-                </li>
+                </li>             
                 <li class="sidebar-nav-item">
                     <a class="js-scroll-trigger" href="#contact">Contato</a>
                 </li>
@@ -72,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<p class="lead mb-5">Simpósio de Língua e Literatura do CEFET MG</p>
           			<a class="btn btn-dark btn-xl js-scroll-trigger" data-toggle="modal"  data-target="#modal_apresentacaosill" href="#">Apresentação</a>
 		  			<a class="btn btn-dark btn-xl js-scroll-trigger" data-toggle="modal"  data-target="#modal_programacaosill" href="#">Programação</a>
-		  			<a class="btn btn-dark btn-xl js-scroll-trigger" data-toggle="modal"  data-target="#modal_inscricaosill" href="#">Inscrição</a>
+		  			<a class="btn btn-dark btn-xl js-scroll-trigger" data-toggle="modal"  data-target="#modal_inscricaosill" href="#">Inscrição SILL</a>
 		  			<a class="btn btn-dark btn-xl js-scroll-trigger" data-toggle="modal"  data-target="#modal_comissaoorganizadorasill">Comissão organizadora</a>
 		 			 <a class="btn btn-dark btn-xl js-scroll-trigger" data-toggle="modal"  data-target="#modal_contatosill">Contatos</a>
         			</div>
@@ -313,14 +322,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="modal-body">    
                     		<p>
-                    		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut nibh magna. 
-                    		Vestibulum eleifend augue eu quam faucibus finibus. 
-                    		Sed tincidunt lacus sed mauris condimentum lobortis. 
-                    		Nam consectetur scelerisque interdum. 
-                    		Donec pharetra condimentum mi, eget pellentesque nisl. 
-                    		Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                    		Phasellus et pretium lacus. 
-                    		Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    		Período para inscrições de comunicação em Simpósio Temático: de 01 de abril a 12 de maio.
+                    		<br>
+                    		As cartas de aceite serão liberadas entre os dias 13 e 20 de maio.
+                    		<br><br>
+                    		MODALIDADES DE INSCRIÇÃO E INVESTIMENTO:
+								<br>
+								<table>
+									<tr>
+										<th>Coordenador de GT</th>
+										<th>Apresentação de Trabalho</th>
+										<th>Ouvinte</th>									
+									</tr>
+									<tr>
+										<td>Isento</td>
+										<td>R$ 20,00</td>
+										<td>R$ 10,00</td>									
+									</tr>												
+								</table>
+								<br>
+								<b>Observação:</b> Os workshops são ofertados apenas para os inscritos no evento nas seguintes modalidades: coordenador de GT; apresentador de comunicação em GT; ouvinte.
+								Assim, a participação nos workshops, bem como no evento, está condicionada à confirmação da quitação da taxa de investimento no simpósio, via conta bancária.
+								O comprovante de pagamento da taxa deve ser enviado para o seguinte e-mail: simposiovarginha@gmail.com.
+								<br><br>						
+								APÓS QUITAÇÃO E ENVIO DE COMPROVANTE, será disponibilizado o link, via e-mail, para acesso e escolha dos workshops.
+								<br>
+								<b>CONTA PARA DEPÓSITO:</b><br>
+								Banco SICOOB<br>
+								Ag.: 4092<br>
+								C/C: 16247-7<br>
+								
 								</p>
                     		<form method="post" action="{url}inscricao/efetuar_inscricao" class="modal-content">
                   
@@ -344,9 +375,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             	<label for="txt_instituicao">Instituição:</label> 
                             	<input type="text" class="form-control" name="txt_instituicao" id="txt_instituicao" required/> 
                         	</div>
-                        	<div id="row">
-                        		<i class="fas fa-wheelchair"></i><h3>Você é portador de necessidades especiais:</h3>
-									</div>                        	
+                        	<h3>Você é portador de necessidades especiais:</h3>                       	
                         	<div class="form-group">
                             	<input type="radio" name="necessidade" value="0" required> Não<br>
                             	<input type="radio" name="necessidade" value="1" > Sim<br>

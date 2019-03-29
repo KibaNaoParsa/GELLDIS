@@ -11,7 +11,7 @@ class Inscricao extends CI_Controller {
 
 	public function inscrito_ouvinte() {
 			
-		  $this->db->select("INSCRITO.idINSCRITO, INSCRITO.NOME, INSCRITO.EMAIL, INSCRITO.CPF, INSCRITO.SITUACAO, EVENTO.NOME as NOME_EVENTO");
+		  $this->db->select("INSCRITO.idINSCRITO, INSCRITO.NOME, INSCRITO.EMAIL, INSCRITO.CPF, INSCRITO.NECESSIDADES, INSCRITO.SITUACAO, EVENTO.NOME as NOME_EVENTO");
 		  $this->db->from("INSCRITO");
 		  $this->db->join("EVENTO", "EVENTO.idEVENTO = INSCRITO.idEVENTO", 'inner');
 		  $this->db->where("INSCRITO.TIPO", 0);
@@ -28,7 +28,7 @@ class Inscricao extends CI_Controller {
 
 	public function inscrito_apresentador() {
 
-		  $this->db->select("INSCRITO.idINSCRITO, INSCRITO.NOME, INSCRITO.EMAIL, INSCRITO.TITULO, INSCRITO.CPF, INSCRITO.SITUACAO, EVENTO.NOME as NOME_EVENTO");
+		  $this->db->select("INSCRITO.idINSCRITO, INSCRITO.NOME, INSCRITO.EMAIL, INSCRITO.TITULO, INSCRITO.CPF, INSCRITO.NECESSIDADES,INSCRITO.SITUACAO, EVENTO.NOME as NOME_EVENTO");
 		  $this->db->from("INSCRITO");
 		  $this->db->join("EVENTO", "EVENTO.idEVENTO = INSCRITO.idEVENTO", 'inner');
 		  $this->db->where("INSCRITO.TIPO", 1);
@@ -36,7 +36,7 @@ class Inscricao extends CI_Controller {
 		  
 		  $dados['url'] = base_url();
 		  $dados['display'] = 'none';
-		  $dados['acao'] = 'Apresentadores inscritos';
+		  $dados['acao'] = 'Comunicadores inscritos';
 		  $dados['conteudo'] = $this->parser->parse("adm/inscricoes/apresentadores", $dados, TRUE);
 		  
 		  $this->parser->parse("adm/layout_adm", $dados);
@@ -58,6 +58,61 @@ class Inscricao extends CI_Controller {
 		  
 		  $this->parser->parse("adm/layout_adm", $dados);
 	
+	}
+	
+	public function gerar_pdf() {
+		require('assets/fpdf/fpdf.php');
+		
+		$pdf = new FPDF();
+		
+		// OTIMIZAR ESSE CÓDIGO
+		
+		$this->db->select("EVENTO.idEVENTO, EVENTO.NOME");
+		$this->db->from("EVENTO");
+		$this->db->where("EVENTO.idEVENTO", 1);
+		$data['GT'] = $this->db->get()->result();		
+		
+		$this->db->select("INSCRITO.idINSCRITO, INSCRITO.idEVENTO, INSCRITO.NOME as NOMEINSCRITO, INSCRITO.EMAIL, INSCRITO.TIPO, INSCRITO.NECESSIDADES, INSCRITO.TITULO");
+		$this->db->from("INSCRITO");
+		$this->db->join("EVENTO", "EVENTO.idEVENTO = INSCRITO.idEVENTO", 'inner');		
+		$this->db->where('INSCRITO.SITUACAO', 0);
+		$this->db->where('INSCRITO.idEVENTO', 1);
+		$this->db->order_by("INSCRITO.TIPO", 'desc');
+		$data['GT1'] = $this->db->get()->result();
+	
+		$pdf->AddPage();
+		$pdf->SetFont('Arial', 'B', 16);
+		
+		foreach ($data['GT'] as $i) {
+			$pdf->MultiCell(170, 10, $i->NOME);
+		}
+		
+		$pdf->SetFont('Arial', '', 14);
+		$pdf->MultiCell(170, 10, '* indica Portador de Necessidades Especiais');
+		$pdf->Ln();
+		$pdf->SetFont('Arial', '', 12);
+		foreach ($data['GT1'] as $d) {
+			if ($d->TIPO == 1) {
+				if ($d->NECESSIDADES == 1) {
+					$pdf->MultiCell(170, 10, $d->NOMEINSCRITO.'* - '.$d->EMAIL);
+					$pdf->MultiCell(170, 10, 'Título: '.$d->TITULO);				
+				} else {
+					$pdf->MultiCell(170, 10, $d->NOMEINSCRITO.' - '.$d->EMAIL);
+					$pdf->MultiCell(170, 10, 'Título: '.$d->TITULO);				
+				}			
+			} else if($d->TIPO == 0) {
+				if ($d->NECESSIDADES == 1) {
+					$pdf->MultiCell(170, 10, $d->NOMEINSCRITO.'* - '.$d->EMAIL);
+				} else {
+					$pdf->MultiCell(170, 10, $d->NOMEINSCRITO.' - '.$d->EMAIL);
+				}						
+			}		
+		}
+		
+		
+		
+		
+		$pdf->Output();	
 	}
 	
 	

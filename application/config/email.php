@@ -4,8 +4,8 @@
     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
     $config['smtp_port'] = '465';
     $config['smtp_timeout'] = '30';
-    $config['smtp_user'] = 'elyasnog@gmail.com';
-    $config['smtp_pass'] = 'elyaselyas123';
+    $config['smtp_user'] = 'simposiovarginha@gmail.com';
+    $config['smtp_pass'] = 'gelldispesquisa';
     $config['charset'] = 'utf-8';
     $config['newline'] = "\r\n";
     $config['mailtype'] = 'html';

@@ -49,7 +49,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h6><b>GT:</b> <?php echo $NOME_EVENTO ?>                
                 </h6>
                 <br>
-                
+                <br>
+                <p>
+					 	<b>Orientação para o resumo:</b> o resumo deve dispensar a consulta ao original (o trabalho em si). É constituído de uma sequência de frases concisas e objetivas, máximo de 250 palavras, digitado em fonte Arial 12, espaço simples, margens 2,5 Deve-se ser apresentado em parágrafo único, contendo o mínimo de 03 palavras-chave e no máximo 05, TODAS SEPARADAS POR PONTO E VÍRGULA.
+						<br>						
+						<b>Trabalhos em coautoria:</b> todos os coautores precisam se inscrever no evento, não sendo obrigatória a sua participação na apresentação oral  do trabalho.
+						<br><br>
+						<b>Normas de apresentação:</b> 
+						<br>						
+						Apresentação oral:
+    						<br>• Cada apresentação terá 15 minutos de duração e 5 minutos para debate. 
+    						<br>• Todas as salas contarão com um projetor multimídia (datashow), que poderá ser usado pelos apresentadores. Os computadores/notebooks ou similares serão de responsabilidade dos apresentadores.
+    						<br>• Solicita-se que os apresentadores cheguem com 15 minutos de antecedência às sessões de apresentação.
+    						<br>• As apresentações devem ser preparadas obrigatoriamente em PowerPoint.                 
+                </p>
+                <br>
                 <form method="post" action="{url}inscricao/inscricao_artigo" class="modal-content">
               	
 						<div class="form-group">

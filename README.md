@@ -29,3 +29,10 @@
 - Palavras-chave adicionadas
 - Confirmação de e-mail adicionada
 - PARA FAZER: Retornar à tela de comunicação após erro em palavra-chave
+
+**v1.7**
+
+- Gerador de PFDs
+- Necessidades especiais
+- Texto de inscrição
+- PARA FAZER: Últimos ajustes e fase de testes

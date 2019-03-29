@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 28/03/2019 às 21:18
+-- Tempo de geração: 29/03/2019 às 16:35
 -- Versão do servidor: 5.7.24-0ubuntu0.18.04.1
 -- Versão do PHP: 7.2.15-0ubuntu0.18.04.1
 
@@ -128,11 +128,12 @@ CREATE TABLE `EVENTO` (
 --
 
 INSERT INTO `EVENTO` (`idEVENTO`, `nome`, `numouvintes`, `numtrabalhos`, `numtotal`) VALUES
-(1, 'Educação: métodos e práticas com foco na pedagogia dos multiletramentos no contexto do ensino', 0, 0, 0),
+(1, 'Métodos e práticas com foco na pedagogia dos multiletramentos no contexto do ensino', 0, 0, 0),
 (2, 'Multiletramento e multimodalidade sob o olhar da Linguística', 0, 0, 0),
 (3, 'Literatura, ensino e múltiplos limites', 0, 0, 0),
 (4, 'Multimodalidade, Multiletramentos e Tecnologias', 0, 0, 0),
-(5, 'Linguagens, arte, política: leitura(s) de mundo', 0, 0, 0);
+(5, 'Linguagens, arte, política: leitura(s) de mundo', 0, 0, 0),
+(6, 'Educação Profissional no contexto da multimodalidade de multiletramento', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -476,7 +477,7 @@ ALTER TABLE `estudante`
 -- AUTO_INCREMENT de tabela `EVENTO`
 --
 ALTER TABLE `EVENTO`
-  MODIFY `idEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de tabela `eventos_participados`
 --
@@ -491,7 +492,7 @@ ALTER TABLE `imagem`
 -- AUTO_INCREMENT de tabela `INSCRITO`
 --
 ALTER TABLE `INSCRITO`
-  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de tabela `membro`
 --

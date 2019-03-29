@@ -137,9 +137,9 @@ class Inscricao extends CI_Controller {
 							$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
 							$this->db->update('EVENTO', $dat); // Atualizando mudanças no BD.
 							
-							$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
+							$this->email->from("simposiovarginha@gmail.com", "3º Simpósio de Língua e Literatura");
 							$this->email->to($dados['EMAIL']);
-							$this->email->subject("Confirmação de Cadastro - x° SILL");
+							$this->email->subject("Confirmação de Cadastro - 3° SILL");
 							$this->email->message("Cadastro confirmado.");					
 							
 							if ($this->email->send()){
@@ -156,14 +156,18 @@ class Inscricao extends CI_Controller {
 							
 							$this->db->insert('INSCRITO', $data);
 													
-							redirect('Inicio/index/3');
+							$this->email->from("simposiovarginha@gmail.com", "3º Simpósio de Língua e Literatura");
+							$this->email->to($dados['EMAIL']);
+							$this->email->subject("Cadastro Indeferido - 3° SILL");
+							$this->email->message("Cadastro indeferido.");
+
+							if ($this->email->send()){							
+								redirect('Inicio/index/3');
+							} else {
+								redirect('Inicio/index/4');	
+							}
 							
 							// PARA FAZER: Enviar e-mail de indeferimento
-							
-							$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
-							$this->email->to($dados['EMAIL']);
-							$this->email->subject("Cadastro Indeferido - x° SILL");
-							$this->email->message("Cadastro indeferido.");
 						}					
 					}
 				
@@ -193,6 +197,7 @@ class Inscricao extends CI_Controller {
 	      $dados['url'] = base_url();
    	   $dados['display'] = 'none';
 			
+			$this->load->library('email');
 			
 			$form = $this->input->post();
 			$data['NOME'] = $form['nome'];	 
@@ -217,10 +222,12 @@ class Inscricao extends CI_Controller {
 			
 			foreach ($palavras_teste as $p) {
 				$i++;			
-			}    		
+			}    	
+			
+			$i--;	
     		
 			//echo $data['NOME']."-".$data['INSTITUICAO']."-".$data['CPF'].'-'.$data['EMAIL'].'-'.$data['idEVENTO'].'-'.$data['TIPO'];    		
-    		if (($i >= 3) && ($i <=5)) {
+    		if (($i >= 3) && ($i <= 5)) {
     			foreach ($total as $t) {
 					if ($t->numtrabalhos < 6) {
 				
@@ -235,14 +242,19 @@ class Inscricao extends CI_Controller {
 					
 						$this->db->where('EVENTO.idEVENTO', $data['idEVENTO']);
 						$this->db->update('EVENTO', $dat);				
-
-						redirect('Inicio/index/6');					
+				
 						// PARA FAZER: Enviar e-mail de confirmação					
 
-						$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
+						$this->email->from("simposiovarginha@gmail.com", "3º Simpósio de Língua e Literatura");
 						$this->email->to($data['EMAIL']);
-						$this->email->subject("Confirmação de Cadastro - x° SILL");
+						$this->email->subject("Confirmação de Cadastro - 3° SILL");
 						$this->email->message("Cadastro confirmado.");
+						
+						if ($this->email->send()){
+								redirect('Inicio/index/6');
+						} else {
+								redirect('Inicio/index/4');								
+						}
 
 					} else {
 
@@ -250,21 +262,25 @@ class Inscricao extends CI_Controller {
 							
 						$this->db->insert('INSCRITO', $data);					
 						
-						redirect('Inicio/index/3'); // Consertar essa linha.
-							
-						// PARA FAZER: Mandar e-mail de limite		
-					
-						$this->email->from("elyasnog@gmail.com", "xº Simpósio de Literatura");
+						$this->email->from("simposiovarginha@gmail.com", "3º Simpósio de Língua e Literatura");
 						$this->email->to($data['EMAIL']);
-						$this->email->subject("Cadastro Indeferido - x° SILL");
+						$this->email->subject("Cadastro Indeferido - 3° SILL");
 						$this->email->message("Cadastro indeferido.");				
 				
+						if ($this->email->send()){							
+								redirect('Inicio/index/3');
+						} else {
+							redirect('Inicio/index/4');	
+						}
+		
 					}    		
     			}
     		} else {
 
-				// ???????????????????????????????
+				// ???????????????????????????????		
 				
+				redirect('Inicio/index/7');
+					
     		}
     }
 

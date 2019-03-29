@@ -59,6 +59,10 @@ class Inicio extends CI_Controller {
             $dados['color'] = 'success';
             $dados['msg'] = 'O seu cadastro foi feito! Confira seu e-mail para a confirmação.';
             $dados['display'] = 'block';
+        } else if (isset($number) && $number == 7) {
+            $dados['color'] = 'danger';
+            $dados['msg'] = 'O número de palavras-chave não está dentro dos limites.';
+            $dados['display'] = 'block';
         }
         $this->parser->parse('layout_inicio', $dados);
     }
