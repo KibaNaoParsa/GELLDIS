@@ -36,3 +36,7 @@
 - Necessidades especiais
 - Texto de inscrição
 - PARA FAZER: Últimos ajustes e fase de testes
+
+**v1.8**
+
+- Relatórios

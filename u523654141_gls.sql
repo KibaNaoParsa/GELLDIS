@@ -1,553 +1,364 @@
--- phpMyAdmin SQL Dump
--- version 4.6.6deb5
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.16  Distrib 10.2.23-MariaDB, for Linux (x86_64)
 --
--- Host: localhost:3306
--- Tempo de geração: 29/03/2019 às 16:35
--- Versão do servidor: 5.7.24-0ubuntu0.18.04.1
--- Versão do PHP: 7.2.15-0ubuntu0.18.04.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: u523654141_gls
+-- ------------------------------------------------------
+-- Server version	10.2.23-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Banco de dados: `u523654141_gls`
+-- Table structure for table `EVENTO`
 --
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `EVENTO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `EVENTO` (
+  `idEVENTO` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(170) CHARACTER SET utf16 NOT NULL,
+  `numouvintes` int(11) NOT NULL,
+  `numtrabalhos` int(11) NOT NULL,
+  `numtotal` int(11) NOT NULL,
+  PRIMARY KEY (`idEVENTO`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura para tabela `agenda`
+-- Dumping data for table `EVENTO`
 --
 
+/*!40000 ALTER TABLE `EVENTO` DISABLE KEYS */;
+INSERT INTO `EVENTO` VALUES (1,'Métodos e práticas com foco na pedagogia dos multiletramentos no contexto do ensino',16,4,21),(2,'Multiletramento e multimodalidade sob o olhar da Linguística',13,6,19),(3,'Literatura, ensino e múltiplos limites',4,5,9),(4,'Multimodalidade, Multiletramentos e Tecnologias',10,5,16),(5,'Linguagens, arte, política: leitura(s) de mundo',20,6,26),(6,'Ensino transformador de línguas: atualizando práticas pedagógicas tradicionais para formar o cidadão do século XXI ',14,5,20),(7,'Entre folhas de papel e ambientes digitais: Reflexões sobre os caminhos e fronteiras do linguístico e literário na contemporaneidade',2,6,8);
+/*!40000 ALTER TABLE `EVENTO` ENABLE KEYS */;
+
+--
+-- Table structure for table `INSCRITO`
+--
+
+DROP TABLE IF EXISTS `INSCRITO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `INSCRITO` (
+  `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(140) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `instituicao` varchar(100) NOT NULL,
+  `email` varchar(70) NOT NULL,
+  `tipo` int(11) NOT NULL,
+  `titulo` varchar(200) DEFAULT NULL,
+  `artigo` text DEFAULT NULL,
+  `idEVENTO` int(11) NOT NULL,
+  `situacao` int(11) NOT NULL,
+  `palavras_chave` varchar(150) DEFAULT NULL,
+  `necessidades` int(11) DEFAULT NULL,
+  `necessidades_texto` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`idINSCRITO`),
+  KEY `idEVENTO` (`idEVENTO`),
+  CONSTRAINT `INSCRITO_ibfk_1` FOREIGN KEY (`idEVENTO`) REFERENCES `EVENTO` (`idEVENTO`)
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `INSCRITO`
+--
+
+/*!40000 ALTER TABLE `INSCRITO` DISABLE KEYS */;
+INSERT INTO `INSCRITO` VALUES (1,'Domynique Roberta de Oliveira Esposito; Cilene Margarete Per','028.055.506','Universidade Vale do Rio Verde (UNINCOR)','prof.cilene.pereira@unincor.edu.br',1,'ESPAÇO FEMININO NAS COMPETIÇÕES DE POESIAS SLAM: DISCURSO  DE RESISTÊNCIA NA PERFORMANCE DE GABZ ','As Competições ou batalhas de poesias Slam têm sido compreendidas como um movimento social urbano de poetas-Slammers da periferia, que se juntam em espaços públicos para uma competição de poesia falada, na qual questões da atualidade são debatidas de forma poetizada e politizada. O movimento tem recebido maior visibilidade pela mídia digital, através das publicações realizadas pelas comunidades Slams em suas plataformas virtuais, revelando o espaço virtual como importante veículo de exercício da subpolítica. Considerando o exposto, este artigo objetiva analisar a performance poética feita pela jovem Slammer Gabz, no Slam do Grito filmes, veiculada no facebook. Na performance, são observados o discurso poético de Gabz, partindo do seu “lugar de fala”, conforme entendido por Djamila Ribeiro (2017), no qual ela denuncia a violência contra a mulher negra da periferia.\r\n',5,2,'Slam; Performance; Subpolítica; Poesia',0,''),(3,'JOÃO PAULO XAVIER','09100592684','CEFET MG (TIMOTEO)','XAVIEREBEDRAN@GMAIL.COM',1,'Letramento Visual Crítico: uma matriz para leitura de imagens','Este trabalho apresenta os resultados da pesquisa de doutorado que investigou, por meio da análise de relatos de professores de língua inglesa, as possibilidades pedagógicas para o trabalho com as imagens e as percepções da utilização da Matriz do Letramento Visual Crítico (MLVC) nas aulas de inglês. De natureza aplicada, de caráter descritivo e exploratório a pesquisa está localizada no paradigma interpretativista e se valeu de abordagens qualitativas para o desenvolvimento de suas duas fases. Na primeira, foram investigadas as avaliações de noventa professores sobre a disponibilidade e a qualidade das imagens, das orientações pedagógicas e das informações complementares nos livros didáticos com os quais trabalham. Para isso, um questionário online, administrado por meio da plataforma do Google forms, foi utilizado. Na segunda fase, 4 professores foram convidados a aplicar a MLVC e escrever\r\num depoimento relatando suas observações a respeito das implicações de seu uso em suas aulas. Os dados e relatos obtidos foram analisados à luz das seguintes teorias: Letramento Crítico (LUKE e FREEBODY, 1997; CERVETTI, 2001; MONTE-MÓR, 2007),\r\nMultiletramentos (COPE & KALANTZIS, 2000; ROJO, 2012), Letramento Visual (BROWETT, 2002; BRAMFORD, 2009), Linguística Aplicada Crítica (PENNYCOOK,2010). Os resultados apontaram para o desejo dos professores por mais recursos pedagógicos e informações complementares capazes de auxiliá-los no trabalho com os textos imagéticos propostos nos livros didáticos com os quais trabalham, bem como, as percepções e a avaliação dos professores sobre a MLVC e os impactos observados em\r\nsuas aulas ao aplicá-la.',1,2,'IMAGEM; LETRAMENTO; LIVRO DIDÁTICO.',0,''),(4,'Gleicimar Miranda Xavier','07616574602','Faculdade Pitágoras - Ipatinga','gleicimarmiranda3@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(5,'Flaviane Faria Carvalho','06603967693','Universidade Federal de Alfenas (UNIFAL-MG)','flaviane.carvalho@unifal-mg.edu.br',1,'Métodos e práticas com foco na pedagogia dos multiletramentos no contexto de ensino','A proliferação das novas mídias digitais na vida social tem provocado efeitos substanciais sobre o modo como nos comunicamos, produzimos significado e percebemos o mundo. Esse novo cenário acena para a necessidade de educadores adotarem novos métodos e práticas de leitura e produção de textos de forma mais ampla e integrada em sala de aula, contemplando diferentes modalidades de linguagem, tais como a imagem (estática ou em movimento), cores, tipos de letras e o som. Para atender a essa demanda, linguistas e educadores associados ao The New London Group têm desenvolvido, desde a década de 90, construtos teórico-metodológicos com a finalidade de oportunizar a pedagogia dos multiletramentos – digital, visual, gestual, sonoro, entre outros – no cotidiano escolar. Sob esse viés, o grupo temático ora proposto, “Métodos e práticas com foco na pedagogia dos multiletramentos no contexto de ensino”, visa compartilhar reflexões e experiências associadas à prática dos Multiletramentos no âmbito da Educação Básica, promovendo assim o diálogo e o entrelaçamento teórico com outras áreas do conhecimento.',1,2,'Multiletramentos; Ensino; Leitura',0,''),(6,'Guilherme Amiraldo Dias','38889196653','Escola Municipal São José','guilhermediasvga@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(7,'Hervana Monique Tavares Grandsire','03017819663','Secretaria do Estado de Educação MG','hervanamonique@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(8,'Thaís Nunes Braga','05198494690','Unis','thaisnbraga@icloud.com',0,NULL,NULL,4,2,NULL,0,''),(9,'Jozyclécio Mégda','04106935619','Unifal- MG','jozyclecio10val@gmail.com',1,'LAZARILLO DE TORMES: ELEMENTOS HISTÓRICOS E REVERBERAÇÕES NA FORMAÇÃO DO PERSONAGEM JOÃO GRILO, DE A',' Pretendemos elucidar os elementos históricos presentes na obra Lazarillo de Tormes, entre os anos de 1552 e 1554, na Espanha, do século XVI, bem como analisar as possíveis reverberações da picaresca clássica na obra O Auto da Compadecida, de Ariano Suassuna, de 1955. Acreditamos nas equivalências históricas e narrativas permeadas pelo gênero picaresco. Nesse sentido, o personagem João Grilo será tomado como herança do anti-herói popular, típico da cultura nordestina, em sentido restrito, e da cultura brasileira, em sentido amplo. Supõe-se que a obra de Suassuna possibilita uma associação entre a representação dos costumes da sociedade e os traços folclóricos da personagem1. Para tanto, a perspectiva da micro-história, a literatura comparada e a literatura como documentação histórica devem servir para uma abordagem de questões relativas aos costumes sociais, relações de poder e religião da sociedade medieval retratadas no contexto da obra Lazarillo de Tormes, bem como levantar os possíveis vestígios da picaresca, presentes na obra O auto de Compadecida, aproximando de forma cuidadosa o protagonista João Grilo, do pícaro Lázaro de Tormes. Pretendemos realizar pesquisa bibliográfica de obras e artigos que tenham correlação com o tema, utilizando os descritores: Micro-história, literatura comparada, imaginário narrativo século XVI, novela picaresca, Auto da Compadecida, Lazarillo de Tormes. O estudo e desenvolvimento deste projeto visualiza ainda a construção de um objeto educacional de aprendizagem que promova a interação teórica entre o imaginário narrativo da sociedade espanhola do século XVI e as reverberações herdadas pela literatura de Ariano Suasssuna no nordeste brasileiro.',3,2,'Imaginário narrativo sec. XVI.; Novela picaresca espanhola; Intertextualidade;  Auto da Compadecida;  Lazarillo de Tormes.',0,''),(10,'elaine aparecida ribeiro','06215824682','uni','earibeiro2012@bol.com.br',0,NULL,NULL,6,2,NULL,0,''),(11,'Emanuela Francisca Ferreira Silva','00917894600','IFSULDEMINAS - Campus Avançado Três Corações','emffsilva@gmail.com',1,'A MÚSICA COMO LINGUAGEM NO ENSINO TÉCNICO: RELATO DE EXPERIÊNCIA',' Este trabalho pretende apresentar e discutir o projeto de extensão II Encantus no Campus: Prática de Canto Coral no Campus Avançado Três Corações. Ele  promove a manutenção do Coral Vozes do Coração – em seu 3º ano de existência. A proposta deste coral é ser misto, contemplando a comunidade externa e interna do Campus Avançado Três Corações e da APAE – Três Corações. Para tanto, O objetivo geral é promover aos participantes e ao público ouvinte do coral Vozes do Coração a inclusão e a possibilidade de aprender e apreender pela/na experenciação musical, aprimorando sua cognição pelos sentidos que ultrapassam o campo sensorial. Tem-se como aporte teórico os estudos sobre a experenciação musical que proporciona uma otimização da cognição (MARI, 2018). Esta perspectiva sentido ouvir se une ao sentido visual e ao sentido háptico no momento da performance coral. Os coralistas cantam, dançam e se expressam enquanto ensaiam e se apresentam. Também se pauta nas teorias sobre a extensão e ensino(FREIRE, 2017). O projeto é extensionista, mas tem a faceta ensino e pesquisa, posto que realiza reuniões entre a proponente do projeto e discentes do Campus Avançado Três Corações para, entre outros apresentar trabalho sobre música e linguagem em encontros de educação.  Dentre os resultados esperados dos integrantes da APAE está a possibilidade de realizar essas operações, tendo a música como canal de conhecimento. A socialização no cantar junto, no estar junto na e pela música é outro importante resultado que se almeja. Para tanto tem-se como metodologia específica realizar ensaios semanais no espaço da APAE com esses discentes, proporcionando música em seu nicho e, consequentemente, afetando positivamente sua qualidade de vida e de aprendizagem.',5,2,'Experenciação Musical; Sentidos; Ensino e pesquisa; Linguagem',0,''),(12,'Caroline Souza Silva','11923788655','UFLA','carolinesouzasilva3@gmail.com',0,NULL,NULL,4,2,NULL,0,''),(13,'ANA PAULA DA SILVA SANTOS','07991885658','Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro - IFTM','silvasantos87@yahoo.com.br',1,'A FORMAÇÃO DOCENTE PELO VIÉS DA MULTIMODALIDADE DOS TEXTOS EM TEMPOS DE CIBERCULTURA','Este trabalho objetiva apresentar um enfoque teórico a respeito dos desafios contemporâneos que permeiam a formação docente, no que se refere às nuances da multimodalidade dos textos no universo da cibercultura. Para tanto, elencamos os seguintes objetivos específicos: demonstrar a relevância da abordagem do viés multimodal dos textos em processos de formação de professores, bem como elucidar uma possível interlocução entre os princípios da aprendizagem na perspectiva situada e os desdobramentos da multimodalidade textual em percursos formativos. Assim sendo, este estudo, segundo os dizeres de Cordeiro (1999), segue os parâmetros da pesquisa definida como bibliográfica, por explicitar, essencialmente, os estudos de Lévy (1999), quanto às conceituações de cibercultura; Rojo (2009, 2013), quanto ao panorama da multimodalidade; Nóvoa (1999) e Sacristán (1999), em relação aos processos formativos. Em síntese, abordamos os dilemas que envolvem percursos de formação docente na contemporaneidade e a relevância de se proceder a uma melhor compreensão das características da cibercultura, no tocante às questões da multimodalidade dos textos que compõem o ciberespaço.',2,2,'Cibercultura; Contemporaneidade; Desafios; Formação docente; Multimodalidade. ',0,''),(14,'roberta mendes alvarenga','01380833639','unis','robertaalvarenga2@hotmail.com',0,NULL,NULL,6,2,NULL,0,''),(15,'Tânia de Resende Garcia','04298651630','Universidade Federal de Lavras','tania.r.garcia@hotmail.com',0,NULL,NULL,5,2,NULL,0,''),(16,'Daniel Rocha','53254066634','E.E. Samuel Engel','danielrocha7x7@yahoo.com.br',0,NULL,NULL,4,2,NULL,0,''),(17,'Nicolle Mesquita Silva Oliveira','07419231656','IF Sul de Minas Campus Avançado Três Corações','nicollem1801@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(18,'Jaíne Reis Martins','14650548632','Universidade Federal de Alfenas','jaineletras2018@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(19,'Fabrício José da Silva','141.229.166-66','Universidade Federal de Alfenas - UNIFAL/MG','fabriciojose1616@outlook.com',1,'Cronotopo do Endereçamento e Excedente de visão na escrita de pré-universitários','Entende-se, que, por se tratar de linguagem, o processo de escrita e de ensino de escrita não se traduz em dicas, macetes e roteiros. Dessa feita, busca-se contribuir com o campo de formação de professores para o ensino de escrita. Objetiva-se, nesse contexto, investigar gestos de linguagem na escrita da Redação do Enem que indiciem de que forma o escrevente dialoga com seus destinatários e constrói o cronotopo do endereçamento na introdução e na conclusão deste gênero do discurso.  Ao mesmo tempo, analisa-se como o escrevente dialoga com seus destinatários, procurando investigar se e em que medida diferentes destinatários o orientam neste processo tenso, dialógico e produtivo. Em consonância com as noções de alteridade, cronotopo, e excedente de visão, analisa-se de que forma tais conceitos podem contribuir para a proposição de um conceito teórico para o ensino de escrita. Norteia a pesquisa a hipótese que o escrevente pressupõe a existência de um esquema de texto, que lhe permite escrever um bom texto e atender às expectativas dos seus destinatários. Na análise, busca-se, nos gestos de linguagem do escrevente, nas seções introdução e conclusão do gênero do discurso Redação do Enem, indícios de como esse escrevente dialoga e estrutura o cronotopo do endereçamento como forma de dialogar com seus possíveis destinatários, visando refletir sobre processos de práticas de escrita e de formação de professor para o ensino de escrita.',2,2,'Letramentos acadêmicos; dialogismo; gêneros do discurso;',0,''),(20,'Adriana Cristina de Oliveira','09648965676','UFLA','adriana.cristinatp@hotmail.com',0,NULL,NULL,5,2,NULL,0,''),(21,'Carlos Daniel de Carvalho ','14421247685','Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas Gerais  Campus Avançado Três Cor','cd356913@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(22,'Ana Caroline Pereira','11887987665','Escola Estadual Afonso Pena','carolpereira_tp2012@hotmail.com',0,NULL,NULL,6,2,NULL,0,''),(23,'Rosiane Bonifácio de Carvalho','113.995.576-45','unis','rosianebonifaciocarvalho@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(24,'ROSEANA NUNES BARACAT MOREIRA','98459791653','UFSCar','roseanabaracat3@gmail.com',1,'O teatro como ferramenta de desenvolvimento da leitura literária e de múltiplas habilidades.',' O teatro tem se mostrado uma ferramenta de grande valor para incentivar a leitura de obras literárias por parte dos alunos. Diante da resistência de alguns alunos em ler os clássicos da literatura fez-se necessário o uso de técnicas e estratégias que incentivassem essa leitura. A partir da integração de alunos em grupo e da criação de todas as ferramentas para apresentação das peças teatrais o aluno teve seu contato com a obra literária e daí em diante desenvolveu-se outras habilidades além da leitura que era o esperado.',3,2,'Teatro; literatura; integração; socialização; leitura.',0,''),(25,'Karoliny Aclésia Cassimiro','11881123685','Unis/MG','cassimirokaroliny@hotmail.com',0,NULL,NULL,1,2,NULL,0,''),(26,'Thainara Cazelato Couto','12066833681','Universidade Vale do Rio Verde','thaicazelato@gmail.com',1,'Gênero e violência em duas narrativas de Wander Piroli',' \r\nEste trabalho apresenta parte de uma pesquisa de Mestrado em desenvolvimento intitulada “A representação da violência e dos violentados em É proibido comer a grama, de Wander Piroli”, livro de contos publicado em 2006. O principal objetivo do estudo é examinar como as personagens dos contos, seres invisibilizados socialmente (o pobre, o negro, a prostituta, o operário, o ladrão, o bêbado, entre outros tipos marginalizados), são colocadas pelo autor num processo de visibilidade e de empatia com o leitor. Nos contos, destaca-se o temário da violência, que se apresenta no espaço urbano, tendo como cenário principal a capital mineira, sobretudo seu centro nevrálgico e arredores boêmios, entre os anos 1960 e 1980. Para essa comunicação, elegemos como ponto de partida para nossas discussões os contos “Oh, Deus de misericórdia” e “O serralheiro Zuenir e a professora Helena”, no quais vemos diversos tipos de violência, com destaque para as relacionadas a espaços e classes sociais e de gênero, associados a estereótipos masculinos e femininos. Como reporte teórico das análises, recorrermos ao conceito de “violência simbólica” do sociólogo Pierre Bourdieu (2011), que a compreende como a naturalização da relação de dominação entres dominantes e dominados, considerando, aqui, as relações de gênero, e os estudos da socióloga Heleieth Saffioti, O poder do macho (1987), e da historiadora Carla Pinsky, “A era dos modelos rígidos” (2012). Em ambos os estudos, as autoras apontam para a cristalização de papéis sociais masculinos e femininos, importantes para a construção das personagens de Piroli nos contos elencados. \r\n',5,2,'Contos; Violência; Gênero; Wander Piroli',0,''),(27,'JULIA CELESTE MACHADO TORRES','07417951678','CEFET MG','jucmtorres@yahoo.com.br',0,NULL,NULL,5,2,NULL,0,''),(28,'Flavio da Silva','00755283635','CEFET','flavio@cefetmg.br',0,NULL,NULL,1,2,NULL,0,''),(29,'Pricila Ferreira Pereira','09199202689','FAPESMIG - Grupo Unis','pricila.ferreira.tp@gmail.com',0,NULL,NULL,4,2,NULL,0,''),(30,'THAYNA FERREIRA SILVA','09531667675','Grupo Unis','thaynafs@hotmail.com',0,NULL,NULL,3,2,NULL,0,''),(31,'Stephany Moure Porto','01433136066','Univerdade Vale do Rio Verde - UNINCOR','stephanymoure@gmail.com',1,'ORDEM PATRIARCAL E DECADÊNCIA EM LYA LUFT: UMA LEITURA DE REUNIÃO DE FAMÍLIA','O romance Reunião de família, publicado pela gaúcha Lya Luft em 1982, é o terceiro livro de uma trilogia dedicada ao tema das relações familiares, dos quais fazem parte os romances As parceiras (1980) e A asa esquerda do anjo (1981). A história gira em torno de uma família marcada pelo poder opressor do pai, reconhecido pelos filhos apenas por sua função social de “Professor”. Renato, Evelyn e Alice, a protagonista e narradora do romance, são submetidos pelo seu pai a tratamentos extremamente violentos desde a infância, o que gera traumas e medos em suas vidas adultas. Relacionando-se a proposta do GT Linguagens, arte, política: leitura(s) de mundo, que objetiva reunir trabalhos que proponham uma leitura do mundo por meio da arte e de relações interdisciplinares, esta comunicação apresenta uma leitura do romance citado a partir da discussão do processo de violência pelo qual passou Alice e sua família, destacando, para isso, dois Aparelhos Ideológicos importantes, a Escola e Família (ALTHUSSER, 1980). Tal perspectiva está ligada à crítica empreendida por Luft a respeito do sistema patriarcal, na sugestão de sua desintegração por meio da morte simbólica de Cristiano, neto do “Professor”, e da senilidade e loucura do patriarca da família.',5,2,'Decadência patriarcal; Reunião de família; violência; Aparelhos ideológicos do Estado',0,''),(32,'Alessandra Pinto Cassiano Maciel','03706114623','UNIS','alessandra.maciel@alunos.unis.edu.br',0,NULL,NULL,6,2,NULL,0,''),(33,'Renata Pereira Rezende Rosa','10797210881','Unis','renatarezende224@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(34,'Lívea Maria Gonçalves Araújo','09886123648','Unis ','liveahmaria@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(35,'Kamila Kenneth Rodrigues Oliveira','122.798.056-69','Universidade Federal de Lavras','kamilarodrigues.1999@live.com',0,NULL,NULL,5,2,NULL,0,''),(36,'Míriam Rabelo Gontijo','06540303670','Cefet Belo Horizonte','miriamrgontijo@hotmail.com',1,'UMA PROPOSTA DIDÁTICA DE ENSINO DE INGLÊS COMO LÍNGUA ESTRANGEIRA PARA A JUSTIÇA SOCIAL ','O presente artigo relata a experiência pessoal da professora-autora ao realizar uma atividade com seus alunos do curso de Licenciatura em Letras de uma universidade pública do interior de Minas Gerais no segundo semestre de 2018, no intuito de suprir uma carência da biblioteca da escola estadual onde também atuava como professora efetiva. Ao constatar que a biblioteca exibia apenas três exemplares de livros literários em inglês, a docente propôs aos alunos da universidade que confeccionassem livros que pudessem ser trabalhados pelos professores da rede pública de ensino, dentro de um viés crítico, visando ao empoderamento dos alunos que ali estudam. O artigo busca relatar e detalhar a atividade desenvolvida, bem como as impressões registradas no decorrer e ao final da atividade quanto ao cumprimento da proposta de se trabalhar a ideia de Letramento Crítico e Justiça Social com os alunos do curso de Letras. A atividade resultou na confecção de 29 livros infantis cuidadosamente elaborados para serem doados às escolas públicas da cidade. As obras dividiram-se em 10 subtemas, dentro da temática diversidade. Os alunos mostraram-se engajados e motivadas com a proposta de se trabalhar o desenvolvimento linguístico dentro de uma pedagogia crítica visando a uma educação transformadora. ',6,2,'Ensino Transformador; Pedagogia Crítica; Justiça Social',0,''),(37,'Isadora Garcia Outeiro Araújo','07330471658','E.E. Pedro de Alcântara','profisadora.garcia@gmail.com',0,NULL,NULL,2,2,NULL,0,''),(38,'Francieli Diovana da Silva ','12232192679','Universidade Federal de Alfenas UNIFAL-MG','francielidih@hotmail.com',0,NULL,NULL,1,2,NULL,0,''),(39,'André Luís da Silva','14788599627','Universidade Federal de Alfenas','andreluis.unifal@yahoo.com',0,NULL,NULL,5,2,NULL,0,''),(40,'Fernanda Souza Fernandes','11550729660','Universidade Federal de Alfenas - Unifal/MG','fernandesfernanda080@hotmail.com',0,NULL,NULL,5,2,NULL,0,''),(41,'Anna Lívia Balbino Carvalho Braga ','10882621637','UNIFAL','annahcarvalho27@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(42,'Brenda Vitoria Lima Rodrigues ','151.252.866-80','Unifal mg sede','brendanep13@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(43,'Marcos Luiz Cruxen','38386749873','Unifal','marcoscruxen@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(44,'larissa geovana queiroz da silva','49117678803','universidade federal de alfenas','larissagomesilva@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(45,'Karolaine Catarina Assis','09801017600','Universidade Federal de Alfenas','keronassisc@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(46,'Sabrina Santos Souza','148.300.376-01','Unifal- MG Universidade Federal  de Alfenas ','afrosabrinasouza@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(47,'João Paulo Lobo Botta','31636115837','Universidade Federal de Alfenas','jplb.botta@hotmail.com',0,NULL,NULL,3,2,NULL,0,''),(48,'Sharah Pereira dos Santos','11732801622','Universidade Federal de Alfenas','sharahps@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(49,'Milena Favalli Simão','35820008855','UNIFAL-MG','milenafavallis@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(50,'Henrique Cezar Silva Izidro ','498.404.268-00','Unifal','henrique-tarzan@hotmail.com',0,NULL,NULL,3,2,NULL,0,''),(51,'Igor da Silva Becati','11948801698','UNIS-MG','igorbecati@gmail.com',1,'A FUNÇÃO NARRADOR-AUTOR SOB A PERSPECTIVA HISTÓRICO-LITERÁRIA: análises da obra A Velocidade da Luz e as suas contribuições aos estudos literários','Este trabalho analisa a função narrador-autor nas obras de cunhos literários e narrativos, sob a perspectiva histórico literária. Tal abordagem faz-se necessária para que tanto a função de autoria quanto a função narrativa se congruam em uma análise somente, para que os textos possam ser embasados e melhor interpretados tendo esse novo conceito. Outro intuito aqui tido é o de obter pesquisas mais contemporâneas, com termos mais atuais, no que tange fomentar mais análises, pesquisas e estudos acerca dos estudos literários. O objetivo desta pesquisa é o de estudar a dicotomia narrador-autor, no que essa se condiz ao fato de que as vozes, que carregam e propagam os discursos literários, sociais, históricos, religiosos, entre outros, estão intercaladas aos sujeitos que estruturam os estudos literários. Este intento será conseguido mediante revisão bibliográfica de livros técnico-teóricos de literatura, a ter consigo o cânone espanhol A Velocidade da Luz, do autor Javier Cercas. A pesquisa espera demonstrar como que a função narrador-autor se estrutura nos discursos literários que carregam as vozes do texto, a fim também de contribuir com novos conceitos de análise e estudo aos estudos literários, no que atingem os analistas do discurso, historiógrafos literários e críticos para usufruírem de tal pesquisa e estudo.',3,2,'Função narrador-autor; Estudos literários; Análise do discurso;',0,''),(52,'Mayra Aparecida Ribeiro Valério','134.034.266-96','UFLA ','ribeiro_mayra@outlook.com',0,NULL,NULL,4,2,NULL,0,''),(53,'JOSÉ MESQUITA COSTA NETO','11184143650','Centro Universitário do Sul de Minas - UNIS','josemesquita2009@gmail.com',1,'JORNALISMO E ENTRETENIMENTO: Uma análise discursiva do videoclipe Apeshit',' Este trabalho analisa discursivamente a recepção jornalística do videoclipe Apeshit da\r\ndupla The Carters. O objetivo desta análise é identificar, sob o viés da Análise do Discurso, como\r\nos sentidos são construídos a partir do lugar de fala dos artistas no videoclipe e também promover\r\nreflexões sobre o jornalismo enquanto meio de comunicação e informação. Este propósito será\r\nconseguido através da revisão bibliográfica tendo como aparato teórico a Análise do Discurso,\r\nfundamentos do jornalismo e os sentidos do poder simbólico na pesquisa de Bourdieu. Sendo o\r\nvideoclipe uma produção de entretenimento e de expressão cultural, a análise se justifica por\r\nconsiderar tais formas de expressão como lugares de sentidos na sociedade. A análise demonstrou\r\nque é possível formular diferentes sentidos a partir de um produto cultural: no sentido do\r\ndiscurso, construção da ideologia, formulação, história e concepção. O trabalho do profissional\r\nde jornalismo deve-se atentar também ao entretenimento, tendo como contexto o jornalismo\r\ncultural para criticar e apontar olhares relevantes para o receptor.',5,2,'Jornalismo; Videoclipe; Análise do Discurso',0,''),(54,'Letícia dos Reis Pessoa','13551819688','Unifal-MG','lehreis351@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(55,'Andreza Jennefer Nunes dos Santos','11716922690','Universidade Federal de Alfenas ','andrezzanns@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(56,'Mariana  Sarquis Meira','12405109697','UFLA - Universidade Federal de Lavras','mariananep@hotmail.com',0,NULL,NULL,5,2,NULL,0,''),(57,'Thiago Maciel','07817574600','Universidade Federal de Alfenas UNIFAL-MG','thiagonesmaciel@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(58,'Gabrielle Mathias Amorim','498.723.528-52','Universidade Federal de Alfenas','mathias.gabrielle1@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(59,'Beatriz Andrade de Oliveira Paiva','126.859.436-92','Universidade Federal de Alfenas','beatrizandrapaiva@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(60,'MARCIA APARECIDA RESENDE','77114353634','UNIS','marcia.resende@professor.unis.edu.br',1,'PEDAGOGIA DOS MULTILETRAMENTOS: diversidade de linguagens na escola',' O presente artigo tem como objetivo investigar a possibilidade de se trabalhar, nas aulas de Língua Portuguesa, com a multiplicidade de linguagens e as multissemioses dos textos em circulação, por meio de uma nova didática da língua. Para o alcance desse propósito, sugere-se a investigação conceitual e histórica do termo letramento a partir da sua introdução no campo da linguagem, seguindo com seus desdobramentos nos letramentos múltiplos. O estudo não pode prescindir da contextualização da temática na vertente sociointeracionista da linguagem, que a compreende como prática social, histórica, dialógica e ideológica. A linguagem como forma de interação, como instrumento de atuação social, como um lugar de interação humana, conceitos desenvolvidos por Bakhtin que têm fundamentado, nas últimas décadas, estudos que buscam compreender a relação entre a linguagem numa perspectiva dialógica e discursiva e os processos de ensino e aprendizagem. Assim, a abordagem teórica deverá favorecer a compreensão prática da pedagogia dos multiletramentos nas aulas de Língua Portuguesa.    ',1,2,'Multiletramentos; Linguagem; Ensino; Aprendizagem',0,''),(61,'Caroline Melo','07473227670','Centro Universitário do Sul de Minas (UNIS)','caroline.meloo@alunos.unis.edu.br',1,'PEDAGOGIA DOS MULTILETRAMENTOS: diversidade de linguagens na escola',' O presente artigo tem como objetivo investigar a possibilidade de se trabalhar, nas aulas de Língua Portuguesa, com a multiplicidade de linguagens e as multissemioses dos textos em circulação, por meio de uma nova didática da língua. Para o alcance desse propósito, sugere-se a investigação conceitual e histórica do termo letramento a partir da sua introdução no campo da linguagem, seguindo com seus desdobramentos nos letramentos múltiplos. O estudo não pode prescindir da contextualização da temática na vertente sociointeracionista da linguagem, que a compreende como prática social, histórica, dialógica e ideológica. A linguagem como forma de interação, como instrumento de atuação social, como um lugar de interação humana, conceitos desenvolvidos por Bakhtin que têm fundamentado, nas últimas décadas, estudos que buscam compreender a relação entre a linguagem numa perspectiva dialógica e discursiva e os processos de ensino e aprendizagem. Assim, a abordagem teórica deverá favorecer a compreensão prática da pedagogia dos multiletramentos nas aulas de Língua Portuguesa. ',1,2,'Multiletramentos; Linguagem; Ensino; Aprendizagem',0,''),(62,'Flávia Luciano Santos','10197390617','Unincor','flavia_santos.l@hotmail.com',1,'A CRÔNICA DE FERNANDO BONASSI: LEITURA DE UM MUNDO VIOLENTO',' Esta comunicação apresenta um recorte da pesquisa “A representação da violência nas crônicas de A boca no mundo, de Fernando Bonassi”, em desenvolvimento no Programa de Mestrado em Letras da Universidade Vale do Rio Verde (UNINCOR), associado à linha de pesquisa Literatura, História e Cultura. A pesquisa busca refletir sobre os modos de representação da violência nas crônicas do livro citado acima, publicado no ano de 2007. Esses textos foram coletados por Bonassi entre os publicados no caderno “Ilustrada”, do jornal Folha de São Paulo, entre os anos de 2002 e 2006. Em suas crônicas, Bonassi representa acontecimentos do cotidiano impressos na grande cidade, que muitas vezes passam despercebidos por nós, revelando, por meio de uma linguagem coloquial (própria da crônica), mas também agressiva, narrativas de vidas de personagens que vivem à margem social, envoltas com a violência. O olhar do autor se volta para a realidade dos menos favorecidos, vítimas de um sistema social que os oprime e os exclui de seus direitos fundamentais (alicerçados nos Direitos Humanos), aludindo a uma violência estrutural, que resulta, muitas vezes, em uma violência direta. Entre as cem crônicas que compõem A boca do mundo, escolhemos, para essa comunicação, refletir sobre “Meu encontro com Deus”. Nesta crônica, temos, um sujeito, não nomeado, que conversa com um interlocutor identificado como “senhor”, sugerindo tratar-se de um depoimento. Na narração da vida desse sujeito destacam-se o abandono familiar e sua inadaptação social, revelando seu estado de carência.\r\n',5,2,'Bonassi; Crônica; Violência.',0,''),(63,'Maria Luíza Destro Silva','45927353827','Universidade Federal de Alfenas (UNIFAL-MG)','marialuizadestrosilva@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(64,'Lavínia Oliveira Silva','07264456650','UNIS MG','lavinia.silva31@hotmail.com',0,NULL,NULL,1,2,NULL,0,''),(65,'Gisele Montanhole Carlota Sales','06126280601','Prefeitura de Varginha','giselemcarlota@hotmail.com',0,NULL,NULL,4,2,NULL,0,''),(66,'Maria Angela Rodrigues','046840646-89','IFTM - Instituto Federal do Triângulo Mineiro - Campus Uberaba','maria.rodrigues@ifmg.edu.br',1,'A FORMAÇÃO DOCENTE PELO VIÉS DA MULTIMODALIDADE DOS TEXTOS EM TEMPOS DE CIBERCULTURA','Este trabalho objetiva apresentar um enfoque teórico a respeito dos desafios contemporâneos que permeiam a formação docente, no que se refere às nuances da multimodalidade dos textos no universo da cibercultura. Para tanto, elencamos os seguintes objetivos específicos: demonstrar a relevância da abordagem do viés multimodal dos textos em processos de formação de professores, bem como elucidar uma possível interlocução entre os princípios da aprendizagem na perspectiva situada e os desdobramentos da multimodalidade textual em percursos formativos. Assim sendo, este estudo, segundo os dizeres de Cordeiro (1999), segue os parâmetros da pesquisa definida como bibliográfica, por explicitar, essencialmente, os estudos de Lévy (1999), quanto às conceituações de cibercultura; Rojo (2009, 2013), quanto ao panorama da multimodalidade; Nóvoa (1999) e Sacristán (1999), em relação aos processos formativos. Em síntese, abordamos os dilemas que envolvem percursos de formação docente na contemporaneidade e a relevância de se proceder a uma melhor compreensão das características da cibercultura, no tocante às questões da multimodalidade dos textos que compõem o ciberespaço',2,1,'Cibercultura; Contemporaneidade; Desafios; Formação Docente; Multimodalidade. ',0,''),(67,'ALICE CRISTINA FERREIRA DA SILVA LASMAR','025.520.016-10','IF SUL DE MINAS - CAMPUS MUZAMBINH','cristinalasmar@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(68,'Alexandra de Oliveira Borges ','06832106610','IF sul de Minas (aluna)','aleborges_34@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(69,'Ana Carolina Sabino dos Santos','117.363.756.79','Unifenas','santoscarol0680@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(70,'Rebecca Damasceno Souza','47044678807','Unis','rebeccadamascen@gmail.com',0,NULL,NULL,4,2,NULL,0,''),(71,'Luana Maria Piovan Jayme Resende ','096543696-99','Unifal Alfenas','luana.piovan@hotmail.com',0,NULL,NULL,6,2,NULL,0,''),(72,'Gislane Tavares Barbosa Rangel','07598282617','Unilavras','gislanerangel@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(73,'SILVANI KÁTIA NASCIMENTO SANTOS','92931820687','Universidade Vale do Rio Verde (UNINCOR)','silvanikns@yahoo.com.br',1,'MULTILETRAMENTOS UM CONTEXTO EM TRÊS CORAÇÕES: a criança – a família – a escola',' RESUMO: O tema deste trabalho partiu do interesse em investigar como os saberes sobre multiletramento auxiliam no processo de apropriação da leitura e da escrita de crianças ainda na pré-escola. Para o desenvolvimento desta investigação, propomos a interface teórica entre os postulados da Linguística Aplicada acerca do letramento  (KLEIMAN, 1995; ROJO, 2012; SOARES, 2012; STREET, 2014; TERRA,2009),  bem como estudos sobre a multimodalidade textual, abordados por autores como Coscarelli (2006, 1999), Dionísio e Vasconcelos (2016), Kress (1989), Ribeiro (2013, 2016), .  Alfabetização e letramento, são dois processos, indissociáveis. Culturalmente, estamos imersos a ambiente multimodal, onde palavras, cores, formas, e outros se tornam precisos. Sob a hipótese de que o ambiente sociocultural influencia o processo de letramento, está sendo desenvolvida uma pesquisa de campo exploratória qualitativa e quantitativa, em duas turmas, de duas escolas, sendo uma da rede municipal e outra da rede privada. A investigação recairá, sobre gênero discursivo logomarca, no que tange à escolha das logomarcas que serão apresentadas aos alunos em forma de catálogo, contemplando marcas diversas conhecidas. Para tanto, dividiremos o catálogo em três categorias, a saber: a) produtos alimentícios; b) produtos de higiene pessoal; c) entretenimento. serão apresentadas as diversas logomarcas a cada aluno individualmente, a fim de verificar se a criança: a) reconhece a logomarca; b) reconhece o produto (de forma genérica); c) não reconhece nem a marca e nem do produto de forma genérico. A partir deste material, e a luz de pressupostos teóricos. Comprovaremos ou não a hipótese que guia esta investigação.',2,2,'Letramento; multiletramento; multimodalidade textual; logomarcas; educação infantil',0,''),(74,'Mariane de Brito Paschoal','118.180.516-30','Universidade Federal de Alfenas ','marianedebrito@hotmail.com',1,'Ecos da Memória','A memória tem suma importância na construção da sociedade e na valorização de gerações anteriores como base da nossa identidade. A partir disso, o projeto Ecos da Memória pretende recuperar lembranças, valores e costumes de gerações anteriores, a fim de valorizar a população idosa e suas respectivas memórias, pois apesar de desvalorizada nos dias atuais, é detentora de conhecimentos e do passado da sociedade. Nesse contexto, pensando, sobretudo, na manutenção da memória da sociedade alfenense, o projeto Ecos da Memória pretende ter acesso e recolher as memórias coletivas e individuais de idosos residentes no asilo “Lar São Vicente de Paulo”, da cidade de Alfenas/MG, por meio da convivência entre integrantes do PET- Letras e estes idosos. Considerando estes aspectos, o projeto pretende reunir e transformar os relatos dos informantes em um e-book de contos, a fim de valorizar a cultura local, de preservar e registrar saberes, bem como contribuir com a qualidade de vida dos idosos no processo de comunicação social. Inicialmente, o grupo PET passará por um processo formativo, com leituras de textos e oficinas com profissionais do trabalho com idosos, para estarem preparados para a relação que se estabelecerá. Em seguida, o processo se dará por meio de visitas semanais ao asilo, onde se pretende criar laços entre petianos e idosos que levarão ao relato de memórias que serão gravadas em áudio e posteriormente transcritas. Os relatos transcritos serão trabalhados artisticamente e, após discussões e orientação de escritores e professores de literatura, transformados em um e-book de contos.   ',4,2,' Memória; Idosos; Literatura.',0,''),(75,'Bruna dos Santos Caetano','112.187.596-31','Universidade Federal de Alfenas ','brunacaetano10@hotmail.com',1,'Ecos da Memória','A memória tem suma importância na construção da sociedade e na valorização de gerações anteriores como base da nossa identidade. A partir disso, o projeto Ecos da Memória pretende recuperar lembranças, valores e costumes de gerações anteriores, a fim de valorizar a população idosa e suas respectivas memórias, pois apesar de desvalorizada nos dias atuais, é detentora de conhecimentos e do passado da sociedade. Nesse contexto, pensando, sobretudo, na manutenção da memória da sociedade alfenense, o projeto Ecos da Memória pretende ter acesso e recolher as memórias coletivas e individuais de idosos residentes no asilo “Lar São Vicente de Paulo”, da cidade de Alfenas/MG, por meio da convivência entre integrantes do PET- Letras e estes idosos. Considerando estes aspectos, o projeto pretende reunir e transformar os relatos dos informantes em um e-book de contos, a fim de valorizar a cultura local, de preservar e registrar saberes, bem como contribuir com a qualidade de vida dos idosos no processo de comunicação social. Inicialmente, o grupo PET passará por um processo formativo, com leituras de textos e oficinas com profissionais do trabalho com idosos, para estarem preparados para a relação que se estabelecerá. Em seguida, o processo se dará por meio de visitas semanais ao asilo, onde se pretende criar laços entre petianos e idosos que levarão ao relato de memórias que serão gravadas em áudio e posteriormente transcritas. Os relatos transcritos serão trabalhados artisticamente e, após discussões e orientação de escritores e professores de literatura, transformados em um e-book de contos.   ',4,1,' Memória; Idosos; Literatura.',0,''),(76,'webert do Nascimento Brito','098.182.916-38','Centro Universitário do Sul de Minas - UNIS/MG','webertnbrito@gmail.com',1,'EDUCAÇÃO DE ALUNOS SURDOS NO ENSINO REGULAR ESTADUAL MINEIRO: reflexões de um discente surdo.',' O presente trabalho apresenta a narrativa autobiográfica do processo de inserção de um aluno surdo nas escolas de diferentes cidades do interior de Minas Gerais. Este aluno, hoje, é graduando do curso de Pedagogia. O artigo objetiva compartilhar sua experiência como discente surdo, para sensibilizar e refletir sobre a importância da reestruturação da educação regular inclusiva, a partir das dificuldades e falhas encontradas no processo de ensino/aprendizagem, com professores não formados na Língua Brasileira de Sinais (LIBRAS). A pesquisa é relevante, uma vez que além deste aluno, outros alunos surdos estão ou serão inseridos no ensino público regular e demais agentes educacionais poderão identificar-se e repensar sua prática, bem como sua própria aprendizagem. Este formato de pesquisa é popular, pois, permite ao autor e seu leitor estabelecer um diálogo favorável para construção de novos saberes.  A pesquisa narrativa autobiográfica é aquela que relata ao leitor uma situação vivida pelo autor, com a intencionalidade de sensibilizar, expor, provocar suas concepções e crenças acerca do problema. O autor apresenta os fracassos, dificuldades e prejuízos no aprendizado, além do relato de sua defasagem em conteúdo específico, no uso e produção escrita da língua Portuguesa e no desenvolvimento da inteligência lógico-matemática, além do sentimento de frustação durante o processo de educação no ensino público regular. Por fim, apresenta estratégias que podem ser usadas pelos docentes para que a inclusão do discente surdo aconteça.',1,2,'Educação; Alunos surdos; Ensino regular.',1,'Surdez'),(77,'Lidiana Ferreira Gouvêa ','122.329.676-89','UNIFAL-MG ','flordolin09@gmail.com',0,NULL,NULL,3,2,NULL,0,''),(78,'Catharina Klie Dupont','27620798889','UNIFAL-MG','katklie2@gmail.com',1,'OS NAIPES E SUA SIMBOLOGIA NA OBRA DE MAX AUB',' O presente trabalho visa analisar e discutir as relações intertextuais e simbólicas entre imagens e textos encontradas nas 106 cartas que compõem El Juego de Cartas (1964), obra do escritor espanhol Max Aub, constituída de forma original – um baralho completo, que no verso conta com textos que se apresentam como cartas escritas por diferentes personagens – é uma das menos estudadas do repertório do escritor espanhol dada a circulação escassa que teve na Espanha e no restante da Europa. A proposta deste trabalho objetiva estabelecer interações dialógicas entre imagem e texto e suas dimensões lúdicas e experimentais, além dos processos narrativos utilizados por Aub em seu processo de produção artística: a ausência de um narrador e a imagem caleidoscópica elaborada para a constituição do personagem principal. A escolha da obra se deve não apenas ao seu caráter inovador e vanguardista, mas também pelas múltiplas possibilidades de organização textual e de fruição de sentidos que o texto oferece. De acordo com isso, enfatiza-se a análise do símbolo naipesco desde sua origem até a contemporaneidade abrangendo seus aspectos de caráter histórico, social, cultural e linguístico. Por conseguinte, a perspectiva de abordagem e de análise está vinculada à concepção do naipe como imagem a partir dos estudos multiculturais, multimodais e históricos propostos por Gombrich (2003), Belting (2007), Santaella (2009), Samain (2012), Place (2016) entre alguns destacados autores estudados.',5,1,' naipe; imagem; relação intertextual; símbolo',0,''),(79,'Gabriela Alves Ferreira de Oliveira','08844388642','Universidade Federal de Lavras - UFLA','gabiferreira2812@gmail.com',1,'A função humanizadora da literatura: uma abordagem acerca do efeito estético na obra Orlando, de Virginia Woolf','No contexto atual, sob os preceitos de uma lógica de mercado embasada no consumo desenfreado, atribui-se equivocadamente à literatura uma função de entretenimento. No entanto, ela possui um importante papel no que se refere à formação do sujeito crítico, tornando-o apto a perceber e a problematizar a realidade. Tal contribuição formadora, de acordo com Antonio Candido (1998), constitui seu caráter humanizador em meio a uma sociedade que tende a padronizar os indivíduos. À vista disso, o presente trabalho se utiliza da obra “Orlando” (1928), na qual Virginia Woolf discute a metamorfose sofrida pelo personagem-título que, no século XVI, torna-se pajem da rainha Elizabeth e, depois de um sono, transforma-se em mulher e vive até o século XX. Mediante essa narrativa, que promove reflexões em relação ao indivíduo e às suas limitações em sociedade, objetiva-se a realização de um estudo acerca dos efeitos desencadeados pela obra literária no ato de leitura, propiciando um estímulo à subjetividade do leitor mediante a verossimilhança. Para tanto, parte-se também do conceito de mímesis, proposto por Aristóteles na “Poética”, e busca-se analisar o modo como a obra literária estimula uma espécie de identificação entre texto e leitor. Além disso, utilizam-se os estudos de Anatol Rosenfeld, segundo o qual, o cotidiano, quando ficcionado esteticamente, condensa-se de modo a contemplar a plenitude de sua condição. Isso se deve ao fato de que, como exposto por Wolfgang Iser, é próprio da literatura encenar a vida, não para representá-la, mas sim para permitir ao leitor sua participação nela.',3,2,'Literatura e função social; Efeito estético; Linguagem estética',0,''),(80,'Amanda Mendonça Pereira','11084144603','UFLA','amandamendonca16@yahoo.com.br',0,NULL,NULL,6,2,NULL,0,''),(81,'Alexia Ferreira Rodrigues de França Antunes','022.339.726-19','Universidade Federal de Alfenas-campus sede','alexia.1408.frfa@hotmail.com',1,'Concurso Literário ','O presente projeto Concurso Literário, desenvolvido e realizado pelo Programa de Educação Tutorial – Conexões de Saberes Letras da Universidade Federal de Alfenas, possibilita aos discentes, servidores da instituição e à comunidade em geral, a oportunidade de expressão e manifestação por meio da escrita. Em sua primeira edição foi escolhido o gênero Crônica, no qual se evidencia o detalhe e os instantes que compõe o cotidiano, em que cada autor pôde desenvolver seu texto-criação, sendo assim, “Pedaços do Meu Canto” foi nossa escolha como tema, destacando, portanto, as peças primordiais da construção pessoal, vivências, aromas, histórias que integram ou integraram parte da formação individual. O projeto foi efetivado com total rigorosidade, passando por várias etapas, na qual a primeira obteve-se a elaboração de regulamentos e formulários, em vista de estabilizar um edital. Na segunda etapa, foi desenvolvida a correção das crônicas enviadas via e-mail, e ao decorrer do processo, todos os textos foram analisados por dois ou três avaliadores. E, por fim, ocorreu o processo de edição de todas as crônicas selecionadas para a produção do nosso primeiro livro digital (Ebook), incluindo a criação da capa e a finalização de todos os processos realizados. Dessa forma, por se tratar de um projeto a longo prazo, já estão previstas outras edições, como é o caso do nosso II Concurso Literário - “O Que Te Assombra Antes de Dormir” que consta com o gênero Conto Fantástico. ',4,2,'Concurso literário; crônica; livro digital',0,''),(82,'Joseli Aparecida Fernandes','04501795670','Universidade Vale do Rio Verde - UNINCOR','josyfernanddes@hotmail.com',1,'RAP : INSTRUMENTO DE LIBERTAÇÃO E RECONHECIMENTO DA IDENTIDADE NEGRA',' A presente comunicação pretende discutir como dialogam o rap e a identidade negra identificando continuidades e rupturas nas relações entre raça, racismo, classe e cultura no discurso e na narrativa musical das letras do rapper Flávio Renegado. Para tanto, iremos apresentar as canções “Black Star” e “Zica”, presentes nos álbuns Outono Selvagem e Minha tribo é o mundo, refletindo sobre o padrão estético eurocêntrico da mídia brasileira e questionar a tão falaciosa democracia racial. O fato de a sociedade brasileira buscar o padrão de beleza branco e insistir na ideia de harmonia racial, ao mesmo tempo em que expõe o negro à inferioridade, evidenciou aos afrodescendentes a necessidade de um enfretamento coletivo do problema, em busca do reconhecimento e do autopoder racial em todos os setores. Assim o hip hop apresenta como característica bem marcada a questão da negritude, principalmente no rap, entendida como resgate da valorização e reconhecimento da identidade negra. O rapper coloca nos versos a importância da participação dos afrodescendentes na divulgação do movimento, visto que este nasce dessa população, além de denunciar o racismo e falta de representatividade do negro na sociedade.',5,1,'rap ; identidade negra; enfrentamento; negritude.',0,''),(83,'Jéssica Aparecida Oliveira Freire','134.461.686-05','Universidade Federal de Alfenas (UNIFAL-MG)','jehfreire08@gmail.com',1,'Resenhando',' Considerando resenha um dos gêneros mais recorrentes no processo de ensino-aprendizagem na universidade, o PET-Letras constatou a necessidade de discuti-lo também fora da sala de aula como forma de aprofundar sua compreensão e produção. Como alvo principal os alunos da Universidade Federal de Alfenas (UNIFA-MG), em caráter presencial, será realizada uma série de atividades que permitam o contato dos participantes com o gênero, promovam a prática da leitura e da escrita e possibilitem a divulgação de resenhas da área de Letras. Serão planejadas palestras, nas quais docentes da UNIFAL-MG tratarão do tema a partir de diferentes perspectivas e em seguida, oferecidas por professores convidados e por integrantes do PET atividades como oficinas, minicursos, discussões de textos teóricos sobre o assunto, entre outros, a fim de inserir os alunos na prática e leitura de resenhas, sendo realizada antes, pelo grupo, uma pesquisa de referenciais teóricos para sua preparação. As atividades são realizadas anualmente, com oferta de dois minicursos semestrais compostos por aulas práticas e teóricas de carga horária de 8 horas cada. Os minicursos resultarão em resenhas redigidas pelo público-alvo, orientadas e corrigidas pelos integrantes do grupo PET-Letras e serão dispostas depois, em um espaço digital criado pelo PET com fins de divulgação. Ressalta-se que somente resenhas da área de Letras serão publicadas, pois essa é a área de competência do grupo. Compreender como e porque escrever uma resenha, impulsiona sua leitura crítica e sua produção, além de melhorar o processo de ensino e aprendizagem dos cursos de graduação. \r\n',4,2,'Resenha; Escrita acadêmica; Leitura crítica. ',0,''),(84,'ANGELA MARIA COSTA','02864545640','UNIFAL- Universidade Federal de Alfenas','angela-unifal@outlook.com',0,NULL,NULL,2,2,NULL,0,''),(85,'Regina Oliveira da Silva','118.914.786-64','Universidade Federal de Alfenas (UNIFAL-MG)','rehnathiele@gmail.com',1,'Resenhando',' Considerando resenha um dos gêneros mais recorrentes no processo de ensino-aprendizagem na universidade, o PET-Letras constatou a necessidade de discuti-lo também fora da sala de aula como forma de aprofundar sua compreensão e produção. Como alvo principal os alunos da Universidade Federal de Alfenas (UNIFA-MG), em caráter presencial, será realizada uma série de atividades que permitam o contato dos participantes com o gênero, promovam a prática da leitura e da escrita e possibilitem a divulgação de resenhas da área de Letras. Serão planejadas palestras, nas quais docentes da UNIFAL-MG tratarão do tema a partir de diferentes perspectivas e em seguida, oferecidas por professores convidados e por integrantes do PET atividades como oficinas, minicursos, discussões de textos teóricos sobre o assunto, entre outros, a fim de inserir os alunos na prática e leitura de resenhas, sendo realizada antes, pelo grupo, uma pesquisa de referenciais teóricos para sua preparação. As atividades são realizadas anualmente, com oferta de dois minicursos semestrais compostos por aulas práticas e teóricas de carga horária de 8 horas cada. Os minicursos resultarão em resenhas redigidas pelo público-alvo, orientadas e corrigidas pelos integrantes do grupo PET-Letras e serão dispostas depois, em um espaço digital criado pelo PET com fins de divulgação. Ressalta-se que somente resenhas da área de Letras serão publicadas, pois essa é a área de competência do grupo. Compreender como e porque escrever uma resenha, impulsiona sua leitura crítica e sua produção, além de melhorar o processo de ensino e aprendizagem dos cursos de graduação. ',4,1,' Resenha; Escrita acadêmica; Leitura crítica.',0,''),(86,'Julia Caroline Silva','12613560630','Universidade Federal de Alfenas','juliacarolinefdh@gmail.com',1,'Concurso Literário ',' O presente projeto Concurso Literário, desenvolvido e realizado pelo Programa de Educação Tutorial – Conexões de Saberes Letras da Universidade Federal de Alfenas, possibilita aos discentes, servidores da instituição e à comunidade em geral, a oportunidade de expressão e manifestação por meio da escrita. Em sua primeira edição foi escolhido o gênero Crônica, no qual se evidencia o detalhe e os instantes que compõe o cotidiano, em que cada autor pôde desenvolver seu texto-criação, sendo assim, “Pedaços do Meu Canto” foi nossa escolha como tema, destacando, portanto, as peças primordiais da construção pessoal, vivências, aromas, histórias que integram ou integraram parte da formação individual. O projeto foi efetivado com total rigorosidade, passando por várias etapas, na qual a primeira obteve-se a elaboração de regulamentos e formulários, em vista de estabilizar um edital. Na segunda etapa, foi desenvolvida a correção das crônicas enviadas via e-mail, e ao decorrer do processo, todos os textos foram analisados por dois ou três avaliadores. E, por fim, ocorreu o processo de edição de todas as crônicas selecionadas para a produção do nosso primeiro livro digital (Ebook), incluindo a criação da capa e a finalização de todos os processos realizados. Dessa forma, por se tratar de um projeto a longo prazo, já estão previstas outras edições, como é o caso do nosso II Concurso Literário - “O Que Te Assombra Antes de Dormir” que consta com o gênero Conto Fantástico.',4,1,'Concurso literário; crônica; livro digital',0,''),(87,'Guilherme Assis dos Reis','11727929683','Universidade Federal de Alfenas','assisguilherme@live.com',1,'O processo da tradução da peça Noche de Guerra en el Museo de Prado, de Rafael Alberti.',' O presente projeto elabora a tradução crítica da obra Noche de Guerra en el Museo del Prado (1956), do escritor espanhol Rafal Alberti, produzida durante seu exílio na Argentina. Tal tradução tem importância significativa pelo fato de que a obra representa um retrato histórico, social e cultural da Espanha do início do século XX, uma vez que trata da Guerra Civil espanhola a partir de um diálogo intertextual com os discursos relacionados às guerras napoleônicas e com diferentes obras que se encontram no Museu do Prado. A leitura crítica da obra, com um estudo introdutório e notas explicativas facilitará a aproximação do leitor brasileiro da realidade apresentada na obra, ofertando-lhe uma contextualização e apresentação de eventos e obras não tão conhecidas no país. Pretende-se, através do estudo crítico da obra, analisar e discutir as relações entre arte, história e literatura que apresenta, produzindo uma tradução inédita no país. Com a finalização do trabalho, a história da Espanha poderá ser contada através de uma peça teatral que dialoga diretamente com a pintura.',5,1,'Rafael Alberti; Intertextualidade; Tradução; Guerra Civil Espanhola; teatro do século XX',0,''),(88,'Giovana Marques Araujo','01602879605','Universidade Federal de Alfenas - UNIFAL/MG','giovanamarquesaraujo@hotmail.com',0,NULL,NULL,1,2,NULL,1,'Física Locomotora - Local de fácil acess'),(89,'Maria Eduarda Savini Ines','12164385608','Unifal-MG','dudasavini@gmail.com',1,'Concurso Literário Pedaços do Meu Canto',' O presente projeto Concurso Literário, desenvolvido e realizado pelo Programa de Educação Tutorial – Conexões de Saberes Letras da Universidade Federal de Alfenas, possibilita aos discentes, servidores da instituição e à comunidade em geral, a oportunidade de expressão e manifestação por meio da escrita. Em sua primeira edição foi escolhido o gênero Crônica, no qual se evidencia o detalhe e os instantes que compõe o cotidiano, em que cada autor pôde desenvolver seu texto-criação, sendo assim, “Pedaços do Meu Canto” foi nossa escolha como tema, destacando, portanto, as peças primordiais da construção pessoal, vivências, aromas, histórias que integram ou integraram parte da formação individual. O projeto foi efetivado com total rigorosidade, passando por várias etapas, na qual a primeira obteve-se a elaboração de regulamentos e formulários, em vista de estabilizar um edital. Na segunda etapa, foi desenvolvida a correção das crônicas enviadas via e-mail, e ao decorrer do processo, todos os textos foram analisados por dois ou três avaliadores. E, por fim, ocorreu o processo de edição de todas as crônicas selecionadas para a produção do nosso primeiro livro digital (Ebook), incluindo a criação da capa e a finalização de todos os processos realizados. Dessa forma, por se tratar de um projeto a longo prazo, já estão previstas outras edições, como é o caso do nosso II Concurso Literário - “O Que Te Assombra Antes de Dormir” que consta com o gênero Conto Fantástico.',2,2,'Concurso literário; crônica; livro digital',0,''),(90,'Louise Crabi Andrade','132.585.686-00','Universidade Federal de Lavras','louisecrabiandrade@hotmail.com',1,'Letramento multimodal: análise do gênero infográfico','Na sociedade circulam diversos gêneros textuais, os quais mudam de acordo com a necessidade dos falantes, com a evolução dos meios para a comunicação e da tecnologia. Saber ler e compreender os diversos gêneros possibilita a inserção do sujeito nas práticas de letramento. Na contemporaneidade, o termo letramento, além de ser abordado no plural, está relacionado aos multiletramentos, uma proposta que busca contemplar outras formas de linguagem e os recursos semióticos que compõem os textos que circulam socialmente. Dentre os multiletramentos, tem-se o letramento multimodal, que incorpora e reúne os saberes necessários para interpretar os modos semióticos e suas complexidades (THE NEW LONDON GROUP, 1996). Assim, esse letramento se faz importante por ser “um conjunto de práticas que consideram a ampliação de foco da linguagem verbal para outros modos semióticos”, com vistas a dar conta dessa multiplicidade de recursos (CATTO, 2013, p. 159). Neste sentido, os objetivos deste trabalho são: compreender como os diferentes recursos semióticos de representação da linguagem constituem  o gênero infográfico e analisar como esses modos se articulam com vistas a contribuir para a construção das representações sociais e das interações no plano composicional.  Para alcançar os objetivos pretendidos, foi constituído um corpus de análise, formado por dez infográficos que circulam em revistas de ampla circulação. As análises prévias evidenciam que esse gênero é predominantemente imagético e que  a articulação entre as várias semioses possibilita organizar informações complexas com vistas a tornar a informação clara ao leitor.',2,2,'Multimodalidade; infográfico; multiletramentos',0,''),(91,'MAURICEIA SILVA DE PAULA VIEIRA','66839807649','UNIVERSIDADE FEDERAL DE LAVRAS - UFLA/MG','mauriceia@ufla.br',1,'Argumentação e multimodalidade: análise dos recursos semióticos em gêneros textuais presentes em avaliação seriada',' Com o advento da globalização e o impacto das tecnologias digitais, uma multiplicidade de textos passou a explorar uma maior articulação entre as várias semioses e os recursos multimodais, a fim de se adequar aos suportes digitais e aos novos contextos produção, recepção e circulação. Trata-se, como proposto por Kress (2010) e Kress e Van Leeuwen (2001; 2006), de uma “guinada para o visual” e a linguagem verbal divide, nesse cenário, espaço com os vários recursos/modos de representação disponíveis (visual, sonoro, verbal, gestual etc.). A exploração de um ou de outro modo de representação depende do uso e da avaliação que os participantes fazem desses modos, já que os signos são motivados culturalmente. Neste sentido, o objetivo deste trabalho é analisar os diversos gêneros multimodais que compõem as avaliações de Língua Portuguesa do Processo seletivo de Avaliação Seriada – PAS/UFLA com vistas a compreender em que medida as capacidades de leitura relacionadas à multimodalidade são exploradas. O corpus da pesquisa, composto por charges, tirinhas e textos publicitários, foi analisado priorizando-se uma perspectiva descritivo-explicativa, a partir da categorização dos itens apresentados. As análises evidenciam que os itens exploram capacidades diversas, tais como produção de inferências, localização de informações explícitas, análise relações lógico-semânticas e de relações coesivas. Evidenciam ainda que os diferentes recursos multimodais potencializam avaliações, julgamentos e pontos de vista do enunciador.',2,2,'Multimodalidade; avaliação seriada; leitura',0,''),(92,'Thais de Oliveira Barros','46945348822','Universidade Federal de Alfenas ','thaisoliveira.letras@gmail.com',1,'ACERVO DA PRODUÇÃO INTELECTUAL DE AUTORIA FEMININA OCIDENTAL:  PENSAR AS OBRAS DE ROSA MONTERO E DE LAURA FREIXAS ','Resumo: O aumento de publicações de obras literárias escritas por mulheres ao longo do século XX reflete uma lenta mudança no cenário da tradição literária. Com os avanços conquistados no último século, especialmente no que se refere aos direitos das mulheres, a circulação de obras de autoria feminina tem crescido. O fato, porém, de que mais obras escritas por mulheres venham à luz, não significa que sejam amplamente conhecidas. Assim, este projeto se organiza a partir do desenvolvimento de trabalhos de pesquisa de uma rede de investigadores e pretende promover as obras de escritoras de diferentes origens, organizando um acervo virtual com suas biografias, listagem e resenhas de obras, a disponibilização de um \r\nrepertório de investigações e de crítica relacionadas às suas produções. Trata-se de um projeto de longo prazo, que para seu primeiro triênio, como forma de recorte, se debruçará sobre a produção de autoras do século XX que abordem temáticas relacionadas às memórias dos momentos que constituíram o século, considerando ao lado dessas memórias a história e a experiência feminina e/ou feminista. Para esta etapa do projeto serão desenvolvidos estudos sobre a obra de duas escritoras de nacionalidade espanhola: Rosa Montero e Laura Freixas. Ambas têm ampla produção literária e jornalística, significativas para a discussão da história e lugar femininos e dialogam com diferentes correntes literárias e de pensamento. ',3,2,'Autoria feminina; Memória; Rosa Montero; Laura Freixas',0,''),(93,'Gabriela Coelho Ferreira','13823416600','Unifal - Unversidade Federal de Alfenas','gabriela_coelho@outlook.com',0,NULL,NULL,4,2,NULL,0,''),(94,'MARIELA DE SOUZA SILVA','03728328650','CEFETMG','marieladesouza@yahoo.com.br',0,NULL,NULL,6,2,NULL,0,''),(95,'Arthur Thomas Lacerda de Carvalho','12390293654','Universidade Federal de Alfenas','arthur.thomas.lc@gmail.com',1,'Clarice Lispector no teatro: o silêncio em A Pecadora Queimada e os Anjos Harmoniosos.',' O presente trabalho se propõe a discutir as implicações do \"silêncio\" que perpassa toda a obra clariciana, tendo como foco a única peça de teatro escrita pela autora, \"A Pecadora Queimada e os Anjos Harmoniosos\", no período em que estava na Europa entre os anos 1946 e 1948. Deixada de lado por não ter cativado a própria autora, a obra só é publicada em 1964 na sessão \"Fundo de gaveta\" da obra \"A legião estrangeira\", junto com outras obras esparsas de Clarice. Além do objetivo principal de analisarmos o \"silêncio\" como símbolo representativo na peça, buscamos trazer luz a essa produção que já em sua primeira publicação foi deixada em um plano secundário. Além de análise bibliográfica do campo teatral para entendermos o lugar que o silêncio ocupa em peças modernas, contamos com uma análise extensa feita por Gomes (\"Clarice em cena\", 2008) da peça, além dos bastidores e outras informações acerca do seu período de produção. Também, de grande importância, são os trabalhos de Sá (\"A escritura de Clarice Lispector\", 1979), Nunes (\"O drama da linguagem\", 1989), Gotlib (\"Clarice, uma vida que se conta, 2009) para a nossa análise, uma vez que compõem a literatura consagrada a respeito de Clarice Lispector e também no ramo da teoria teatral.',5,1,'Clarice Lispector; Teatro; Literatura brasileira.',0,''),(96,'Nataly Rafaele Ternero','13753163627','Universidade Federal de Alfenas Minas Gerais','natalyrafaelle23@gmail.com',1,'Clarice Lispector: escritos sobre a Segunda Guerra Mundial',' Durante os anos de 1944 a 1946, a escritora Clarice Lispector viveu na cidade de Nápoles, Itália, acompanhando seu marido que assumia a função de vice-cônsul no país. Nesse período, Lispector manteve intensa troca de correspondências com seus familiares e amigos, reunidas nos volumes Correspondências (2002) e Minhas queridas (2007). De origem judaica, Clarice se viu morando na cidade mais bombardeada da guerra contra os nazistas e longe de seu círculo social brasileiro. Para ocupar seu tempo e sentir-se útil, a autora voluntariou-se para auxiliar as Forças Expedicionárias Brasileiras na Itália, lendo, escrevendo e ajudando os soldados brasileiros feridos em batalha. A presente comunicação se propõe a analisar a influência dessas experiências com a guerra na produção literária de Lispector, trazendo alguns trechos reunidos para o debate.',5,1,'Clarice Lispector; Segunda Guerra Mundial; crônicas; correspondências.',0,''),(97,'Vanessa Silva Damasceno','10608984620','Universidade Federal De Alfenas - Unifal','nessappvdamasceno@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(98,'Gabriela Garcia','43710268850','Universidade Federal de Alfenas','gxbrielagarcia@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(99,'Aline Gabrielle Correia da Costa','10409690627','UFLA - Universidade Federal de Lavras ','alinnegcosta@gmail.com',1,'Letramento multimodal e publicidade: análise de recursos multissemióticos na perspectiva da gramática do design visual','Partindo do pressuposto de que a leitura e a compreensão de textos são processos cognitivos, e que os textos se estruturam por meio de mais de um modo semiótico e não apenas pelo modo verbal, considera-se a relevância do estudo e análise de recursos que estão cada vez mais presentes em gêneros textuais que circulam nos mais diferentes suportes. Esses recursos podem ser cores, enquadres, símbolos, saliência, representações, movimentos, etc., que se combinam a fim de contribuírem para que leitores construam sentidos para os textos lidos. Segundo KRESS e VAN LEEUWEN (2006), assim como a linguagem verbal, a linguagem visual é dotada de uma sintaxe própria, em que os elementos possuem suas estruturas próprias e se organizam para comunicar de modo coerente. Torna-se, então, notável que a compreensão de textos multimodais possibilita ao leitor a ampliação de suas capacidades de leitura. Neste viés, este trabalho se propõe a discutir pressupostos teóricos que elencam e discutem a relevância do letramento multimodal e dos significados visuais, como as contribuições da Semiótica Social a partir dos pressupostos na Gramática do Design Visual de KRESS e VAN LEEUWEN (2006). Além disso, propõem-se analisar, sob a perspectiva da GDV, textos de domínio publicitário, de modo a compreender os significados  multissemióticos presentes nesses textos. Os resultados obtidos a partir do estudo empreendido apontam para a importância cada vez mais evidente do letramento multimodal, uma vez que os modos composicionais analisados nos textos se vinculam aos demais mecanismos linguístico-textuais e contribuem para a construção de sentidos, e assim, para a formação de leitores mais proficientes.',2,1,'Multimodalidade; Anúncio publicitário; Gramática do Design Visual.',0,''),(100,'Cintia Cherubino Luckhurst','00653808607','CEFET-MG','cintia_cherubino@hotmail.com',1,'Os alunos de L2 como co-participantes do currículo: uma experiência sobre autonomia e motivação.',' Na atualidade, as mídias sociais eletrônicas, assim como os canais  de televisão por assinatura e os aplicativos possibilitaram maior acesso a culturas diversas, ampliando as perspectivas de ensino e aprendizagem de línguas. Dessa forma, o professor deixa de ser o único mediador que o aluno tem com a língua alvo e pode escolher meios para aprender que sejam significativos para ele. Portanto, é razoável conceber sua participação na construção de um currículo que seja democrático e representativo de suas necessidades e motivações dentro e fora de sala de aula, estendendo o curto tempo de que dispõem em aula e tornando o escopo do livro didático mais abrangente, assim como já defendido por Ushioda (2011), Cope e Kalantziz (2008, 2010). Essa pesquisa visa identificar se as contribuições dos alunos na escolha de materiais extracurriculares podem afetar sua motivação e se a realização de atividades e avaliações que sejam de seu interesse particular contribuem para seu processo de aprendizagem.  Para tal, neste estudo de caso, ao início de cada mês, por um semestre, o professor aplicará em uma turma do ensino médio um questionário sobre motivações e um formulário, no qual o aluno deverá indicar o que gostaria de aprender e quais experiências extracurriculares já foram positivas. Uma vez realizadas as atividades, tendo por critério as necessidades da maioria, ao fim do semestre, o professor aplicará outro questionário para verificar se a motivação foi mantida e se os alunos consideram que houve aprendizagem efetiva. Como esta pesquisa está em desenvolvimento, ainda não há resultados conclusivos. ',6,2,'autonomia; colaboração; ensino; aprendizagem',0,''),(101,'Jônatas Henrique da Silva','41032927844','Unifal - Universidade Federal de Alfenas - MG','jonatashscp@gmail.com',1,'ESTRATÉGIAS PERFORMÁTICAS E MULTIMODAIS DE VERA CRUZ EM A PELE QUE HABITO, DE PEDRO ALMODÓVAR',' Este trabalho visa propor a interface teórico-metodológica entre os estudos em Semiótica Social Multimodal (KRESS; VAN LEEUWEN, 1996; MACHIN, 2007) e a Teoria Queer (BUTLER, 1990, 1993, 2007) com o objetivo de analisar a representação e a performatividade do corpo da protagonista do filme A pele que habito (2011), de Pedro Almodóvar. Na obra cinematográfica, Vicente/Vera é sequestrado pelo cirurgião plástico Robert Ledgard e mantido como prisioneiro em sua clínica-mansão, o El Cigarral. À vista disso, molda-se às violações, além de ter a domesticação de seu corpo diante da vigilância de Ledgard. Respaldando-se nas categorias analíticas oferecidas pelo construto teórico aqui apresentado, pretende-se colaborar no sentido de perscrutar as representações que envolvem performatividades e performances corporais de protagonistas de identidades transitórias e contingentes em produções cinematográficas.',4,2,'A pele que habito; Semiótica Social Multimodal; Teoria Queer.',0,''),(102,'Mirelle Souza Andrade','13682770631','Universidade Federal de Alfenas','mirelle.souza.andrad@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(103,'Ana Eliza','13112240685','UFLA','ana.barbosa@estudante.ufla.br',1,'A REPRESENTAÇÃO DA MULHER DO SÉCULO XIX REFLETIDA NA CONTEMPORANEIDADE',' O objetivo do presente trabalho é propor uma breve discussão a respeito do conto de Machado de Assis, intitulado “D. Benedita”, sob um viés formal e sócio-histórico, tendo por base Alfredo Bosi, Mary del Priore e Andréa Portolomeos. O conto explora, de maneira oblíqua - o que é permitido pela especificidade da linguagem literária - as relações interpessoais estabelecidas numa família de padrão burguês no século XIX, discutindo o papel da mulher nesse contexto. A protagonista, foco do olhar crítico deste trabalho, é relacionada no conto à frivolidade nas relações e nos desejos, mas sob essa constatação podem-se ler outros sentimentos, desejos e angústias latentes nessa mulher. A partir dessa análise, este trabalho busca ainda compreender melhor o contexto sócio-histórico contemporâneo da mulher, originário na consolidação da sociedade burguesa do século XIX. Ou seja, o trabalho pretende investigar em que medida a mulher contemporânea ainda carrega - mesmo muitas vezes à revelia de suas vontades - valores criados nessa sociedade nascente no século XIX. Outra questão em pauta para ser discutida no trabalho é sobre as expectativas da sociedade para o papel feminino hoje originárias de conformações sociais estabelecidas nos séculos passados. ',5,1,'Papel da mulher; Relações interpessoais; Linguagem literária.',0,''),(104,'Cláudia Alves Pereira Braga','04647667618','Universidade Federal de Lavras','cap@ufla.br',1,' Argumentação e multimodalidade: análise dos recursos semióticos em gêneros textuais presentes em avaliação seriada.','Com o advento da globalização e o impacto das tecnologias digitais, uma multiplicidade de textos passou a explorar uma maior articulação entre as várias semioses e os recursos multimodais, a fim de se adequar aos suportes digitais e aos novos contextos produção, recepção e circulação. Trata-se, como proposto por Kress (2010) e Kress e Van Leeuwen (2001; 2006), de uma “guinada para o visual” e a linguagem verbal divide, nesse cenário, espaço com os vários recursos/modos de representação disponíveis (visual, sonoro, verbal, gestual etc.). A exploração de um ou de outro modo de representação depende do uso e da avaliação que os participantes fazem desses modos, já que os signos são motivados culturalmente. Neste sentido, o objetivo deste trabalho é analisar os diversos gêneros multimodais que compõem as avaliações de Língua Portuguesa do Processo seletivo de Avaliação Seriada – PAS/UFLA com vistas a compreender em que medida as capacidades de leitura relacionadas à multimodalidade são exploradas. O corpus da pesquisa, composto por charges, tirinhas e textos publicitários, foi analisado priorizando-se uma perspectiva descritivo-explicativa, a partir da categorização dos itens apresentados. As análises evidenciam que os itens exploram capacidades diversas, tais como produção de inferências, localização de informações explícitas, análise relações lógico-semânticas e de relações coesivas. Evidenciam ainda que os diferentes recursos multimodais potencializam avaliações, julgamentos e pontos de vista do enunciador.\r\n\r\n',2,1,'Multimodalidade; avaliação seriada; leitura',0,''),(105,'Vandeí Antunes Pereira','55419364620','Unimontes-MG','vandei.pereira@educacao.mg.gov.br',1,'A IMPORTÂNCIA DA BIBLIOTECA ESCOLAR NO PROCESSO DE FORMAÇÃO DO LEITOR LITERÁRIO.','Busca-se com esse trabalho novas respostas para velhas indagações a respeito da participação da escola no processo de alfabetização e letramento dos alunos da rede pública, investigando o papel das bibliotecas escolares nesse processo e de que maneira podem o professor de Língua Portuguesa e o Professor de Ensino para Uso da Biblioteca (PEUB) intervirem coletivamente para despertar e manter no educando o gosto pela leitura literária. Induz ainda a uma reflexão sobre os fatores que contribuem para o gosto pela leitura literária, o perfil e as estratégias do professor responsável pelo letramento literário porque, não basta ter livros nas mãos e tempo para lê-los; isso é só um bom começo. É preciso também que a leitura seja fomentada com o estabelecimento de políticas públicas para promover o acesso ao livro e à leitura mesmo em realidades desiguais, de segmentos sociais diferentes, em que alguns alunos estejam o tempo todo conectados à rede mundial de computadores, enquanto outros são dela excluídos ou têm dificuldades de acesso. O que reforça a evidência de uma pluralidade cultural presente no mesmo ambiente de formação escolar.',6,2,'Biblioteca Escolar; Leitura; Letramento Literário.',0,''),(106,'Keilla Conceição Petrin Grande','01172493600','Centro Federal de Educação Tecnológica de Minas Gerais - CEFET/MG','keillacpg@gmail.com',1,'COMBINAÇÃO E TRANSPOSIÇÃO MIDIÁTICA EM HÚMUS POEMA CONTÍNUO','Húmus poema contínuo é um poema digital, criado em 2008 pelo poeta português Rui Torres, elaborado a partir de Húmus de Herberto Helder (1967) e Húmus de Raul Brandão (1917), cuja produção fez uso das linguagens de programação Java, XML e Actionscript. Por se tratar, então, de um texto que promove uma relação de diálogo com outras obras, provocando-lhes mudanças significativas em relação ao suporte – do impresso para o virtual; à linguagem – da verbal para a hipermidiática; e aos meios – recursos visuais, sonoras, interativos - analisamos o trabalho de Torres sob a ótica da Intermidialidade. Nossa investigação se baseia nas concepções teóricas de Irina Rajewsky, em relação ao que a pesquisadora estabelece quanto à análise de configurações de mídias individuais e suas subcategorias: transposição midiática, a combinação das mídias e as referências intermidiáticas. Também trazemos à discussão, as reflexões teóricas do professor Claus Clüver. Mostraremos como se operam as mudanças referidas e como elas ressignificam os textos-fonte, além de o poema poder ser visto como obra autônoma. ',4,2,'Húmus poema contínuo; Poesia digital; Transposição midiática. ',0,''),(107,'Fernanda da Silva Antonio','10684894726','IFSul de Minas e CEFET- MG','fernanda__sa@hotmail.com',1,'As experiências de aprendizagem de língua estrangeira em sala de aula como prática identitária e cultural',' Tendo em vista que a comunicação não compreende apenas a decodificação de signos, e sim, uma variedade de aspectos que ultrapassam a combinação de gramática com unidades lexicais, se desdobrando a entonação, ironia, valores culturais, estruturação das frases entre vários outros, aulas restritas a gramática não propiciam a efetiva comunicação. Desta forma, entender a sala de aula à luz da Teoria da Complexidade, levando em conta as experiências vividas pelos agentes dos processos de ensino e aprendizagem de idiomas pode trazer reflexões importantes acerca da prática educacional, com vistas a maximizarem as possibilidades de sucesso durante a comunicação no idioma-alvo. A pedagogia intercultural, a compreensão identitária em conjunto com o letramento crítico serão balizadores deste estudo, considerando as reflexões do processo de aprendizagem através do construto da experiência, considerando a motivação como um componente decisivo na aquisição de um novo idioma e na busca por autonomia. Será utilizado o marco de referência de experiências de aprendizagem de estudantes em sala de aula (adaptado por Miccoli e Bambirra) (MICCOLI, 2014) como guia deste estudo.',6,2,'experiência; aprendizagem; letramento; identidade; cultura',0,''),(108,'Carlos Eduardo Nunes Garcia','11300141778','CEFET/MG Campus Leopoldina','nunes_carlosedu@hotmail.com',1,'Intertextualidade multimodal em textos contemporâneos',' A concepção de que os textos podem acontecer em intertextos é tradicional nos estudos de linguística textual (KOCH; ELIAS, 2010; entre outros). É inegável também que o desenvolvimento de tecnologias digitais nos séculos XX e XXI possibilitou o surgimento de novos gêneros textuais (MARCUSCHI, 2008), que tendem a fazer uso de diversos modos de linguagem, nos termos de Kress e Van Leeuwen (2001). O objetivo deste trabalho é, pois, apresentar a Intertextualidade como um fenômeno multimodal cuja abordagem em ambientes pedagógicos constitui uma ferramenta de temas geradores (FREIRE, 2014 [1968]).',2,1,'Intertextualidade; Multimodalidade; Tecnologias digitais; Gêneros textuais; Ensino de língua portuguesa.',0,''),(109,'Régis Monteiro Silva Luz','07515051612','Universidade Federal de Alfenas (Unifal-MG)','regismonteiroluz@gmail.com',1,'DO CONTO AO ROMANCE: A produção ficcional de Clarice Lispector nos anos 1940','A obra de Clarice Lispector (1920-1977) tem sido amplamente estudada nas últimas décadas. Seus textos ficcionais e jornalísticos, suas cartas, adaptações, traduções e pinturas já foram analisados por pesquisadores do Brasil e de outros países. Contudo, algumas de suas obras iniciais, consideradas “menores” tanto pela crítica literária quanto pelo público, ainda requerem estudos mais minuciosos. Nossa pesquisa concentra-se em algumas produções da jovem Clarice, no início dos anos 1940, período em que se graduava em Direito e iniciava sua carreira como jornalista na Agência Nacional e no periódico A Noite. Por meio do cotejo do conto Obsessão (de 1941, publicado postumamente, em 1979), do romance O lustre (escrito entre 1943 e 1944, e lançado em 1946) e de alguns artigos de sua autoria, veiculados em jornais da época, realizamos uma análise comparativa entre tais escritos. Buscamos evidenciar aspectos recorrentes na produção literária de Clarice Lispector, naquele momento, destacando elementos relacionados à construção das personagens, no conto e no romance, e discutindo também o diálogo entre literatura e sociedade, visto que as obras aqui estudadas datam do período de vigência do Estado Novo (1937-1945) de Getúlio Vargas.',5,1,'Clarice Lispector; conto; romance; personagem; Estado Novo',0,''),(110,'ELISANDRA APARECIDA EXPEDITO','010.982.496-23','UNIVERSIDADE FEDERAL DE ALFENAS - UNIFAL','elisandra.a.e@hotmail.com',0,NULL,NULL,1,2,NULL,0,''),(111,'Adriene Lucas da Cruz e Silva','005.861.876-77','E E Professor Antonio Domingues Chaves','adriene_cruz@yahoo.com.br',0,NULL,NULL,2,2,NULL,0,''),(112,'EDINEIA GONÇALVES DO NASCIMENTO','06771609685','Universidade Federal de Lavras ','edineianascimento26@hotmail.com',1,'O multiletramento e a multimodalidade para ressignificação do ensino e da aprendizagem no Ensino Fundamental ',' Atualmente, com a eclosão tecnológica, surgiram também os (as) novos (as) leitores e com eles(as) as novas demandas, o que reforça a ideia que o processo de ensinar e aprender a leitura e a escrita não deve ser delimitado por atos de codificação e decodificação. E em meio aos novos paradigmas, salienta-se que, no que concerne aos processos de leitura e escrita, faz-se necessário não restringir apenas ao uso de textos que considerem como foco os códigos verbais, mas também os elementos visuais que contribuem significativamente para a comunicação/interação, dando espaço assim para a multimodalidade, tão presente nas demandas sociais atuais. Postula-se então que, a ressignificação do processo de ensino/aprendizagem pode ser pautada na pedagogia dos multiletramentos, partindo-se do pressuposto que novas metodologias podem contribuir para o pensamento crítico e reflexivo dos sujeitos envolvidos. Sendo assim, este trabalho pautou-se na revisão bibliográfica acerca da utilização dos multiletramentos e da multimodalidade nos espaços escolares, de autores como Dionísio (2005), Kleiman (2014) e Rojo (2012), compreendendo que, ler e escrever são práticas sociais essenciais para que os sujeitos possam desenvolver-se intelectual e socialmente e exigem estratégias diferenciadas de ensino e aprendizagem de modo que possam interagir humanamente assim nos ambientes em que estão inseridos.  ',6,2,'metodologia; leitura; escrita.',0,''),(113,'AMANDA JACKELINE SANTOS DA SILVA ','04954137632','Universidade Federal de Lavras ','amandatutoraletras@gmail.com',1,'O multiletramento e a multimodalidade para ressignificação do ensino e da aprendizagem no Ensino Fundamental ',' Atualmente, com a eclosão tecnológica, surgiram também os (as) novos (as) leitores e com eles(as) as novas demandas, o que reforça a ideia que o processo de ensinar e aprender a leitura e a escrita não deve ser delimitado por atos de codificação e decodificação. E em meio aos novos paradigmas, salienta-se que, no que concerne aos processos de leitura e escrita, faz-se necessário não restringir apenas ao uso de textos que considerem como foco os códigos verbais, mas também os elementos visuais que contribuem significativamente para a comunicação/interação, dando espaço assim para a multimodalidade, tão presente nas demandas sociais atuais. Postula-se então que, a ressignificação do processo de ensino/aprendizagem pode ser pautada na pedagogia dos multiletramentos, partindo-se do pressuposto que novas metodologias podem contribuir para o pensamento crítico e reflexivo dos sujeitos envolvidos. Sendo assim, este trabalho pautou-se na revisão bibliográfica acerca da utilização dos multiletramentos e da multimodalidade nos espaços escolares, de autores como Dionísio (2005), Kleiman (2014) e Rojo (2012), compreendendo que, ler e escrever são práticas sociais essenciais para que os sujeitos possam desenvolver-se intelectual e socialmente e exigem estratégias diferenciadas de ensino e aprendizagem de modo que possam interagir humanamente assim nos ambientes em que estão inseridos.  ',6,1,'metodologia; leitura; escrita.',0,''),(114,'Ícaro de Oliveira Leite','12746024675','UninCor','icaro.deoliveira@hotmail.com',1,'A figura feminina no rap de Djonga','Em março de 2019, Djonga lança seu quarto álbum, Ladrão. O disco foi um grande sucesso, colocando o rapper em evidência e divulgando sua música, mais uma vez, por todo o país. Rapper de Belo Horizonte, nascido na favela do índio, Djonga chama a atenção por sua voz estridente e sua “boca suja”, como ele mesmo diz na letra de “JUNHO de 94”. Essa pesquisa busca identificar e diferenciar as principais figuras femininas encontradas nas letras de Djonga. Percebe-se inicialmente a existência de três dessas figuras, a santa, a desvalorizada e as irmãs, que são enaltecidas. O artista conta com três álbuns lançados nas plataformas digitais de streaming e singles lançados no YouTube. Analisaremos algumas dessas canções em profundidade tendo outras apenas como suporte para entendermos a complexidade de seu discurso. Não menos importante também são os elementos performáticos para além da letra da canção. A letra será analisada como elemento principal, mas se julgarmos importante serão analisadas outras partes da materialidade da canção, como timbre de voz, efeitos sonoros especiais, onomatopeias, etc. ',5,1,'Djonga; Rap; Mulher; Machismo.',0,''),(115,'Carina Adriele Duarte de Melo Figueiredo','01488626677','Unis','carina@unis.edu.br',0,NULL,NULL,7,2,NULL,0,''),(116,'Marcos Antônio Pressato da Silveira','09350448688','Unis - MG','marcospressato01@hotmail.com',0,NULL,NULL,2,2,NULL,0,''),(117,'Luisa Helena de Oliveira Borges','00919562698','Escola Municipal Nelson Rezende Fonseca','luisahelenaoborges@yahoo.com.br',0,NULL,NULL,2,2,NULL,0,''),(118,'Núbia Paiva e Souza','021.934.406-03','CEFET-MG Varginha','nubiapaiva9@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(119,'Paula Kerner Coelho dos Santos','11871247616','Centro Universitário do Sul de Minas','paula.kerner@unis.edu.br',0,NULL,NULL,2,2,NULL,0,''),(120,'Alex Donizeti do Rosário','69425949620','UNIS','alex.rosario@professor.unis.edu.br',0,NULL,NULL,7,2,NULL,0,''),(121,'stephane Cristina Diniz Frank Amaral','10293460620','UFLA','cristina.carvalho.diniz@gmail.com',0,NULL,NULL,6,2,NULL,0,''),(122,'Alice Cristina Vieira Eduardo','704-148-266-98','Escola Estadual Irmão Mario Esdras','alicelindavga22@gmail.com',0,NULL,NULL,5,2,NULL,0,''),(123,'Marcia A. Rufino Silva','00710956673','UFLA EAD','marcciarufino@gmail.com',0,NULL,NULL,4,2,NULL,0,''),(124,'Jaqueline Aparecida Sarto','10490391656','UNIS','jaqueline.sarto@gmail.com',0,NULL,NULL,1,2,NULL,0,''),(125,'Ronan Batistao Alves','720960806-06','UNIFAL','ronanbatistao@hotmail.com',0,NULL,NULL,1,2,NULL,0,''),(126,'ANA AMELIA FURTADO DE OLIVEIRA','07494179607','Centro Universitário do Sul de Minas','anaamelia@unis.edu.br',0,NULL,NULL,4,2,NULL,0,''),(127,'Francislaine Avila de Souza','11798508664','Universidade Federal de Lavras','francislaineavila@hotmail.com',0,NULL,NULL,1,2,NULL,0,''),(128,'Luciene de Oliveira','80998208604','Ufla','Lucieneo@hotmail.com',0,NULL,NULL,2,2,NULL,0,'');
+/*!40000 ALTER TABLE `INSCRITO` ENABLE KEYS */;
+
+--
+-- Table structure for table `agenda`
+--
+
+DROP TABLE IF EXISTS `agenda`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agenda` (
-  `id_agenda` int(11) NOT NULL,
+  `id_agenda` int(11) NOT NULL AUTO_INCREMENT,
   `texto` text NOT NULL,
   `titulo` varchar(150) NOT NULL,
   `data` date NOT NULL,
-  `tipo_evento` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `tipo_evento` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_agenda`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `agenda`
+-- Dumping data for table `agenda`
 --
 
-INSERT INTO `agenda` (`id_agenda`, `texto`, `titulo`, `data`, `tipo_evento`) VALUES
-(1, '<p xss=removed>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis at urna eu sagittis. Sed neque urna, dignissim id tortor eu, sollicitudin semper tortor. Suspendisse eget pharetra velit. Etiam venenatis tellus et nisl congue finibus. Maecenas viverra blandit magna, et blandit orci interdum in. Sed finibus, ligula auctor convallis cursus, augue tortor ultricies dui, ut luctus nulla diam id neque. Vivamus sit amet ante vulputate, posuere orci in, fringilla tellus. Nunc sit amet sapien arcu. Ut sit amet aliquam arcu. Nunc sed semper nulla. Vestibulum ac sapien ullamcorper, vehicula libero ut, sagittis augue. Suspendisse mattis rhoncus tellus ut placerat. Morbi vel odio a leo luctus feugiat. Suspendisse aliquam ligula ac dui hendrerit tristique. Integer condimentum ornare nisi at viverra.</p>\r\n<p xss=removed>Morbi vel libero efficitur, fringilla est sed, pretium leo. Etiam mollis tortor in augue mollis viverra. Curabitur vitae arcu et felis euismod suscipit. Nunc lobortis faucibus venenatis. Pellentesque aliquet, risus non aliquet auctor, quam ipsum porta felis, at finibus odio eros vel lacus. Etiam vulputate iaculis urna eu finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean id scelerisque neque. Fusce ac est ut felis sagittis mattis. Nunc dapibus semper arcu, eget pharetra metus tincidunt molestie. Cras nec sagittis arcu.</p>\r\n<p xss=removed>Maecenas tempor efficitur augue at eleifend. Vestibulum ut ligula quis magna malesuada sagittis id id turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum, neque ac consequat luctus, tortor eros pulvinar lacus, ac maximus nulla sem vel dolor. Nam tellus augue, iaculis rhoncus rhoncus eu, pulvinar a eros. Praesent pretium arcu eu lorem fermentum, id tincidunt leo eleifend. Phasellus congue nulla at libero fringilla hendrerit in id tellus. Donec ipsum eros, tempus nec congue vel, porttitor a lorem.</p>', 'Evento de teste, PARTICIPE !!', '2018-12-26', 1),
-(2, '<p>Igor Gregori</p>', 'Evento de teste', '2018-12-11', 1),
-(3, '<p>Luciano Palm</p>', 'III SILL Multiletramento', '2018-12-11', 0),
-(4, '<p>Igor Gregori</p>', '3º SILL Multiletramento em foco', '2018-06-08', 0);
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `agenda` DISABLE KEYS */;
+INSERT INTO `agenda` VALUES (1,'<p xss=removed>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis at urna eu sagittis. Sed neque urna, dignissim id tortor eu, sollicitudin semper tortor. Suspendisse eget pharetra velit. Etiam venenatis tellus et nisl congue finibus. Maecenas viverra blandit magna, et blandit orci interdum in. Sed finibus, ligula auctor convallis cursus, augue tortor ultricies dui, ut luctus nulla diam id neque. Vivamus sit amet ante vulputate, posuere orci in, fringilla tellus. Nunc sit amet sapien arcu. Ut sit amet aliquam arcu. Nunc sed semper nulla. Vestibulum ac sapien ullamcorper, vehicula libero ut, sagittis augue. Suspendisse mattis rhoncus tellus ut placerat. Morbi vel odio a leo luctus feugiat. Suspendisse aliquam ligula ac dui hendrerit tristique. Integer condimentum ornare nisi at viverra.</p>\r\n<p xss=removed>Morbi vel libero efficitur, fringilla est sed, pretium leo. Etiam mollis tortor in augue mollis viverra. Curabitur vitae arcu et felis euismod suscipit. Nunc lobortis faucibus venenatis. Pellentesque aliquet, risus non aliquet auctor, quam ipsum porta felis, at finibus odio eros vel lacus. Etiam vulputate iaculis urna eu finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean id scelerisque neque. Fusce ac est ut felis sagittis mattis. Nunc dapibus semper arcu, eget pharetra metus tincidunt molestie. Cras nec sagittis arcu.</p>\r\n<p xss=removed>Maecenas tempor efficitur augue at eleifend. Vestibulum ut ligula quis magna malesuada sagittis id id turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris bibendum, neque ac consequat luctus, tortor eros pulvinar lacus, ac maximus nulla sem vel dolor. Nam tellus augue, iaculis rhoncus rhoncus eu, pulvinar a eros. Praesent pretium arcu eu lorem fermentum, id tincidunt leo eleifend. Phasellus congue nulla at libero fringilla hendrerit in id tellus. Donec ipsum eros, tempus nec congue vel, porttitor a lorem.</p>','Evento de teste, PARTICIPE !!','2018-12-26',1),(2,'<p>Igor Gregori</p>','Evento de teste','2018-12-11',1),(3,'<p>Luciano Palm</p>','III SILL Multiletramento','2018-12-11',0),(4,'<p>Igor Gregori</p>','3º SILL Multiletramento em foco','2018-06-08',0);
+/*!40000 ALTER TABLE `agenda` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `estudante`
+-- Table structure for table `estudante`
 --
 
+DROP TABLE IF EXISTS `estudante`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estudante` (
-  `id_estudante` int(11) NOT NULL,
+  `id_estudante` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
   `nivel_de_treinamento` varchar(50) NOT NULL,
   `data_inclusao` date NOT NULL,
   `lattes_link` varchar(255) NOT NULL,
-  `espelho_estudante_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `espelho_estudante_link` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_estudante`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `estudante`
+-- Dumping data for table `estudante`
 --
 
-INSERT INTO `estudante` (`id_estudante`, `nome`, `nivel_de_treinamento`, `data_inclusao`, `lattes_link`, `espelho_estudante_link`) VALUES
-(3, 'Ana Carolina Rodrigues Ferreira', 'Graduação', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8475623Y6', 'http://dgp.cnpq.br/dgp/espelhorh/6254634257842581'),
-(4, 'Bruna Rafaela Silva Tobias', 'Graduação', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8080237H3', 'http://dgp.cnpq.br/dgp/espelhorh/1853266751545189'),
-(5, 'Caroline Souza Silva', 'Ensino Médio (2o grau)', '2017-05-09', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8637914U2', 'http://dgp.cnpq.br/dgp/espelhorh/4355418898681525'),
-(6, 'Denison Maciel Arantes', 'Graduação', '2018-08-06', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8078493P8', 'http://dgp.cnpq.br/dgp/espelhorh/2060953601981840'),
-(7, 'Giovani Rodrigues da Silva Júnior', 'Graduação', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8162187D3', 'http://dgp.cnpq.br/dgp/espelhorh/9356468847612159'),
-(8, 'Gustavo Alessandro Da Silva Júnior', 'Ensino Médio (2o grau)', '2018-01-27', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8042999D1', 'http://dgp.cnpq.br/dgp/espelhorh/3186465591682248'),
-(9, 'Isabela de Fátima Braz', 'Ensino Médio (2o grau)', '2018-05-09', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8639260U3', 'http://dgp.cnpq.br/dgp/espelhorh/4124127915080488'),
-(10, 'Júlia Lopes Olivier', 'Ensino Profissional de nível técnico', '2018-07-30', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K2739458T6', 'http://dgp.cnpq.br/dgp/espelhorh/2104144520090130'),
-(11, 'Luciana Andrade Miranda', 'Não há formação em andamento', '2018-01-27', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4025460U6', 'http://dgp.cnpq.br/dgp/espelhorh/1203875661207684'),
-(12, 'Marcelo Vinícius Spuri Ribeiro Silva', 'Graduação', '2018-08-06', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8078947H2', 'http://dgp.cnpq.br/dgp/espelhorh/4859757681265865'),
-(13, 'Naiara Faria Lima', 'Graduação', '2018-07-30', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8078957P8', 'http://dgp.cnpq.br/dgp/espelhorh/2008909012090367'),
-(15, 'Ricardo Teixeira Bonacorci', 'Graduação', '2018-01-27', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4402859J6', 'http://dgp.cnpq.br/dgp/espelhorh/4607169735378688'),
-(16, 'Roselene Dalcin', 'Graduação', '2018-01-27', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8434699P6', 'http://dgp.cnpq.br/dgp/espelhorh/4711802646368004');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `estudante` DISABLE KEYS */;
+INSERT INTO `estudante` VALUES (3,'Ana Carolina Rodrigues Ferreira','Graduação','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8475623Y6','http://dgp.cnpq.br/dgp/espelhorh/6254634257842581'),(4,'Bruna Rafaela Silva Tobias','Graduação','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8080237H3','http://dgp.cnpq.br/dgp/espelhorh/1853266751545189'),(5,'Caroline Souza Silva','Ensino Médio (2o grau)','2017-05-09','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8637914U2','http://dgp.cnpq.br/dgp/espelhorh/4355418898681525'),(6,'Denison Maciel Arantes','Graduação','2018-08-06','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8078493P8','http://dgp.cnpq.br/dgp/espelhorh/2060953601981840'),(7,'Giovani Rodrigues da Silva Júnior','Graduação','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8162187D3','http://dgp.cnpq.br/dgp/espelhorh/9356468847612159'),(8,'Gustavo Alessandro Da Silva Júnior','Ensino Médio (2o grau)','2018-01-27','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8042999D1','http://dgp.cnpq.br/dgp/espelhorh/3186465591682248'),(9,'Isabela de Fátima Braz','Ensino Médio (2o grau)','2018-05-09','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8639260U3','http://dgp.cnpq.br/dgp/espelhorh/4124127915080488'),(10,'Júlia Lopes Olivier','Ensino Profissional de nível técnico','2018-07-30','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K2739458T6','http://dgp.cnpq.br/dgp/espelhorh/2104144520090130'),(11,'Luciana Andrade Miranda','Não há formação em andamento','2018-01-27','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4025460U6','http://dgp.cnpq.br/dgp/espelhorh/1203875661207684'),(12,'Marcelo Vinícius Spuri Ribeiro Silva','Graduação','2018-08-06','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8078947H2','http://dgp.cnpq.br/dgp/espelhorh/4859757681265865'),(13,'Naiara Faria Lima','Graduação','2018-07-30','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8078957P8','http://dgp.cnpq.br/dgp/espelhorh/2008909012090367'),(15,'Ricardo Teixeira Bonacorci','Graduação','2018-01-27','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4402859J6','http://dgp.cnpq.br/dgp/espelhorh/4607169735378688'),(16,'Roselene Dalcin','Graduação','2018-01-27','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K8434699P6','http://dgp.cnpq.br/dgp/espelhorh/4711802646368004');
+/*!40000 ALTER TABLE `estudante` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `estudante_has_pesquisa`
+-- Table structure for table `estudante_has_pesquisa`
 --
 
+DROP TABLE IF EXISTS `estudante_has_pesquisa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estudante_has_pesquisa` (
   `id_estudante` int(11) NOT NULL,
-  `id_pesquisa` int(11) NOT NULL
+  `id_pesquisa` int(11) NOT NULL,
+  KEY `id_estudante` (`id_estudante`),
+  KEY `id_pesquisa` (`id_pesquisa`),
+  CONSTRAINT `estudante_has_pesquisa_ibfk_1` FOREIGN KEY (`id_estudante`) REFERENCES `estudante` (`id_estudante`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `estudante_has_pesquisa_ibfk_2` FOREIGN KEY (`id_pesquisa`) REFERENCES `pesquisa` (`id_pesquisa`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `estudante_has_pesquisa`
+-- Dumping data for table `estudante_has_pesquisa`
 --
 
-INSERT INTO `estudante_has_pesquisa` (`id_estudante`, `id_pesquisa`) VALUES
-(6, 2),
-(11, 2),
-(9, 2),
-(13, 2),
-(3, 4),
-(8, 4),
-(10, 4),
-(7, 3),
-(5, 4),
-(4, 3),
-(15, 3),
-(12, 3),
-(8, 5),
-(15, 5);
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `estudante_has_pesquisa` DISABLE KEYS */;
+INSERT INTO `estudante_has_pesquisa` VALUES (6,2),(11,2),(9,2),(13,2),(3,4),(8,4),(10,4),(7,3),(5,4),(4,3),(15,3),(12,3),(8,5),(15,5);
+/*!40000 ALTER TABLE `estudante_has_pesquisa` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `EVENTO`
+-- Table structure for table `eventos_participados`
 --
 
-CREATE TABLE `EVENTO` (
-  `idEVENTO` int(11) NOT NULL,
-  `nome` varchar(100) CHARACTER SET utf16 NOT NULL,
-  `numouvintes` int(11) NOT NULL,
-  `numtrabalhos` int(11) NOT NULL,
-  `numtotal` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Fazendo dump de dados para tabela `EVENTO`
---
-
-INSERT INTO `EVENTO` (`idEVENTO`, `nome`, `numouvintes`, `numtrabalhos`, `numtotal`) VALUES
-(1, 'Métodos e práticas com foco na pedagogia dos multiletramentos no contexto do ensino', 0, 0, 0),
-(2, 'Multiletramento e multimodalidade sob o olhar da Linguística', 0, 0, 0),
-(3, 'Literatura, ensino e múltiplos limites', 0, 0, 0),
-(4, 'Multimodalidade, Multiletramentos e Tecnologias', 0, 0, 0),
-(5, 'Linguagens, arte, política: leitura(s) de mundo', 0, 0, 0),
-(6, 'Educação Profissional no contexto da multimodalidade de multiletramento', 0, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `eventos_participados`
---
-
+DROP TABLE IF EXISTS `eventos_participados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `eventos_participados` (
-  `id_eventos_participados` int(11) NOT NULL,
+  `id_eventos_participados` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(70) NOT NULL,
   `texto` text NOT NULL,
-  `data_eventos_participados` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `data_eventos_participados` date NOT NULL,
+  PRIMARY KEY (`id_eventos_participados`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `eventos_participados`
+-- Dumping data for table `eventos_participados`
 --
 
-INSERT INTO `eventos_participados` (`id_eventos_participados`, `titulo`, `texto`, `data_eventos_participados`) VALUES
-(9, 'Troca de cartas, CEFET-MG varginha e IF campus machado', '<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum feugiat enim in dignissim. Suspendisse vitae risus libero. Nulla vestibulum erat enim, nec pulvinar sem tempor id. Sed in urna enim. Sed pharetra venenatis luctus. Duis eu sem suscipit, malesuada nulla a, rhoncus magna. Sed nunc ex, tempor nec nulla non, vehicula facilisis elit. Nunc id justo sed sapien tempor euismod eu ut enim. Mauris aliquam enim id sem interdum facilisis.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Maecenas vulputate vel nisl eu aliquet. Pellentesque nec libero luctus, condimentum libero eget, hendrerit mi. Maecenas metus mi, mollis ut tortor vitae, blandit commodo massa. Suspendisse suscipit, est quis feugiat suscipit, mauris ligula consequat dolor, non malesuada libero nibh id metus. Integer ac congue urna, vel vestibulum dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus enim, pulvinar viverra mattis fermentum, ornare vel augue. Mauris dolor tortor, dignissim at posuere quis, malesuada sed nibh. In feugiat tellus eget sem gravida commodo. Nulla facilisi. Fusce commodo condimentum mauris ac consequat. Nulla rutrum, enim eget dapibus elementum, mi odio tempus turpis, sit amet molestie neque mauris at elit. Pellentesque sit amet turpis gravida, dignissim tortor a, facilisis ligula. Nullam eu augue ex.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Morbi in est a massa lacinia vehicula. Morbi ut augue id lectus feugiat scelerisque. Aliquam ac laoreet metus. Aliquam semper mi sit amet libero lacinia, id suscipit neque volutpat. Pellentesque vel tortor molestie, ullamcorper odio eget, ornare lectus. Maecenas faucibus quis magna eu laoreet. Fusce vulputate vestibulum felis eu bibendum. Mauris aliquet condimentum efficitur. Sed eget nunc sem. Nulla fermentum pretium auctor. Nullam vel tincidunt purus.</p>', '2018-09-18'),
-(11, 'Evento de teste Igor', '<p>Evento de teste</p>', '2018-12-11'),
-(12, 'as palavras e as coisas', '<p>leitura</p>', '2018-12-11'),
-(13, 'Reunião no UNIS para definição do 3º SILL', '', '2018-11-30');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `eventos_participados` DISABLE KEYS */;
+INSERT INTO `eventos_participados` VALUES (9,'Troca de cartas, CEFET-MG varginha e IF campus machado','<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum feugiat enim in dignissim. Suspendisse vitae risus libero. Nulla vestibulum erat enim, nec pulvinar sem tempor id. Sed in urna enim. Sed pharetra venenatis luctus. Duis eu sem suscipit, malesuada nulla a, rhoncus magna. Sed nunc ex, tempor nec nulla non, vehicula facilisis elit. Nunc id justo sed sapien tempor euismod eu ut enim. Mauris aliquam enim id sem interdum facilisis.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Maecenas vulputate vel nisl eu aliquet. Pellentesque nec libero luctus, condimentum libero eget, hendrerit mi. Maecenas metus mi, mollis ut tortor vitae, blandit commodo massa. Suspendisse suscipit, est quis feugiat suscipit, mauris ligula consequat dolor, non malesuada libero nibh id metus. Integer ac congue urna, vel vestibulum dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus enim, pulvinar viverra mattis fermentum, ornare vel augue. Mauris dolor tortor, dignissim at posuere quis, malesuada sed nibh. In feugiat tellus eget sem gravida commodo. Nulla facilisi. Fusce commodo condimentum mauris ac consequat. Nulla rutrum, enim eget dapibus elementum, mi odio tempus turpis, sit amet molestie neque mauris at elit. Pellentesque sit amet turpis gravida, dignissim tortor a, facilisis ligula. Nullam eu augue ex.</p>\r\n<p style=\"margin: 0px 0px 15px; padding: 0px; text-align: justify; font-family: \'Open Sans\', Arial, sans-serif;\">Morbi in est a massa lacinia vehicula. Morbi ut augue id lectus feugiat scelerisque. Aliquam ac laoreet metus. Aliquam semper mi sit amet libero lacinia, id suscipit neque volutpat. Pellentesque vel tortor molestie, ullamcorper odio eget, ornare lectus. Maecenas faucibus quis magna eu laoreet. Fusce vulputate vestibulum felis eu bibendum. Mauris aliquet condimentum efficitur. Sed eget nunc sem. Nulla fermentum pretium auctor. Nullam vel tincidunt purus.</p>','2018-09-18'),(11,'Evento de teste Igor','<p>Evento de teste</p>','2018-12-11'),(12,'as palavras e as coisas','<p>leitura</p>','2018-12-11'),(13,'Reunião no UNIS para definição do 3º SILL','','2018-11-30');
+/*!40000 ALTER TABLE `eventos_participados` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `imagem`
+-- Table structure for table `imagem`
 --
 
+DROP TABLE IF EXISTS `imagem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `imagem` (
-  `id_imagem` int(11) NOT NULL,
+  `id_imagem` int(11) NOT NULL AUTO_INCREMENT,
   `id_evento_fk` int(11) NOT NULL,
-  `extensao` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `extensao` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_imagem`),
+  KEY `id_evento_fk` (`id_evento_fk`),
+  CONSTRAINT `imagem_ibfk_1` FOREIGN KEY (`id_evento_fk`) REFERENCES `eventos_participados` (`id_eventos_participados`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `imagem`
+-- Dumping data for table `imagem`
 --
 
-INSERT INTO `imagem` (`id_imagem`, `id_evento_fk`, `extensao`) VALUES
-(9, 9, 'jpg'),
-(10, 9, 'jpg'),
-(11, 9, 'jpg'),
-(12, 9, 'jpg'),
-(13, 9, 'jpg'),
-(14, 9, 'jpg'),
-(15, 9, 'JPG'),
-(16, 9, 'JPG'),
-(18, 13, 'jpg'),
-(19, 11, 'jpg'),
-(20, 11, 'jpg'),
-(21, 12, 'jpg');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `imagem` DISABLE KEYS */;
+INSERT INTO `imagem` VALUES (9,9,'jpg'),(10,9,'jpg'),(11,9,'jpg'),(12,9,'jpg'),(13,9,'jpg'),(14,9,'jpg'),(15,9,'JPG'),(16,9,'JPG'),(18,13,'jpg'),(19,11,'jpg'),(20,11,'jpg'),(21,12,'jpg');
+/*!40000 ALTER TABLE `imagem` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `INSCRITO`
+-- Table structure for table `membro`
 --
 
-CREATE TABLE `INSCRITO` (
-  `idINSCRITO` int(11) NOT NULL,
-  `nome` varchar(60) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
-  `instituicao` varchar(100) NOT NULL,
-  `email` varchar(70) NOT NULL,
-  `tipo` int(11) NOT NULL,
-  `titulo` varchar(100) DEFAULT NULL,
-  `artigo` text,
-  `idEVENTO` int(11) NOT NULL,
-  `situacao` int(11) NOT NULL,
-  `palavras_chave` varchar(150) DEFAULT NULL,
-  `necessidades` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `membro`
---
-
+DROP TABLE IF EXISTS `membro`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `membro` (
-  `id_membro` int(11) NOT NULL,
+  `id_membro` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(70) NOT NULL,
   `titulacao` varchar(50) NOT NULL,
   `data_inclusao` date NOT NULL,
   `lattes_link` varchar(255) NOT NULL,
-  `espelho_membro_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `espelho_membro_link` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_membro`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `membro`
+-- Dumping data for table `membro`
 --
 
-INSERT INTO `membro` (`id_membro`, `nome`, `titulacao`, `data_inclusao`, `lattes_link`, `espelho_membro_link`) VALUES
-(6, 'Alex Reis da Silva', 'Mestrado', '2018-08-06', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4655866H0', 'http://dgp.cnpq.br/dgp/espelhorh/3060712430179982'),
-(7, 'Andréa de Lourdes Cardoso dos Santos', 'Especialização', '2018-01-27', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4205353H0', 'http://dgp.cnpq.br/dgp/espelhorh/8833587136912996'),
-(8, 'Antonio Luiz Prado Serenini', 'Doutorado', '2018-01-27', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4256721Y5', 'http://dgp.cnpq.br/dgp/espelhorh/8752543647496970'),
-(9, 'Carina Adriele Duarte de Melo Figueiredo', 'Doutorado', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4263561J1', 'http://dgp.cnpq.br/dgp/espelhorh/6909130283777291'),
-(10, 'Luciano Andre Palm', 'Mestrado', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4362183Z6', 'http://dgp.cnpq.br/dgp/espelhorh/3007153341486577'),
-(11, 'Cintia Cherubino Luckhurst', 'Mestrado', '2017-02-20', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4211370D1', 'http://dgp.cnpq.br/dgp/espelhorh/5507584052766365'),
-(12, 'Edilaine Gonçalves Ferreira de Toledo', 'Doutorado', '2017-02-20', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4212863T0', 'http://dgp.cnpq.br/dgp/espelhorh/6030743545191828'),
-(13, 'Eduardo de Oliveira Bueno Queiroz Fontes', 'Mestrado', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4509826H6', 'http://dgp.cnpq.br/dgp/espelhorh/7673666769370106'),
-(14, 'Emanuela Francisca Ferreira Silva', 'Doutorado', '2017-05-09', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4248214U4', 'http://dgp.cnpq.br/dgp/espelhorh/2708004464526969'),
-(15, 'Erika Kress', 'Mestrado', '2017-05-09', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4785059D2', 'http://dgp.cnpq.br/dgp/espelhorh/3010843548809913'),
-(16, 'Keilla Conceição Petrin Grande', 'Mestrado', '0000-00-00', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4294720J8', 'http://dgp.cnpq.br/dgp/espelhorh/4470471388921783'),
-(17, 'Luciane de Castro Quintiliano', 'Doutorado', '2018-08-06', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4771055E6', 'http://dgp.cnpq.br/dgp/espelhorh/4150797866554328'),
-(18, 'Roseana Nunes Baracat Moreira', 'Mestrado', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4703775U2', 'http://dgp.cnpq.br/dgp/espelhorh/7351936178429636'),
-(19, 'Valeria Mayworm Woll', 'Especialização', '2017-02-21', 'http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4768463Z3', 'http://dgp.cnpq.br/dgp/espelhorh/8806607329699308');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `membro` DISABLE KEYS */;
+INSERT INTO `membro` VALUES (6,'Alex Reis da Silva','Mestrado','2018-08-06','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4655866H0','http://dgp.cnpq.br/dgp/espelhorh/3060712430179982'),(7,'Andréa de Lourdes Cardoso dos Santos','Especialização','2018-01-27','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4205353H0','http://dgp.cnpq.br/dgp/espelhorh/8833587136912996'),(8,'Antonio Luiz Prado Serenini','Doutorado','2018-01-27','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4256721Y5','http://dgp.cnpq.br/dgp/espelhorh/8752543647496970'),(9,'Carina Adriele Duarte de Melo Figueiredo','Doutorado','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4263561J1','http://dgp.cnpq.br/dgp/espelhorh/6909130283777291'),(10,'Luciano Andre Palm','Mestrado','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4362183Z6','http://dgp.cnpq.br/dgp/espelhorh/3007153341486577'),(11,'Cintia Cherubino Luckhurst','Mestrado','2017-02-20','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4211370D1','http://dgp.cnpq.br/dgp/espelhorh/5507584052766365'),(12,'Edilaine Gonçalves Ferreira de Toledo','Doutorado','2017-02-20','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4212863T0','http://dgp.cnpq.br/dgp/espelhorh/6030743545191828'),(13,'Eduardo de Oliveira Bueno Queiroz Fontes','Mestrado','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4509826H6','http://dgp.cnpq.br/dgp/espelhorh/7673666769370106'),(14,'Emanuela Francisca Ferreira Silva','Doutorado','2017-05-09','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4248214U4','http://dgp.cnpq.br/dgp/espelhorh/2708004464526969'),(15,'Erika Kress','Mestrado','2017-05-09','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4785059D2','http://dgp.cnpq.br/dgp/espelhorh/3010843548809913'),(16,'Keilla Conceição Petrin Grande','Mestrado','0000-00-00','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4294720J8','http://dgp.cnpq.br/dgp/espelhorh/4470471388921783'),(17,'Luciane de Castro Quintiliano','Doutorado','2018-08-06','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4771055E6','http://dgp.cnpq.br/dgp/espelhorh/4150797866554328'),(18,'Roseana Nunes Baracat Moreira','Mestrado','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4703775U2','http://dgp.cnpq.br/dgp/espelhorh/7351936178429636'),(19,'Valeria Mayworm Woll','Especialização','2017-02-21','http://buscatextual.cnpq.br/buscatextual/visualizacv.do?metodo=apresentar&id=K4768463Z3','http://dgp.cnpq.br/dgp/espelhorh/8806607329699308');
+/*!40000 ALTER TABLE `membro` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `membro_has_pesquisa`
+-- Table structure for table `membro_has_pesquisa`
 --
 
+DROP TABLE IF EXISTS `membro_has_pesquisa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `membro_has_pesquisa` (
   `id_membro` int(11) NOT NULL,
-  `id_pesquisa` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Fazendo dump de dados para tabela `membro_has_pesquisa`
---
-
-INSERT INTO `membro_has_pesquisa` (`id_membro`, `id_pesquisa`) VALUES
-(8, 2),
-(9, 3),
-(10, 2),
-(6, 2),
-(12, 2),
-(17, 2),
-(16, 3),
-(18, 3),
-(14, 3),
-(16, 4),
-(13, 4),
-(18, 4),
-(11, 4),
-(19, 4),
-(12, 4),
-(15, 4),
-(7, 4),
-(11, 5),
-(19, 5),
-(12, 5),
-(12, 5),
-(8, 5),
-(14, 5);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `pesquisa`
---
-
-CREATE TABLE `pesquisa` (
   `id_pesquisa` int(11) NOT NULL,
-  `nome` varchar(255) NOT NULL,
-  `espelho_link` varchar(255) NOT NULL
+  KEY `id_membro` (`id_membro`),
+  KEY `id_pesquisa` (`id_pesquisa`),
+  CONSTRAINT `membro_has_pesquisa_ibfk_1` FOREIGN KEY (`id_pesquisa`) REFERENCES `pesquisa` (`id_pesquisa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `membro_has_pesquisa_ibfk_2` FOREIGN KEY (`id_membro`) REFERENCES `membro` (`id_membro`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `pesquisa`
+-- Dumping data for table `membro_has_pesquisa`
 --
 
-INSERT INTO `pesquisa` (`id_pesquisa`, `nome`, `espelho_link`) VALUES
-(2, 'Discurso, Cultura, Educação e Sociedade Contemporânea.', 'http://dgp.cnpq.br/dgp/espelholinha/972927454832763421342'),
-(3, 'Literatura e outras Artes e Midias - LAM', 'http://dgp.cnpq.br/dgp/espelholinha/972927454832763495598'),
-(4, 'Processos de ensino-aprendizagem de língua materna, suas literaturas e tecnologias.', 'http://dgp.cnpq.br/dgp/espelholinha/9729274548327634158934'),
-(5, 'Semiótica: teoria e aplicação', 'http://dgp.cnpq.br/dgp/espelholinha/9729274548327634105145');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `membro_has_pesquisa` DISABLE KEYS */;
+INSERT INTO `membro_has_pesquisa` VALUES (8,2),(9,3),(10,2),(6,2),(12,2),(17,2),(16,3),(18,3),(14,3),(16,4),(13,4),(18,4),(11,4),(19,4),(12,4),(15,4),(7,4),(11,5),(19,5),(12,5),(12,5),(8,5),(14,5);
+/*!40000 ALTER TABLE `membro_has_pesquisa` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `reuniao`
+-- Table structure for table `pesquisa`
 --
 
+DROP TABLE IF EXISTS `pesquisa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pesquisa` (
+  `id_pesquisa` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `espelho_link` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_pesquisa`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pesquisa`
+--
+
+/*!40000 ALTER TABLE `pesquisa` DISABLE KEYS */;
+INSERT INTO `pesquisa` VALUES (2,'Discurso, Cultura, Educação e Sociedade Contemporânea.','http://dgp.cnpq.br/dgp/espelholinha/972927454832763421342'),(3,'Literatura e outras Artes e Midias - LAM','http://dgp.cnpq.br/dgp/espelholinha/972927454832763495598'),(4,'Processos de ensino-aprendizagem de língua materna, suas literaturas e tecnologias.','http://dgp.cnpq.br/dgp/espelholinha/9729274548327634158934'),(5,'Semiótica: teoria e aplicação','http://dgp.cnpq.br/dgp/espelholinha/9729274548327634105145');
+/*!40000 ALTER TABLE `pesquisa` ENABLE KEYS */;
+
+--
+-- Table structure for table `reuniao`
+--
+
+DROP TABLE IF EXISTS `reuniao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reuniao` (
-  `id_reuniao` int(11) NOT NULL,
+  `id_reuniao` int(11) NOT NULL AUTO_INCREMENT,
   `texto` text NOT NULL,
   `titulo` text NOT NULL,
-  `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `data` date NOT NULL,
+  PRIMARY KEY (`id_reuniao`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `reuniao`
+-- Dumping data for table `reuniao`
 --
 
-INSERT INTO `reuniao` (`id_reuniao`, `texto`, `titulo`, `data`) VALUES
-(6, '<p>\"Post de teste, dados ficcionais\"</p>\r\n<p><span xss=removed>Morbi vel libero efficitur, fringilla est sed, pretium leo. Etiam mollis tortor in augue mollis viverra. Curabitur vitae arcu et felis euismod suscipit. Nunc lobortis faucibus venenatis. Pellentesque aliquet, risus non aliquet auctor, quam ipsum porta felis, at finibus odio eros vel lacus. Etiam vulputate iaculis urna eu finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean id scelerisque neque. Fusce ac est ut felis sagittis mattis. Nunc dapibus semper arcu, eget pharetra metus tincidunt molestie. Cras nec sagittis arcu.</span></p>\r\n<p><span xss=removed>Junte-se a nós, nos encontraremos no lugar tal dia tal</span></p>', 'Junte-se a nós, GELLDIS', '2018-12-19'),
-(7, '<p>Teste: Reunião GELLDIS - Pesquisa em Varginha </p>', 'Reunião GELLDIS - Pesquisa em Varginha ', '2018-12-12'),
-(8, '<p>Pauta: definição de ementas</p>', '3º SILL Multiletramento em foco - reunião para preparação do evento', '2018-02-04');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `reuniao` DISABLE KEYS */;
+INSERT INTO `reuniao` VALUES (6,'<p>\"Post de teste, dados ficcionais\"</p>\r\n<p><span xss=removed>Morbi vel libero efficitur, fringilla est sed, pretium leo. Etiam mollis tortor in augue mollis viverra. Curabitur vitae arcu et felis euismod suscipit. Nunc lobortis faucibus venenatis. Pellentesque aliquet, risus non aliquet auctor, quam ipsum porta felis, at finibus odio eros vel lacus. Etiam vulputate iaculis urna eu finibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean id scelerisque neque. Fusce ac est ut felis sagittis mattis. Nunc dapibus semper arcu, eget pharetra metus tincidunt molestie. Cras nec sagittis arcu.</span></p>\r\n<p><span xss=removed>Junte-se a nós, nos encontraremos no lugar tal dia tal</span></p>','Junte-se a nós, GELLDIS','2018-12-19'),(7,'<p>Teste: Reunião GELLDIS - Pesquisa em Varginha </p>','Reunião GELLDIS - Pesquisa em Varginha ','2018-12-12'),(8,'<p>Pauta: definição de ementas</p>','3º SILL Multiletramento em foco - reunião para preparação do evento','2018-02-04');
+/*!40000 ALTER TABLE `reuniao` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `reuniaoprivada`
+-- Table structure for table `reuniaoprivada`
 --
 
+DROP TABLE IF EXISTS `reuniaoprivada`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reuniaoprivada` (
-  `id_reuniao` int(11) NOT NULL,
+  `id_reuniao` int(11) NOT NULL AUTO_INCREMENT,
   `texto` text NOT NULL,
   `titulo` varchar(100) NOT NULL,
-  `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `data` date NOT NULL,
+  PRIMARY KEY (`id_reuniao`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `reuniaoprivada`
+-- Dumping data for table `reuniaoprivada`
 --
 
-INSERT INTO `reuniaoprivada` (`id_reuniao`, `texto`, `titulo`, `data`) VALUES
-(5, '<p><span xss=removed>\"Post de teste, dados ficcionais\"</span></p>\r\n<p>A todos os participantes do evento troca de cartas, peço por gentileza que compareçam ao local x dia x</p>', 'Troca de cartas', '2018-12-18');
-
--- --------------------------------------------------------
+/*!40000 ALTER TABLE `reuniaoprivada` DISABLE KEYS */;
+INSERT INTO `reuniaoprivada` VALUES (5,'<p><span xss=removed>\"Post de teste, dados ficcionais\"</span></p>\r\n<p>A todos os participantes do evento troca de cartas, peço por gentileza que compareçam ao local x dia x</p>','Troca de cartas','2018-12-18');
+/*!40000 ALTER TABLE `reuniaoprivada` ENABLE KEYS */;
 
 --
--- Estrutura para tabela `usuario`
+-- Table structure for table `usuario`
 --
 
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(70) NOT NULL,
   `nome` varchar(70) NOT NULL,
   `senha` varchar(60) NOT NULL,
-  `privilegio` tinyint(1) NOT NULL DEFAULT '0',
-  `ativo` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `privilegio` tinyint(1) NOT NULL DEFAULT 0,
+  `ativo` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Fazendo dump de dados para tabela `usuario`
+-- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `email`, `nome`, `senha`, `privilegio`, `ativo`) VALUES
-(1, 'diloca@gmail.com', 'diloca', '356a192b7913b04c54574d18c28d46e6395428ab', 1, 1),
-(2, 'professorlucianopalm@gmail.com', 'Luciano André Palm', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0),
-(3, 'carinaduartemelo@gmail.com', 'Carina Adriele Duarte De Melo Figueiredo', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0),
-(4, 'edigonfer@gmail.com', 'Edilaine Gonçalves Ferreira De Toledo', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 0, 0);
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'simposiovarginha@gmail.com','simposio','858aa0922daf4a3bd0059d809e8d6257519f0a4c',1,1),(2,'professorlucianopalm@gmail.com','Luciano André Palm','40bd001563085fc35165329ea1ff5c5ecbdbbeef',0,0),(3,'carinaduartemelo@gmail.com','Carina Adriele Duarte De Melo Figueiredo','40bd001563085fc35165329ea1ff5c5ecbdbbeef',0,0),(4,'edigonfer@gmail.com','Edilaine Gonçalves Ferreira De Toledo','40bd001563085fc35165329ea1ff5c5ecbdbbeef',0,0);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 --
--- Índices de tabelas apagadas
+-- Dumping routines for database 'u523654141_gls'
 --
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Índices de tabela `agenda`
---
-ALTER TABLE `agenda`
-  ADD PRIMARY KEY (`id_agenda`);
-
---
--- Índices de tabela `estudante`
---
-ALTER TABLE `estudante`
-  ADD PRIMARY KEY (`id_estudante`);
-
---
--- Índices de tabela `estudante_has_pesquisa`
---
-ALTER TABLE `estudante_has_pesquisa`
-  ADD KEY `id_estudante` (`id_estudante`),
-  ADD KEY `id_pesquisa` (`id_pesquisa`);
-
---
--- Índices de tabela `EVENTO`
---
-ALTER TABLE `EVENTO`
-  ADD PRIMARY KEY (`idEVENTO`);
-
---
--- Índices de tabela `eventos_participados`
---
-ALTER TABLE `eventos_participados`
-  ADD PRIMARY KEY (`id_eventos_participados`);
-
---
--- Índices de tabela `imagem`
---
-ALTER TABLE `imagem`
-  ADD PRIMARY KEY (`id_imagem`),
-  ADD KEY `id_evento_fk` (`id_evento_fk`);
-
---
--- Índices de tabela `INSCRITO`
---
-ALTER TABLE `INSCRITO`
-  ADD PRIMARY KEY (`idINSCRITO`),
-  ADD KEY `idEVENTO` (`idEVENTO`);
-
---
--- Índices de tabela `membro`
---
-ALTER TABLE `membro`
-  ADD PRIMARY KEY (`id_membro`);
-
---
--- Índices de tabela `membro_has_pesquisa`
---
-ALTER TABLE `membro_has_pesquisa`
-  ADD KEY `id_membro` (`id_membro`),
-  ADD KEY `id_pesquisa` (`id_pesquisa`);
-
---
--- Índices de tabela `pesquisa`
---
-ALTER TABLE `pesquisa`
-  ADD PRIMARY KEY (`id_pesquisa`);
-
---
--- Índices de tabela `reuniao`
---
-ALTER TABLE `reuniao`
-  ADD PRIMARY KEY (`id_reuniao`);
-
---
--- Índices de tabela `reuniaoprivada`
---
-ALTER TABLE `reuniaoprivada`
-  ADD PRIMARY KEY (`id_reuniao`);
-
---
--- Índices de tabela `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
-
---
--- AUTO_INCREMENT de tabelas apagadas
---
-
---
--- AUTO_INCREMENT de tabela `agenda`
---
-ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de tabela `estudante`
---
-ALTER TABLE `estudante`
-  MODIFY `id_estudante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT de tabela `EVENTO`
---
-ALTER TABLE `EVENTO`
-  MODIFY `idEVENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT de tabela `eventos_participados`
---
-ALTER TABLE `eventos_participados`
-  MODIFY `id_eventos_participados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT de tabela `imagem`
---
-ALTER TABLE `imagem`
-  MODIFY `id_imagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT de tabela `INSCRITO`
---
-ALTER TABLE `INSCRITO`
-  MODIFY `idINSCRITO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT de tabela `membro`
---
-ALTER TABLE `membro`
-  MODIFY `id_membro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
---
--- AUTO_INCREMENT de tabela `pesquisa`
---
-ALTER TABLE `pesquisa`
-  MODIFY `id_pesquisa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de tabela `reuniao`
---
-ALTER TABLE `reuniao`
-  MODIFY `id_reuniao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT de tabela `reuniaoprivada`
---
-ALTER TABLE `reuniaoprivada`
-  MODIFY `id_reuniao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de tabela `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- Restrições para dumps de tabelas
---
-
---
--- Restrições para tabelas `estudante_has_pesquisa`
---
-ALTER TABLE `estudante_has_pesquisa`
-  ADD CONSTRAINT `estudante_has_pesquisa_ibfk_1` FOREIGN KEY (`id_estudante`) REFERENCES `estudante` (`id_estudante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `estudante_has_pesquisa_ibfk_2` FOREIGN KEY (`id_pesquisa`) REFERENCES `pesquisa` (`id_pesquisa`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `imagem`
---
-ALTER TABLE `imagem`
-  ADD CONSTRAINT `imagem_ibfk_1` FOREIGN KEY (`id_evento_fk`) REFERENCES `eventos_participados` (`id_eventos_participados`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Restrições para tabelas `INSCRITO`
---
-ALTER TABLE `INSCRITO`
-  ADD CONSTRAINT `INSCRITO_ibfk_1` FOREIGN KEY (`idEVENTO`) REFERENCES `EVENTO` (`idEVENTO`);
-
---
--- Restrições para tabelas `membro_has_pesquisa`
---
-ALTER TABLE `membro_has_pesquisa`
-  ADD CONSTRAINT `membro_has_pesquisa_ibfk_1` FOREIGN KEY (`id_pesquisa`) REFERENCES `pesquisa` (`id_pesquisa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `membro_has_pesquisa_ibfk_2` FOREIGN KEY (`id_membro`) REFERENCES `membro` (`id_membro`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-05-17 17:20:29

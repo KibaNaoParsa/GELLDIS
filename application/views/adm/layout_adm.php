@@ -122,10 +122,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                             </li>
                             <li>
+                                <a class="nav-link" href="{url}adm/inscricao/relatorios">                                    
+                                    <span class="nav-link-text">Relatórios/Consultas</span>
+                                </a>
+                            </li>
+
+                            <!--<li>
                                 <a class="nav-link" href="{url}adm/inscricao/gerar_pdf">                                    
                                     <span class="nav-link-text">PDF com inscritos</span>
                                 </a>
-                            </li>                                                     
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{url}adm/inscricao/gerar_pdft">                                    
+                                    <span class="nav-link-text">PDF completo</span>
+                                </a>
+                            </li>-->
                         </ul>
                     </li>
 

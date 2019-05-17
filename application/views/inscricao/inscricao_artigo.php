@@ -75,6 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								  '<input type="hidden" id="email" name="email" value="'.$EMAIL.'">'.
 								  '<input type="hidden" id="cpf" name="cpf" value="'.$CPF.'">'.
 								  '<input type="hidden" id="necessidade" name="necessidade" value="'.$NECESSIDADES.'">'.
+								  '<input type="hidden" id="necessidade_texto" name="necessidade_texto" value="'.$NECESSIDADES_TEXTO.'">'.
 								  '<input type="hidden" id="idEVENTO" name="idEVENTO" value="'.$idEVENTO.'">';
 						
 						?>              	
@@ -88,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
                  	    
                 	<div class="form-group">
-                  	<label for="titulo">Título do artigo: </label> 
+                  	<label for="titulo">Título do resumo: </label> 
                      <input type="text" class="form-control" name="titulo" id="titulo" required/> 
                  	</div>
                 	<div class="form-group">
@@ -97,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  	</div>
             
                   <div class="form-group">
-                  	<label for="artigo">Artigo:</label> <br>
+                  	<label for="artigo">Resumo:</label> <br>
                     	<textarea name="artigo" style="width: 100%; height: 250px;"> </textarea> 
                   </div>       	
                   <div class="modal-footer">

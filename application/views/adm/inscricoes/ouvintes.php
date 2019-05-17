@@ -4,7 +4,7 @@
 		echo '<b>Nome: </b>';
 		echo $i->NOME;
 		if ($i->NECESSIDADES == 1)
-			echo '<br><div id="necessidade" style="color: blue;">PORTADOR DE NECESSIDADES ESPECIAIS</div>';
+			echo '<br><div id="necessidade" style="color: blue;">PORTADOR DE NECESSIDADES ESPECIAIS: '.$i->NECESSIDADES_TEXTO.'</div>';
 		echo '<br><b>E-mail: </b>';
 		echo $i->EMAIL;
 		echo '<br><b>GT: </b>';

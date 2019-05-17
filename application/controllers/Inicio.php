@@ -27,13 +27,40 @@ class Inicio extends CI_Controller {
 
     public function index($number = null) {
 		
+			/*require 'assets/PHPMailer/PHPMailerAutoload.php';
+    	  $mail = new PHPMailer();
+    	 $mail->CharSet = 'utf-8';
+	  $mail->IsSMTP();
+    	  $mail->isHTML(true);
+    	  $mail->SMTPDebug = 1;
+	      $mail->Encoding = 'base64';
+    	  $mail->SMTPAuth = true;
+    	  $mail->SMTPSecure = 'tls';
+    	  $mail->Host = "smtp.gmail.com";
+    	  $mail->Port = 587;
+    	  $mail->Username = "simposiovarginha@gmail.com";
+    	  $mail->Password = "gelldispesquisa";
+		  $mail->From = "simposiovarginha@gmail.com";
+		  $mail->FromName = "Simpósio de Língua e Literatura";
+		  $mail->Subject = "Teste";
+		  $mail->Body = "Teste para ver se funciona";
+		  $mail->AltBody = "Conteúdo";
+		  $mail->AddAddress("elyasnog@gmail.com");
+    	  //$mail->SMTPOptions = array('ssl' => array('verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true));
+    	  //echo !extension_loaded('openssl')?"Not Available":"Available";
+    	  		  if ($mail->Send()) {
+			echo "Funcionou";		  
+		  } else {
+			echo $mail->ErrorInfo;
+		  }*/
+		
         $dados = $this->menu;
         $dados['url'] = base_url();
         $dados['display'] = 'none';
 
-    	  $this->db->select("EVENTO.idEVENTO, EVENTO.NOME");
-		  $this->db->from("EVENTO");
-		  $dados['EVENTO'] = $this->db->get()->result();
+    	$this->db->select("EVENTO.idEVENTO, EVENTO.NOME");
+		$this->db->from("EVENTO");
+		$dados['EVENTO'] = $this->db->get()->result();
 
         if (isset($number) && $number == 1) {
             $dados['color'] = 'success';

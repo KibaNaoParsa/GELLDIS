@@ -154,23 +154,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                         <a href="https://www.gel.org.br/" style="text-decoration:none;color: #000157">
                             <span>
-                                <img style="width:100px; height: 100px" src="{url}assets/images/gel.png" class="img-fluid" alt="Responsive image"/>
+                                <img style="width:200px; height: 100px" src="https://www.gelldis.com.br/assets/layout_principal/logoGelldis.png" class="img-fluid" alt="Responsive image"/>
                             </span>
                             <h4>
-                                <strong>Gel</strong>
+                                <strong>Gelldis</strong>
                             </h4>
-                            <p class="mb-0">Grupo de estudos literários</p>
+                            <p class="mb-0">Grupo de estudos Linguísticos, Literários, Discursivos e Semióticos do CEFET Campus Varginha</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0" >
                         <a href="#" style="text-decoration:none;color: #000157">
                             <span>
-                                <img style="width:100px; height: 100px"  src="{url}assets/images/if.png" class="img-fluid" alt="Responsive image"/>
+                                <img style="width:100px; height: 100px"  src="https://portal.ifsuldeminas.edu.br/images/PDFs/comunicacao/logotipos/ifsuldeminas/IFSULDEMINAS_vertical.png" class="img-fluid" alt="Responsive image"/>
                             </span>
                             <h4>
                                 <strong>IF</strong>
                             </h4>
-                            <p class="mb-0">Instituto federal</p>
+                            <p class="mb-0">Instituto Federal do Sul de Minas Gerais</p>
                         </a>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
@@ -188,12 +188,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-lg-3 col-md-6">
                             <a href="#" style="text-decoration:none;color: #000157">
                                 <span>
-                                    <img style="width:100px; height: 100px" src="https://www.shareicon.net/data/256x256/2015/10/11/119658_development_431x512.png" class="img-fluid" alt="Responsive image"/>
+                                    <img style="width:100px; height: 100px" src="http://www.dedc.cefetmg.br/wp-content/uploads/sites/79/2017/08/logotipo_DEDC_antigo_branco.png" class="img-fluid" alt="Responsive image"/>
                                 </span>
                                 <h4>
-                                    <strong>CodeIgniter</strong>
+                                    <strong>DEDC</strong>
                                 </h4>
-                                <p class="mb-0">cd framework php</p>
+                                <p class="mb-0">Diretoria de Extensão e Desenvolvimento Comunitário do CEFET-MG</p>
                             </a>
                         </div>
                     </a>
@@ -203,10 +203,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <section id="contact" class="content-section bg-primary text-white">
             <div class="container text-center">
                 <h2 class="mb-4">Comunique-nos</h2>
-                <p class="light"><b>Email:</b> edilainetoledo@cefetmg.br</p>
-                <p class="light"><b>Logadouro:</b> Avenida dos Imigrantes - de 884 a 1290 - lado par</p>
+                <p class="light"><b>Email:</b> simposiovarginha@gmail.com</p>
+                <p class="light"><b>Logradouro:</b> Avenida dos Imigrantes - 1000 - Vargem</p>
                 <p class="light"><b>Cidade:</b> Varginha - MG</p>
-                <p class="light"><b>Telefone:</b> (35) 98807-7721</p>
             </div>
         </section>
         <section  class="map">                           
@@ -214,7 +213,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </section>
         <footer class="footer text-center">
             <div class="container">
-                <p class="text-muted small mb-0">Copyright &copy; Gelldis 2018</p>
+                <p class="text-muted small mb-0">Copyright &copy; Gelldis <?php echo date("Y"); ?></p>
             </div>
         </footer>
         <div class="modal fade" id="modal_login_moderador" tabindex="-1" role="dialog">
@@ -282,7 +281,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="modal-body">  
                         <p>                     
-                            Apresentação SILL
+                            O SILL – Simpósio de Língua e Literatura do CEFET-MG Varginha – é uma das atividades de extensão do GELLDIS – Grupo de Estudos Linguísticos, Literários, Discursivos e Semióticos do CEFET-MG Varginha. É evento de caráter científico-acadêmico, cujo objetivo é discutir algumas questões ligadas às diversas linguagens humanas na contemporaneidade, com ênfase ao lugar do discurso, do texto e das interações que permeiam o processo de ensino aprendizagem na educação básica e universitária. É um evento anual, desde 2017, quando firmou suas ações extensionistas junto à DEDC – Diretoria de Extensão e Desenvolvimento Comunitário do CEFET-MG. Um de seus principais objetivos é ser espaço facilitador para discussões, reflexões e ações em torno das práticas de variadas linguagens e, letramentos na atualidade, numa articulação com o ensino e a pesquisa que favorece a todos os envolvidos, sobretudo na região onde o CEFET-MG Varginha encontra-se, com a intenção de fomentar cultura, conhecimento e atividades deste porte em suas especificidades.<br><br>
+                            Nesta edição 2019, o SILL propõe-se a discutir questões em torno do multiletramento e multimodalidade, tão emergentes e pontuais em nossas práticas de ensino. <br><br>
+                            Com o tema <b>MULTILETRAMENTO E MULTIMODALIDADE: (RE) PENSAR O TEXTO, A LEITURA, A LINGUAGEM</b>, o simpósio tem como objetivo refletir sobre multiletramento e multimodalidade, bem discutir suas particularidades e implicações, e como público-alvo Professores e servidores de Educação Básica; alunos e professores de graduação e pós-graduação em Letras, Comunicação, Pedagogia e áreas afins.
+                    		<br><br>
+                    		<?php echo anchor("inscricao/gerar_pdf", "Clique aqui para ter acesso às ementas!", array('class'=>"btn btn-light", 'id'=>"botao"));  ?>
+                    		<br><br>                            
+                        	<b>Data:</b> 08 de Junho de 2019
+                            <br>
+                            <b>Local:</b> Centro Universitário do Sul de Minas - Campus I (próximo ao SENAI)<br>
+                            R. Maria Benedita, 63 - Vila Pinto - Varginha
                         </p>                        
                     </div>
                 </div>
@@ -300,11 +308,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="modal-body">  
                         <p>                     
-                            01/01/2001
-							Lore Ipsum met amet dor
-							<br>
-							02/02/2002
-							Ab Cdefg hijkl mno
+                            <b>Data:</b> 08 de Junho de 2019
+                            <br>
+                            <b>Local:</b> Centro Universitário do Sul de Minas - Campus I (próximo ao SENAI)<br>
+                            R. Maria Benedita, 63 - Vila Pinto - Varginha
+                            <br><br>
+                            <b><u>8h – Credenciamento</u></b><br><br>
+<b><u>9h – Palestra de Abertura </b></u> – “Experiência multimodal: o que é, como fazer/vivenciar?” - Prof. Dr. Guilherme Trielli Ribeiro – UFMG - Belo Horizonte<br><br>
+<b><u>10h às 10h30min – intervalo</b></u><br><br>
+<b><u>10h30min às 12h30min – Comunicações coordenadas em Grupos de Trabalhos</u></b><br>
+1. GT – Educação: métodos e práticas com foco na pedagogia dos multiletramentos no contexto do ensino - Profa. Dra. Flaviane Faria Carvalho - UNIFAL Campus Alfenas<br>
+2. GT – Multiletramento e multimodalidade sob o olhar da Linguística - Profa. Dra. Lilian Arão – CEFET-MG Belo Horizonte<br>
+3. GT – Literatura, ensino e múltiplos limites - Prof. Dr. Erick Gontiljo Costa - CEFET-MG Varginha<br>
+4. GT – Multimodalidade, Multiletramentos e Tecnologias - Prof. Dr. Rogério Barbosa – CEFET-MG Belo Horizonte<br>
+5. GT – Linguagens, arte, política: leitura(s) de mundo - Profa. Dra. Cilene M. Pereira – UNINCOR – MG Campus Três Corações<br>
+6. GT – Ensino transformador de línguas: atualizando práticas pedagógicas tradicionais para formar o cidadão do século XXI - Profa. Dra. Raquel Bambirra – CEFET-MG Campus Belo Horizonte<br><br>
+<b><u>12h30min às 13h45min – Almoço</b></u><br><br>
+<b><u>14h – Workshops</u></b><br>
+1. Workshop Escrita Criativa: Prof. e escritor Igor Becati – UNIS MG Campus Varginha<br>
+2. Workshop Literatura Infantil: Profa. Dra. Adriana Pryscilla Duarte de Melo – UFLA Lavras<br>
+3. Workshop Música: Prof. Dr. Celso Augusto dos Santos Gomes - UNIS MG Campus Varginha<br>
+4. Workshop Metodologias Ativas: Profa. Ms. Vânia Flores - UNIS MG Campus Varginha<br>
+5. Workshop Teatro: Prof. Ms. Héverton Ferreira – CEFET-MG Varginha<br>
+6. Workshop Criação de conteúdo audiovisual na web para fins acadêmicos: Prof. Ms. Rafael Almeida - UNIS MG Campus Varginha<br><br>
+<b><u>15h30min – intervalo (pausa para o café)</u></b><br><br>
+<b><u>15h50min – Palestra de encerramento:</u> “Multiletramento e multimodalidade: (re) pensar o texto, a leitura, a linguagem.” Profa. Dra. Carla Coscarelli - UFMG – Belo Horizonte</b><br><br>
+<b><u>17h10min – Atividade Cultural com o grupo “Sassarico”, da cidade de Alfenas-MG</u></b>
+
                         </p>                        
                     </div>
                 </div>
@@ -321,10 +351,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </button>
                     </div>
                     <div class="modal-body">    
+                            <b>Data:</b> 08 de Junho de 2019
+                            <br>
+                            <b>Local:</b> Centro Universitário do Sul de Minas - Campus I (próximo ao SENAI)<br>
+                            R. Maria Benedita, 63 - Vila Pinto - Varginha
+                            <br><br>
                     		<p>
                     		Período para inscrições de comunicação em Simpósio Temático: de 01 de abril a 12 de maio.
                     		<br>
                     		As cartas de aceite serão liberadas entre os dias 13 e 20 de maio.
+                    		<br><br>
+                    		<?php echo anchor("inscricao/gerar_pdf", "Clique aqui para ter acesso às ementas!", array('class'=>"btn btn-light", 'id'=>"botao"));  ?>
                     		<br><br>
                     		MODALIDADES DE INSCRIÇÃO E INVESTIMENTO:
 								<br>
@@ -379,11 +416,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         	<div class="form-group">
                             	<input type="radio" name="necessidade" value="0" required> Não<br>
                             	<input type="radio" name="necessidade" value="1" > Sim<br>
+                            	<input type="text" class="form-control" placeholder="Qual?" name="necessidade_texto" id="necessidade_texto">
                         	</div>
                         	<h3>Você deseja participar como:</h3>
                         	<div class="form-group">
                             	<input type="radio" name="tipo" value="0" required> Ouvinte<br>
-                            	<input type="radio" name="tipo" value="1" > Comunicação em GT<br>
+                            	<!--<input type="radio" name="tipo" value="1" > Comunicação em GT<br>-->
                         	</div>
                         	<h3>De qual GT você deseja participar?</h3>
                         	<div class="form-group">
@@ -416,11 +454,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="modal-body">  
                         <p>                     
-                            <b>Fulano de tal</b><br>
-							<i>(xx) x xxxx-xxxx</i>
-							<br>
-							<b>Ciclano de tal</b><br>
-							<i>(xx) x xxxx-xxxx</i>
+                            Profa. Dra. Carina Adrielle Duarte de Melo Figueiredo - UNIS-MG<br>
+                            Profa. Ms. Cintia Cherubino Luckhurst - CEFET-MG<br>
+                            Profa. Dra. Edilaine G. F. de Toledo - CEFET-MG<br>
+                            Profa. Dra. Emanuela Francisca da Silva - IF Sul de Minas<br>
+                            Profa. Ms. Keilla Conceição Petrin Grande - CEFET-MG<br>
+                            Prof. Ms. Luciano André Palm - CEFET-MG<br>
+                            Roselene Dalcin - Tec. Adm. - Psicóloga CEFET-MG
                         </p>                        
                     </div>
                 </div>
@@ -438,8 +478,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="modal-body">  
                         <p> Você pode falar conosco via:<br>
-                            <b>e-mail:</b>xxxx@gmail.com<br>
-							<b>Telefone:</b>(xx) x xxxx-xxxx
+                            <b>SILL: </b>simposiovarginha@gmail.com<br>
+							<b>GELLDIS: </b>gelldispesquisa@gmail.com
                         </p>                        
                     </div>
                 </div>
